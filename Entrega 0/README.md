@@ -2,5 +2,6 @@
 
 ## Archivos incluidos (PDF):
 * Actores y casos de uso.
-* Navegación y Vistas de la aplicación
+* Navegación de las vistas.
+* Vistas de la aplicación.
 * Modelo de datos.
