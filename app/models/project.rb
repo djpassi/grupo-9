@@ -6,4 +6,7 @@ class Project < ApplicationRecord
 
   has_many :comments
   has_many :users, through: :comments
+
+  has_many :associates
+  has_many :categories, through: :associates
 end
