@@ -1,12 +1,24 @@
-# Grupo 9: QuickStarter 
+# README
 
-* Proyecto a trabajar: Crowdfunding
-* Ayudante: Matias Jünemann
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
-## Integrantes:
-Asegúrense de llenar lo siguiente:
+Things you may want to cover:
 
-| Nº Alumno    | Nombre              | Email UC      |
-|:-------------|:--------------------|:--------------|
-| 13633317   | David Galemiri Ares       | dagalemiri@uc.cl  |
-| 13637967  | Diego Passi Riumalló       | djpassi@uc.cl  |
+* Ruby version
+
+* System dependencies
+
+* Configuration
+
+* Database creation
+
+* Database initialization
+
+* How to run the test suite
+
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+
+* ...
