@@ -13,4 +13,7 @@ class User < ApplicationRecord
   has_many :projects, through: :investments
 
   has_many :projects,  dependent: :delete_all
+
+  has_many :comments, dependent: :delete_all
+
 end
