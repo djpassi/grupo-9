@@ -1,4 +1,6 @@
-<%= form_for(@project) do |f| %>
+
+<%= form_for @project, :html => { :class => "form_for"} do |f| %>
+
 
 <% if @project.errors.any? %>
     <div id="error_explanation">
@@ -12,16 +14,16 @@
     </div>
   <% end %>
 <%= f.label :name %>
-<%= f.text_field :name, required: true %>
+<%= f.text_field :name, required: true, class: 'input_form_for', class: 'input_form_for' %>
 <br>
 <%= f.label :user_id %>
-<%= f.text_field :user_id, required: true %>
+<%= select(:project,:user_id, User.all.collect { |p| [p.first_name+" "+p.last_name, p.id]}, {include_blank: true}, {:class => "input_form_for"}) %>
 <br>
 <%= f.label :goal %>
-<%= f.text_field :goal, required: true %>
+<%= f.text_field :goal, required: true, class: 'input_form_for' %>
 <br>
 <%= f.label :description%>
-<%= f.text_field :description %>
+<%= f.text_field :description , class: 'input_form_for'%>
 <br>
 <%= f.submit %>
 <% end %>
