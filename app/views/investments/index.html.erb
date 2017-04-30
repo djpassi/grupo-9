@@ -1,0 +1,8 @@
+<h1> Investments </h1>
+<% @investments.each do |x| %>
+<p> <%= x.amount %>
+<% end %>
+
+<%= link_to 'Make an investment', '/investments/new' %>
+<br>
+<%= link_to 'Back', root_path %>

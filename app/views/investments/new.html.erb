@@ -1,0 +1,35 @@
+<h1> Make an investment </h1>
+
+<% if flash[:notice] %>
+<%= flash[:notice] %>
+<% end %>
+
+<% if @investment.errors.any? %>
+    <h2><%= pluralize(@investment.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+    <ul>
+    <% @investment.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+<% end %>
+
+<%= form_for @investment do |x| %>
+
+<%= x.label :user_id %>
+<%= select(:investment,:user_id, User.all.collect { |p| [p.first_name+" "+p.last_name, p.id]}, {include_blank: true}) %>
+
+<br>
+<%= x.label :project_id %>
+<%= select(:investment, :project_id, Project.all.collect {|p| [ p.name, p.id ] }, {include_blank: true}) %>
+
+<br>
+<%= x.label :amount %>
+<%= x.text_field :amount %>
+
+<br>
+<%= x.submit %>
+<% end %>
+<br>
+
+<%= link_to 'Back', investments_path %>

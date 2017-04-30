@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
+  root 'home#index'
+
   get '/users/new', to:'users#new'
   post '/users', to:'users#create'
 
@@ -13,6 +15,8 @@ Rails.application.routes.draw do
   get '/projects/new', to: 'projects#new'
   post '/projects', to: 'projects#create'
 
-  root 'home#index'
+  get '/investments', to: 'investments#index', as: 'investments'
+  get '/investments/new', to: 'investments#new'
+  post '/investments', to: 'investments#create'
 
 end
