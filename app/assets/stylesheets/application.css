@@ -38,3 +38,31 @@
  .NavbarElement a:hover {
      background-color: #808080;
  }
+
+
+
+
+ .form_for {
+   display: inline-block;
+   text-align: center;
+ }
+
+ .input_form_for {
+     width: 100%;
+     padding: 12px 20px;
+     margin: 8px 0;
+     box-sizing: border-box;
+     border: 2px solid grey;
+     border-radius: 4px;
+ }
+
+ .submit_form_for {
+   width: 100%;
+     background-color: grey;
+     border: none;
+     color: black;
+     padding: 16px 32px;
+     text-decoration: none;
+     margin: 4px 2px;
+     cursor: pointer;
+ }
