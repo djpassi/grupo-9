@@ -1,8 +1,24 @@
 <h1> Investments </h1>
-<% @investments.each do |x| %>
-<p> <%= x.amount %>
-<% end %>
 
+<table>
+  <tr>
+    <th>User</th>
+    <th>Project</th>
+    <th>Amount</th>
+  </tr>
+  <% @investments.each do |x| %>
+  <tr>
+    <% user = User.find(x.user_id) %>
+    <td>  <%= user.first_name+" "+ user.last_name%> </td>
+    <td>  <%= Project.find(x.project_id).name %> </td>
+    <td>  <%= x.amount %> </td>
+  <% end %>
+</table>
+
+
+
+<br>
 <%= link_to 'Make an investment', '/investments/new' %>
 <br>
 <%= link_to 'Back', root_path %>
+<br>
