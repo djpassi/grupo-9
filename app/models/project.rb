@@ -23,15 +23,4 @@ class Project < ApplicationRecord
        Comment.delete_all "project_id = #{id}"
      end
 
-
-
-  # before_destroy :destroy_assosiations
-  #
-  #  private
-  #
-  #  def destroy_assosiations
-  #    Investment.delete_all
-  #    Comment.delete_all
-  #  end
-  #
 end

@@ -15,8 +15,6 @@ class UsersController < ApplicationController
   def show; end
 
   def destroy
-    Project.delete(@user.projects)
-    Comment.delete(@user.comments)
     @user.destroy
     flash[:success] = "User deleted"
     redirect_to users_url
