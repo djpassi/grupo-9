@@ -11,7 +11,27 @@ class Project < ApplicationRecord
   has_many :comments, dependent: :delete_all
   has_many :projects, through: :comments, dependent: :delete_all
 
-  has_many :investments,  dependent: :delete_all
+  has_many :investments, dependent: :delete_all
   has_many :users, through: :investments, dependent: :delete_all
 
+  before_destroy :destroy_associations
+
+   private
+
+   private
+     def destroy_associations
+       Comment.delete_all "project_id = #{id}"
+     end
+
+
+
+  # before_destroy :destroy_assosiations
+  #
+  #  private
+  #
+  #  def destroy_assosiations
+  #    Investment.delete_all
+  #    Comment.delete_all
+  #  end
+  #
 end

@@ -7,14 +7,24 @@ class User < ApplicationRecord
 
 
   has_many :likes, dependent: :delete_all
-  has_many :categories, through: :likes, dependent: :delete_all
+  has_many :categories, through: :likes
 
-  has_many :investments, dependent: :delete_all
-  has_many :projects, through: :investments, dependent: :delete_all
+  has_many :investments, dependent: :nullify
+  has_many :projects, through: :investments, dependent: :nullify
 
-  has_many :projects,  dependent: :delete_all
+  has_many :projects,  dependent: :destroy
 
   has_many :comments, dependent: :delete_all
-  has_many :users, through: :comments, dependent: :delete_all
+  has_many :users, through: :comments
 
+
+  before_destroy :destroy_associations
+
+   private
+
+   private
+     def destroy_associations
+       Project.delete_all "user_id = #{id}"
+       Comment.delete_all "user_id = #{id}"
+     end
 end
