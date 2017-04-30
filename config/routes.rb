@@ -21,8 +21,9 @@ Rails.application.routes.draw do
   patch '/projects/:id', to: 'projects#update'
   delete '/projects/:id', to: 'projects#destroy'
 
-
-
+  get '/comments', to: 'comments#index', as: 'comments'
+  get '/comments/new', to: 'comments#new'
+  post '/comments', to: 'comments#create'
 
   get '/investments', to: 'investments#index', as: 'investments'
   get '/investments/new', to: 'investments#new'

@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
 
-  before_action :set_project, only: [:show, :destroy, :edit, :update]
+  before_action :set_project, only: [:show, :destroy, :edit, :update, :new_comment]
 
 
   def new
@@ -14,6 +14,11 @@ class ProjectsController < ApplicationController
 
   end
 
+  def new_comment
+    @comment = Comment.new
+
+  end
+  
   def destroy
     @project.destroy
     flash[:success] = "Project deleted"

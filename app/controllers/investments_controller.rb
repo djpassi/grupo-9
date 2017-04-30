@@ -21,7 +21,7 @@ class InvestmentsController < ApplicationController
        format.json { render json: @investment.errors, status: :unprocessable_entity }
      end
    end
- end
+  end
 
   private
 

@@ -1,0 +1,22 @@
+<h1> Comments </h1>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Project</th>
+    <th>Content</th>
+  </tr>
+  <% @comments.each do |x| %>
+  <tr>
+    <% user = User.find(x.user_id) %>
+    <td>  <%= user.first_name+" "+ user.last_name%> </td>
+    <td>  <%= Project.find(x.project_id).name %> </td>
+    <td>  <%= x.content %> </td>
+  <% end %>
+</table>
+
+
+
+<br>
+<%= link_to 'Make a comment', '/comments/new' %>
+<br>

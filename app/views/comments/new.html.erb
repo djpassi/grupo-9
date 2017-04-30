@@ -1,0 +1,35 @@
+<% if flash[:notice] %>
+<%= flash[:notice] %>
+<% end %>
+
+<h1> Make a comment </h1>
+
+<% if @comment.errors.any? %>
+    <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+
+    <ul>
+    <% @comment.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+<% end %>
+
+<%= form_for @comment, :html => { :class => "form_for"} do |x| %>
+
+<%= x.label :user_id %>
+<%= select(:comment,:user_id, User.all.collect { |p| [p.first_name+" "+p.last_name, p.id]}, {include_blank: true}, {:class => "input_form_for"}) %>
+
+<br>
+<%= x.label :project_id %>
+<%= select(:comment, :project_id, Project.all.collect {|p| [ p.name, p.id ] }, {include_blank: true}, {:class => "input_form_for"}) %>
+
+<br>
+<%= x.label :content %>
+<%= x.text_field :content ,  :class => "input_form_for" %>
+
+<br>
+<%= x.submit class: "submit_form_for" %>
+<% end %>
+<br>
+
+<%= link_to 'Back', comments_path %>
