@@ -18,7 +18,7 @@ class ProjectsController < ApplicationController
     @comment = Comment.new
 
   end
-  
+
   def destroy
     @project.destroy
     flash[:success] = "Project deleted"
