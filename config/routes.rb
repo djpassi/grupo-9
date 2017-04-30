@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get '/users/:id/edit', to: 'users#edit', as: 'edit_user'
   patch '/users/:id', to: 'users#update'
 
+
   get '/projects/new', to: 'projects#new'
   post '/projects', to:'projects#create'
   get '/projects', to: 'projects#index'
@@ -27,6 +28,7 @@ Rails.application.routes.draw do
   patch '/comments/:id', to: 'comments#update'
   delete '/comments/:id', to: 'comments#destroy'
   post '/comments', to: 'comments#create'
+
 
   get '/investments', to: 'investments#index', as: 'investments'
   get '/investments/new', to: 'investments#new'
