@@ -2,7 +2,7 @@ class Project < ApplicationRecord
   validates :name, presence: true, uniqueness: true,
             allow_blank: false
   validates :user_id, presence: true, allow_blank: false
-  validates :goal, presence: true, allow_blank: false
+  validates :goal, presence: true, allow_blank: false, numericality: { :greater_than => 0 }
   validates :description, presence: true, allow_blank: true
 
 
@@ -15,6 +15,7 @@ class Project < ApplicationRecord
   has_many :users, through: :investments, dependent: :delete_all
 
   before_destroy :destroy_associations
+
 
    private
 
