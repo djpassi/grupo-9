@@ -13,7 +13,9 @@ Rails.application.routes.draw do
   patch '/users/:id', to: 'users#update'
 
   get '/projects/new', to: 'projects#new'
-  post '/projects', to: 'projects#create'
+  get '/projects', to: 'projects#index'
+  get '/projects/:id', to: 'projects#show', as: 'project'
+
 
   get '/investments', to: 'investments#index', as: 'investments'
   get '/investments/new', to: 'investments#new'
