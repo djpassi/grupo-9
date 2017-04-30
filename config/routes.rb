@@ -5,7 +5,6 @@ Rails.application.routes.draw do
 
   get '/users/new', to:'users#new'
   post '/users', to:'users#create'
-
   get '/users', to: 'users#index'
   get '/users/:id', to: 'users#show', as: 'user'
   delete '/users/:id', to: 'users#destroy'
@@ -14,19 +13,17 @@ Rails.application.routes.draw do
 
   get '/projects/new', to: 'projects#new'
   post '/projects', to:'projects#create'
-
   get '/projects', to: 'projects#index'
   get '/projects/:id', to: 'projects#show', as: 'project'
   get '/projects/:id/edit', to: 'projects#edit', as: 'edit_project'
   patch '/projects/:id', to: 'projects#update'
   delete '/projects/:id', to: 'projects#destroy'
 
-
+  get '/comments', to: 'comments#index'
   get '/comments/:id', to: 'comments#show', as: 'comment'
   get '/comments/:id/edit', to: 'comments#edit', as: 'edit_comment'
   patch '/comments/:id', to: 'comments#update'
-
-  get '/comments', to: 'comments#index'
+  delete '/comments/:id', to: 'comments#destroy'
   get '/comments/new', to: 'comments#new'
   post '/comments', to: 'comments#create'
 

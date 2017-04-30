@@ -1,3 +1,6 @@
+<% if flash[:notice] %>
+<%= flash[:notice] %>
+<% end %>
 <h1> Comments </h1>
 
 <table>
@@ -20,5 +23,9 @@
 
 
 <br>
-<%= link_to 'Make a comment', '/comments/new' %>
+<%= link_to 'Make a comment', comments_new_path %>
+
+
+
+
 <br>

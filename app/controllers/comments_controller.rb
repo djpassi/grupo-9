@@ -1,12 +1,19 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :destroy, :edit, :update]
 
+  def new
+    @comment = Comment.new
+  end
+
   def index
     @comments = Comment.all
   end
 
-  def new
-    @comment = Comment.new
+
+  def destroy
+    @comment.destroy
+    flash[:success] = "Comment deleted"
+    redirect_to comments_url
   end
 
   def create
@@ -23,6 +30,7 @@ class CommentsController < ApplicationController
      end
    end
   end
+
 
   def update
     respond_to do |format|
