@@ -5,7 +5,7 @@
 <h1> Make an investment </h1>
 
 <% if @investment.errors.any? %>
-    <h2><%= pluralize(@investment.errors.count, "error") %> prohibited this user from being saved:</h2>
+    <h2><%= pluralize(@investment.errors.count, "error") %> prohibited this investment from being saved:</h2>
 
     <ul>
     <% @investment.errors.full_messages.each do |message| %>
