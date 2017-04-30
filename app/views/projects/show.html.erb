@@ -1,7 +1,21 @@
 <% if flash[:notice] %>
 <%= flash[:notice] %>
 <% end %>
+<% @user = User.find(@project.user_id) %>
+<h3> Project </h3>
+<p> Project name: <%= @project.name %> </p>
+<p> Owner: <%=link_to @user.first_name+' '+@user.last_name , @user%></p>
+<p> Goal: <%= @project.goal %> </p>
+<p> Description: <%= @project.description %> </p>
+<p> Image: <%= @project.image %> </p>
+<p> Limit date: <%= @project.limit_date %> </p>
 
-Hola
 
-<%= @project.name %>
+
+
+<h4> <%= link_to 'Edit project', edit_project_path(@project) %> </h4>
+<h4> <%= link_to 'Delete project',@project, method: :delete, data: { confirm: "Are you sure?" }%> </h4>
+
+
+
+<%= link_to 'Back', projects_path %>

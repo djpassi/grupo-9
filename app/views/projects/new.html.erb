@@ -4,30 +4,7 @@
 <%= flash[:notice] %>
 <% end %>
 
-<%= form_for(@project) do |f| %>
+<%= render partial: 'form', object: @project %>
 
-<% if @project.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
 
-      <ul>
-      <% @project.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-<%= f.label :name %>
-<%= f.text_field :name, required: true %>
-<br>
-<%= f.label :user_id %>
-<%= f.text_field :user_id, required: true %>
-<br>
-<%= f.label :goal %>
-<%= f.text_field :goal, required: true %>
-<br>
-<%= f.label :description%>
-<%= f.text_field :description %>
-<br>
-<%= f.submit "Create project" %>
-<% end %>
+<%= link_to 'Back', projects_path %>

@@ -12,7 +12,7 @@
   </tr>
 <% @projects.each do |project| %>
   <% @user = User.find(project.user_id) %>
-  <td> <%=  link_to project.name , project %></td>
+  <td> <%= link_to project.name , project %></td>
   <td> <%= link_to @user.first_name + ' ' + @user.last_name , @user %></td>
   <td> <%= project.goal %></td>
 </tr>

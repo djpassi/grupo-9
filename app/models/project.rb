@@ -8,6 +8,6 @@ class Project < ApplicationRecord
 
   belongs_to :user
 
-  has_many :investments
-  has_many :users, through: :investments
+  has_many :investments,  dependent: :delete_all
+  has_many :users, through: :investments,  dependent: :delete_all
 end
