@@ -9,6 +9,13 @@
   </head>
 
   <body>
+
+    <ul id="Navbar">
+      <li class="NavbarElement"> <%= link_to "Home", root_path %> </li>
+      <li class="NavbarElement"> <%= link_to "Users", users_path %> </li>
+      <li class="NavbarElement"> <%= link_to "Investments", investments_path %></li>
+    </ul>
+
     <%= yield %>
   </body>
 </html>
