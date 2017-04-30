@@ -43,7 +43,6 @@ class ProjectsController < ApplicationController
 
   end
 
-
   def create
     @project = Project.new(project_params)
     respond_to do |format|
