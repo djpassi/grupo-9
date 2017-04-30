@@ -20,7 +20,7 @@ class Project < ApplicationRecord
 
    private
      def destroy_associations
-       Comment.delete_all "project_id = #{id}"
+       Comment.where(project_id: id).destroy_all
      end
 
 end

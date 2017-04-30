@@ -16,9 +16,49 @@
 
 <h3>Projects created by <%= @user.first_name %>  </h3>
 
-<% @user.projects.each do |x| %>
-<p> <%= x.name %> </p>
-<br>
+<% if @user.projects.count == 0 %>
+  <p> There are not projects <p>
+<% else %>
+  <% @user.projects.each do |x| %>
+  <p> <%= x.name %> </p>
+  <br>
+  <% end %>
+<% end %>
+
+<h3>Investments made by <%= @user.first_name %>  </h3>
+
+<% if @user.investments.count == 0 %>
+  <p> There are not investments<p>
+<% else %>
+  <table>
+    <tr>
+      <th>Project</th>
+      <th>Amount</th>
+    </tr>
+    <% @user.investments.each do |x| %>
+    <tr>
+      <td>  <%= Project.find(x.project_id).name %> </td>
+      <td>  <%= x.amount %> </td>
+    </tr>
+    <% end %>
+  </table>
+<% end %>
+
+<h3>Comments made by <%= @user.first_name %>  </h3>
+<% if @user.comments.each %>
+  <p> There are not comments <p>
+<% else %>
+  <table>
+    <tr>
+      <th>Project</th>
+      <th>Content</th>
+    </tr>
+    <% @user.comments.each do |x| %>
+    <tr>
+      <td>  <%= Project.find(x.project_id).name %> </td>
+      <td>  <%= x.content %> </td>
+      <% end %>
+    </table>
 <% end %>
 
 <%= link_to 'Back', users_path %>

@@ -24,7 +24,7 @@ class User < ApplicationRecord
 
    private
      def destroy_associations
-       Project.delete_all "user_id = #{id}"
-       Comment.delete_all "user_id = #{id}"
+       Project.where(user_id: id).destroy_all
+       Comment.where(user_id: id).destroy_all
      end
 end
