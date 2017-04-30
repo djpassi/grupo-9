@@ -35,6 +35,9 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# Faker for seeding model
+gem 'faker'
+
 group :development, :test do
   # Brakeman detects security vulnerabilities in Ruby on Rails
   # applications via static analysis.

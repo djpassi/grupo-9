@@ -5,21 +5,13 @@
 #
 #   movies = Movie.create([{ name: 'sStar Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-#User.destroy_all
-#Category.destroy_all
 
-User.create(first_name:'Diego', last_name:'Passi',email:'djpassi@uc.cl',sex:'M',password:'123456',image:'fb.com',description:'CEO Dislike',role:'User')
-User.create(first_name:'David', last_name:'Galemiri',email:'dagalemiri@uc.cl',sex:'F',password:'123456',image:'google.com',description:'CTO Dislike',role:'User')
-#
-Category.create(name:'Sports', description:'Deportes',image:'sdf')
-Category.create(name:'Food', description:'Deportes',image:'sdf')
-Category.create(name:'Education', description:'Deportes',image:'sdf')
-#
-Project.create(name:"Techo para Chile", description:"Techo", image:"google.com", goal:1000, user_id:1)
-Project.create(name:"Al gramo", description:"Cote", image:"linkedin.com", goal:2000,user_id:2)
 
-Comment.create(user_id:1,project_id:2,content:'Que buen projecto!')
-Comment.create(user_id:2,project_id:1,content:'Exito amigo!')
 
-Investment.create(user_id:1, project_id:2, amount: 100)
-Investment.create(user_id:2, project_id:1, amount: 50)
+(1..50).each do |i|
+  User.create(first_name:Faker::Name.first_name, last_name: Faker::Name.last_name ,email:Faker::Internet.unique.email ,sex:'M',password:Faker::Internet.password(8),image:Faker::Internet.url,description:Faker::Lorem.sentence(3),role:'User')
+  Comment.create(user_id:Faker::Number.between(1, 50), project_id:Faker::Number.between(1, 50), content:Faker::HarryPotter.quote)
+  Project.create(name:Faker::Company.name, description:Faker::Lorem.sentence(3), image:Faker::Internet.url, goal:Faker::Number.between(1000, 1000000), user_id:Faker::Number.between(1, 50))
+  Investment.create(user_id:Faker::Number.between(1, 50), project_id:Faker::Number.between(1, 50), amount: Faker::Number.between(1, 200))
+
+end
