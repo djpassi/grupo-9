@@ -12,6 +12,8 @@
     <td>  <%= user.first_name+" "+ user.last_name%> </td>
     <td>  <%= Project.find(x.project_id).name %> </td>
     <td>  <%= x.content %> </td>
+    <td> <%= link_to 'Edit' , x %> </td>
+
   <% end %>
 </table>
 
