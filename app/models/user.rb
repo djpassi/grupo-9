@@ -7,14 +7,14 @@ class User < ApplicationRecord
 
 
   has_many :likes, dependent: :delete_all
-  has_many :categories, through: :likes
+  has_many :categories, through: :likes, dependent: :delete_all
 
-  has_many :investments,  dependent: :delete_all
-  has_many :projects, through: :investments
+  has_many :investments, dependent: :delete_all
+  has_many :projects, through: :investments, dependent: :delete_all
 
   has_many :projects,  dependent: :delete_all
 
   has_many :comments, dependent: :delete_all
-  has_many :users, through: :comments
+  has_many :users, through: :comments, dependent: :delete_all
 
 end

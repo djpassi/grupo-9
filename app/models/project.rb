@@ -9,9 +9,9 @@ class Project < ApplicationRecord
   belongs_to :user
 
   has_many :comments, dependent: :delete_all
-  has_many :projects, through: :comments
+  has_many :projects, through: :comments, dependent: :delete_all
 
   has_many :investments,  dependent: :delete_all
-  has_many :users, through: :investments
+  has_many :users, through: :investments, dependent: :delete_all
 
 end
