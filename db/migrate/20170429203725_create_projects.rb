@@ -8,6 +8,7 @@ class CreateProjects < ActiveRecord::Migration[5.0]
       t.date :limit_date
       t.references :user, foreign_key: true
 
+
       t.timestamps
     end
   end
