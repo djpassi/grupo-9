@@ -6,11 +6,11 @@ class User < ApplicationRecord
   validates :email, uniqueness:true, presence: true, allow_blank: false, format: {with: /\b[A-Z0-9._%a-z\-]+@(?:[A-Z0-9a-z\-]+\.)+[A-Za-z]{2,4}\z/}
 
 
-  has_many :likes
+  has_many :likes, dependent: :delete_all
   has_many :categories, through: :likes
 
-  has_many :investments
+  has_many :investments,  dependent: :delete_all
   has_many :projects, through: :investments
 
-  has_many :projects
+  has_many :projects,  dependent: :delete_all
 end
