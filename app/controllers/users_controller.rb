@@ -36,7 +36,7 @@ class UsersController < ApplicationController
      end
    end
 
- end
+  end
 
  def update
    respond_to do |format|
@@ -65,6 +65,7 @@ class UsersController < ApplicationController
     params.require(:user).permit(:first_name, :last_name, :email,
      :password, :birth_date, :password_confirmation)
   end
+
 
 
 end
