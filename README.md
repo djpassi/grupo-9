@@ -1,24 +1,18 @@
-# README
+# Grupo 9: QuickStarter 
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+#### <i class="icon-hdd"></i> Deploy de la aplicación
 
-Things you may want to cover:
+http://salty-oasis-56020.herokuapp.com/
 
-* Ruby version
+> **Tip:** No se le cambió el nombre por defecto de heroku por que nos gustó lo que nos ofreció 
 
-* System dependencies
+* Proyecto a trabajar: Crowdfunding
+* Ayudante: Matias Jünemann
 
-* Configuration
+## Integrantes:
+Asegúrense de llenar lo siguiente:
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+| Nº Alumno    | Nombre              | Email UC      |
+|:-------------|:--------------------|:--------------|
+| 13633317   | David Galemiri Ares       | dagalemiri@uc.cl  |
+| 13637967  | Diego Passi Riumalló       | djpassi@uc.cl  |
