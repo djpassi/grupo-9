@@ -1,20 +1,17 @@
-<h2> Projects</h2>
+<h2 id="project-title"> Projects</h2>
 <% if current_user %>
-<h2> <%= link_to 'Create project', projects_new_path %> </h2>
+<a id="new-project" href="/projects/new"> Publicar proyecto</a>
 <% end %>
-<table >
-  <tr>
-    <th>Project name</th>
-    <th>Owner</th>
-    <th>Goal</th>
 
-  </tr>
+<div class="projects-index">
 <% @projects.each do |project| %>
   <% @user = User.find(project.user_id) %>
-  <td> <%= link_to project.name , project %></td>
-  <td> <%= link_to @user.first_name + ' ' + @user.last_name , @user %></td>
-  <td> <%= project.goal %></td>
-</tr>
 
+    <a href="/projects/<%=project.id%>" class="project-square">
+    <img src="http://www.wpthemegenerator.com/wp-content/uploads/2012/06/Image.jpg">
+    <h3 id="project-name"> <%= project.name %></h3>
+    <p id="project-owner">Fundador: <%= @user.first_name %></p>
+    <p id="project-goal">Meta: <%= project.goal %></p>
+    </a>
 <% end %>
-</table>
+</div>

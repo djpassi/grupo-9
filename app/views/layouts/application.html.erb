@@ -10,7 +10,7 @@
 
   <body>
     <header>
-        <ul >
+        <ul id="navbar">
         <li id="logo" class="<%= active_class('/') %>"><a href="/"><span class="quick">Quick<span class="starter">Starter</span> </span></a> </li>
         <li class="<%= active_class(users_path) %>"> <%= link_to "Users", users_path %> </li>
         <li class="<%= active_class(projects_path) %>"> <%= link_to "Projects", projects_path %></li>
@@ -37,7 +37,7 @@
           <% end %>
         <% end %>
         <%= yield %>
-        </main>
+    </main>
 
   </body>
   <footer>
