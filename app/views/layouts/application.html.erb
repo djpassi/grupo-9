@@ -11,10 +11,10 @@
   <body>
     <header>
         <ul >
-        <li class="active"><a href="/">Home Logo</a> </li>
-        <li > <%= link_to "Users", users_path %> </li>
-        <li> <%= link_to "Projects", projects_path %></li>
-        <li> <%= link_to "Investments", investments_path %></li>
+        <li class="<%= active_class('/') %>"><a href="/">Home Logo</a> </li>
+        <li class="<%= active_class(users_path) %>"> <%= link_to "Users", users_path %> </li>
+        <li class="<%= active_class(projects_path) %>"> <%= link_to "Projects", projects_path %></li>
+        <li class="<%= active_class(investments_path) %>"> <%= link_to "Investments", investments_path %></li>
         </ul>
 
 
