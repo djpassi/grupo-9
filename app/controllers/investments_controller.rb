@@ -26,7 +26,7 @@ class InvestmentsController < ApplicationController
   private
 
   def investment_params
-    params.require(:investment).permit(:user_id,:project_id, :amount)
+    params.require(:investment).permit(:project_id, :amount).merge(user_id: current_user.id)
   end
 
 

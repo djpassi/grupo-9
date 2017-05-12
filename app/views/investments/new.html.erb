@@ -12,10 +12,6 @@
 
 <%= form_for @investment, :html => { :class => "form_for"} do |x| %>
 
-<%= x.label :user_id %>
-<%= select(:investment,:user_id, User.all.collect { |p| [p.first_name+" "+p.last_name, p.id]}, {include_blank: true}, {:class => "input_form_for",required: true})   %>
-
-<br>
 <%= x.label :project_id %>
 <%= select(:investment, :project_id, Project.all.collect {|p| [ p.name, p.id ] }, {include_blank: true}, {:class => "input_form_for",required: true}) %>
 

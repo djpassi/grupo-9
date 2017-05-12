@@ -57,6 +57,7 @@ class ProjectsController < ApplicationController
     end
   end
 
+
   private
 
   def set_project
@@ -64,8 +65,8 @@ class ProjectsController < ApplicationController
   end
 
   def project_params
-    params.require(:project).permit(:name, :user_id, :goal,
-     :description)
+    params.require(:project).permit(:name, :goal,
+     :description).merge(user_id: current_user.id)
   end
 
 end

@@ -15,9 +15,6 @@
 <%= f.label :name %>
 <%= f.text_field :name, required: true, class: 'input_form_for', class: 'input_form_for' %>
 <br>
-<%= f.label :user_id %>
-<%= select(:project,:user_id, User.all.collect { |p| [p.first_name+" "+p.last_name, p.id]}, {include_blank: true}, {:class => "input_form_for", required: true}) %>
-<br>
 <%= f.label :goal %>
 <%= f.text_field :goal, required: true, class: 'input_form_for', type: 'number', min:'1' %>
 <br>
