@@ -1,8 +1,7 @@
 <h2> Projects</h2>
-<h3> <%= link_to 'Create project', projects_new_path %> </h3>
-
-
-
+<% if current_user %>
+<h2> <%= link_to 'Create project', projects_new_path %> </h2>
+<% end %>
 <table >
   <tr>
     <th>Project name</th>

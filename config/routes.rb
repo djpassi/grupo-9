@@ -34,4 +34,6 @@ Rails.application.routes.draw do
   get '/investments/new', to: 'investments#new'
   post '/investments', to: 'investments#create'
 
+  resource :session, only: [:new, :create, :destroy]
+
 end

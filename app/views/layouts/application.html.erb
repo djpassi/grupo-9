@@ -11,12 +11,23 @@
   <body>
     <header>
         <ul id="Navbar">
-        <li class="NavbarElement"> <%= link_to "Home", root_path %> </li>
+        <li class="NavbarElement" href="/">
+          <a href="/">Home Logo</a>
+        </li>
         <li class="NavbarElement"> <%= link_to "Users", users_path %> </li>
         <li class="NavbarElement"> <%= link_to "Projects", projects_path %></li>
         <li class="NavbarElement"> <%= link_to "Investments", investments_path %></li>
         <li class="NavbarElement"> <%= link_to "Comments", comments_path %></li>
         </ul>
+        <div id="user-bar">
+          <% if current_user %>
+            <div class="name">Welcome, <%= link_to current_user.first_name, current_user %></div>
+            <%= link_to 'Logout', session_path, method: :delete %>
+          <% else %>
+            <%= link_to 'Login', new_session_path %> or
+            <%= link_to 'Sign Up', users_new_path	 %>
+          <% end %>
+        </div>
     </header>
 
     <main>
@@ -27,16 +38,16 @@
         <% end %>
         <%= yield %>
         </main>
-    <footer>
-      <hr>
-      <div id="project">© QuickStarter 2017</div>
-      <div id="license">
-        <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
-          <img alt="Creative Commons License" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png"/>
-        </a>
-      </div>
-    </footer>
-  </body>
 
+  </body>
+  <footer>
+    <hr>
+    <div id="project">© QuickStarter 2017</div>
+    <div id="license">
+      <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+        <img alt="Creative Commons License" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png"/>
+      </a>
+    </div>
+  </footer>
 
 </html>

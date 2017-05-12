@@ -1,5 +1,8 @@
 class CommentsController < ApplicationController
+  include Secured
+  before_action :logged_in?, only: %i[new create edit update destroy]
   before_action :set_comment, only: [:show, :destroy, :edit, :update]
+
 
   def new
     @comment = Comment.new
