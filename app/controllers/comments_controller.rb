@@ -1,5 +1,8 @@
 class CommentsController < ApplicationController
+  include Secured
+  before_action :logged_in?, only: %i[new create edit update destroy]
   before_action :set_comment, only: [:show, :destroy, :edit, :update]
+
 
   def new
     @comment = Comment.new
@@ -54,7 +57,7 @@ class CommentsController < ApplicationController
   end
 
   def comment_params
-    params.require(:comment).permit(:user_id,:project_id, :content)
+    params.require(:comment).permit(:project_id, :content).merge(user_id: current_user.id)
   end
 
 
