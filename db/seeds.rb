@@ -13,5 +13,4 @@
   Project.create(name:Faker::Company.name, description:Faker::Lorem.sentence(3), image:Faker::Internet.url, goal:Faker::Number.between(1000, 1000000), user_id:Faker::Number.between(1, i))
   Comment.create(user_id:Faker::Number.between(1, i), project_id:Faker::Number.between(1, i), content:Faker::HarryPotter.quote)
   Investment.create(user_id:Faker::Number.between(1, i), project_id:Faker::Number.between(1, i), amount: Faker::Number.between(1, 200))
-
 end
