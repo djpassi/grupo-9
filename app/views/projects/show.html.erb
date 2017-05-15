@@ -16,26 +16,15 @@
   </div>
 </section>
 
-<h4> <%= link_to 'Edit project', edit_project_path(@project) if @project.user == current_user %> </h4>
-<h4> <%= link_to 'Delete project',@project, method: :delete, data: { confirm: "Are you sure?" } if @project.user == current_user%> </h4>
-
-
-<% if @project.comments.each %>
-<table>
-  <tr>
-    <th>User</th>
-    <th>Content</th>
-  </tr>
-  <% @project.comments.each do |x| %>
-  <tr>
-    <td>  <%= User.find(x.user_id).first_name %> </td>
-    <td>  <%= x.content %> </td>
-    <% end %>
-  </table>
-<% else %>
-<p> There are not comments <p>
-
+<% if @project.user == current_user %>
+<div class="project-action" id="project-edit">
+  <h4> <%= link_to 'Edit project', edit_project_path(@project) %> </h4>
+</div>
+<div class="project-action" id="project-delete">
+  <h4> <%= link_to 'Delete project',@project, method: :delete, data: { confirm: "Are you sure?" } if @project.user == current_user%> </h4>
+</div>
 <% end %>
+
 
 <% if current_user %>
 <%= form_for @comment, url: create_comment_path do |f| %>
@@ -53,5 +42,71 @@
 <% end %>
 
 <% end %>
+
+
+
+<section>
+  <div class="project-header">
+    <h3> Investors in  <%= @project.name %>  </h3>
+  </div>
+
+    <% if @project.investments.count == 0 %>
+    <div class="project-header">
+        <p> There are no investors<p>
+    </div>
+    <% else %>
+    <div class="table">
+    <table class="project-table">
+      <tr class="project-table-row">
+        <th class="project-table-header">User</th>
+        <th class="project-table-header">Amount</th>
+      </tr>
+        <% @project.investments.each do |x| %>
+        <tr class="project-table-row">
+          <% @user =  User.find(x.user_id) %>
+          <td class="project-table-data">  <%= link_to @user.first_name+' '+@user.last_name, @user %> </td>
+          <td class="project-table-data">  <%= x.amount %> </td>
+        </tr>
+        <% end %>
+      </table>
+    <% end %>
+    <div>
+</section>
+
+
+
+<section>
+  <div <div class="project-header">
+    <h3>Comments for <%= @project.name %>  </h3>
+  </div>
+  <% if @project.investments.count == 0 %>
+    <div class="project-header">
+      <p> There are no comments <p>
+    <div>
+  <% else %>
+  <div class="table">
+  <table class="project-table">
+    <tr class="project-table-row">
+      <th class="project-table-header">User</th>
+      <th class="project-table-header">Content</th>
+    </tr>
+    <% @project.comments.each do |x| %>
+    <% @user =  User.find(x.user_id) %>
+    <tr class="user-table-row">
+      <td class="project-table-data">  <%= link_to @user.first_name+' '+@user.last_name, @user %> </td>
+      <td class="user-table-data"> <%= x.content %> </td>
+      <% end %>
+    </table>
+    <% end %>
+
+  <div>
+
+</section>
+
+
+
+
+
+
 
 <%= link_to 'Back', projects_path %>

@@ -56,3 +56,83 @@
   font: normal 30px/1 Impact, Charcoal, sans-serif;
 
 }
+
+
+
+.project-header {
+  text-align: center;
+}
+
+#project-profile {
+  padding: 10px;
+  margin-top: 45px;
+  padding-right: 40px;
+
+  .project-image{
+      display: inline-block;
+  }
+  .project-information{
+      display: inline-block;
+      margin-left: 5%;
+  }
+}
+
+.profile-projects{
+
+}
+
+.project-action{
+    font-size: 15px;
+    top: 5px;
+    right: 20px;
+    border: 3px solid;
+    padding: 6px;
+    text-align: center;
+    border-radius: 15px 15px 15px 15px;
+    display: inline-block;
+    border-color: #4CAF50;
+
+}
+.project-action a{
+  text-decoration: none;
+}
+
+#project-edit a{
+  color:#4CAF50;
+
+}
+#project-edit{
+  border-color: #4CAF50;
+}
+#project-delete a{
+  color:red;
+}
+#project-delete{
+  border-color: red;
+}
+#project-comment a{
+  color:blue;
+}
+#project-comment{
+  border-color: blue;
+}
+
+.table{
+      padding-right: 40px;
+}
+table.project-table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th.project-table-header, td.project-table-data {
+    text-align: left;
+    padding: 8px;
+}
+
+tr.project-table-row:nth-child(even){background-color: #f2f2f2}
+
+th.project-table-header {
+    background-color: blue;
+    color: white;
+}
