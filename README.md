@@ -2,9 +2,8 @@
 
 #### <i class="icon-hdd"></i> Deploy de la aplicación
 
-http://salty-oasis-56020.herokuapp.com/
+http://quickstarter-uc.herokuapp.com/
 
-> **Tip:** No se le cambió el nombre por defecto de heroku por que nos gustó lo que nos ofreció 
 
 * Proyecto a trabajar: Crowdfunding
 * Ayudante: Matias Jünemann
