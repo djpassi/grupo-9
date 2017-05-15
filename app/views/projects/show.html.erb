@@ -25,6 +25,26 @@
 </div>
 <% end %>
 
+<% if current_user %>
+<%= form_for @comment, url: create_comment_path do |f| %>
+  <h2 class = "donate-header"> Write a comment </h2>
+  <%= f.text_area :content, :class => "donate-field", required: true %>
+  <br>
+  <div class='submit-form'>
+  <%= f.submit "Comment", class:'submit_form_for'  %>
+  </div>
+<% end %>
+
+<%= form_for @investment, url: create_investment_path do |f| %>
+  <h2 class = "donate-header" > Donate! </h2>
+  <%= f.number_field :amount, min: '1', required: true, :class => "donate-field"  %>
+  <br>
+  <div class='submit-form'>
+    <%= f.submit "Donate", class: "submit_form_for"%>
+  </div>
+<% end %>
+<% end %>
+
 <section>
   <div class="project-header">
     <h3> Investors in  <%= @project.name %>  </h3>
@@ -82,25 +102,7 @@
 
 </section>
 
-<% if current_user %>
-<%= form_for @comment, url: create_comment_path do |f| %>
-  <h2 class = "donate-header"> Write a comment </h2>
-  <%= f.text_area :content, :class => "donate-field", required: true %>
-  <br>
-  <div class='submit-form'>
-  <%= f.submit "Comment", class:'submit_form_for'  %>
-  </div>
-<% end %>
 
-<%= form_for @investment, url: create_investment_path do |f| %>
-  <h2 class = "donate-header" > Donate! </h2>
-  <%= f.number_field :amount, min: '1', required: true, :class => "donate-field"  %>
-  <br>
-  <div class='submit-form'>
-    <%= f.submit "Donate", class: "submit_form_for"%>
-  </div>
-<% end %>
-<% end %>
 
 
 <%= link_to 'Back', projects_path %>
