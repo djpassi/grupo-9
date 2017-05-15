@@ -24,7 +24,7 @@
 
 }
 
-#user-edit{
+.user-action{
     font-size: 15px;
     top: 5px;
     right: 20px;
@@ -35,8 +35,21 @@
     border-radius: 15px 15px 15px 15px;
     display: inline-block;
 }
+.user-action a{
+  text-decoration: none;
+}
+#user-edit{
+  border-color: #4CAF50;
+}
 #user-edit a{
   color:#4CAF50;
+}
+
+#user-delete{
+  border-color: red;
+}
+#user-delete a{
+  color:red;
 }
 
 .table{
