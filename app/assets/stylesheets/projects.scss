@@ -58,29 +58,26 @@
 
 }
 
+.donate-field
+{
+  margin-left:25%;
+  margin-right:25%;
+  width:50%;
+  height: 50px;
+}
 
 
-.project-header {
+
+.donate-header
+{
   text-align: center;
 }
 
-#project-profile {
-  padding: 10px;
-  margin-top: 45px;
-  padding-right: 40px;
 
-  .project-image{
-      display: inline-block;
-  }
-  .project-information{
-      display: inline-block;
-      margin-left: 5%;
-  }
-}
-
-.profile-projects{
-
-}
+.submit{
+  margin-left:25%;
+  margin-right:25%;
+  width:50%;
 
 .project-action{
     font-size: 15px;
