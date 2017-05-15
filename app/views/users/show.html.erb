@@ -18,10 +18,14 @@
 </section>
 
 <% if @user == current_user %>
-<div id="user-edit">
+<div class="user-action" id="user-edit">
   <h4> <%= link_to 'Edit information', edit_user_path(@user) %> </h4>
 </div>
+<div class="user-action" id="user-delete">
+<h4> <%= link_to 'Delete user',@user, method: :delete, data: { confirm: "Are you sure?" } %> </h4>
+</div>
 <% end %>
+
 
 <section class="profile-projects">
     <div class="user-header">
@@ -30,7 +34,7 @@
 
     <% if @user.projects.count == 0 %>
       <div class="user-header">
-        <p> There are not projects <p>
+        <p> There are no projects <p>
       </div>
     <% else %>
       <%= render :partial =>'projects/project', :object =>{:projects => @user.projects} %>
@@ -44,7 +48,7 @@
 
     <% if @user.investments.count == 0 %>
     <div class="user-header">
-        <p> There are not investments<p>
+        <p> There are no investments<p>
     </div>
     <% else %>
     <div class="table">
@@ -52,13 +56,11 @@
       <tr class="user-table-row">
         <th class="user-table-header">Project</th>
         <th class="user-table-header">Amount</th>
-        <th class="user-table-header">Edit Investment</th>
       </tr>
         <% @user.investments.each do |x| %>
         <tr class="user-table-row">
           <td class="user-table-data">  <%= link_to Project.find(x.project_id).name, Project.find(x.project_id) %> </td>
           <td class="user-table-data">  <%= x.amount %> </td>
-          <td class="user-table-data">  <p> Edit </p> </td>
         </tr>
         <% end %>
       </table>
@@ -72,7 +74,7 @@
   </div>
   <% if @user.comments.count == 0 %>
     <div class="user-header">
-      <p> There are not comments <p>
+      <p> There are no comments <p>
     <div>
   <% else %>
   <div class="table">
@@ -92,6 +94,5 @@
 </section>
 
 
-<h4> <%= link_to 'Delete user',@user, method: :delete, data: { confirm: "Are you sure?" } if @user == current_user%> </h4>
 
 <% end %>
