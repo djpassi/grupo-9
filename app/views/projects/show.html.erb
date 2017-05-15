@@ -19,12 +19,6 @@
 <h4> <%= link_to 'Edit project', edit_project_path(@project) if @project.user == current_user %> </h4>
 <h4> <%= link_to 'Delete project',@project, method: :delete, data: { confirm: "Are you sure?" } if @project.user == current_user%> </h4>
 
-<% if current_user %>
-<h4><%= link_to 'Comment project', comments_new_path %></h4>
-<% end %>
-
-
-
 
 <% if @project.comments.each %>
 <table>
@@ -41,6 +35,22 @@
 <% else %>
 <p> There are not comments <p>
 
+<% end %>
+
+<% if current_user %>
+<%= form_for @comment, url: create_comment_path do |f| %>
+  <h2> Write a comment </h2>
+  <%= f.text_area(:content)%>
+  <br>
+  <%= f.submit "Comment"  %>
+<% end %>
+
+<%= form_for @investment, url: create_investment_path do |f| %>
+  <h2> Donate! </h2>
+  <%= f.number_field :amount, min: '1' %>
+  <br>
+  <%= f.submit "Donate"  %>
+<% end %>
 
 <% end %>
 

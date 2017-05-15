@@ -18,7 +18,6 @@
   margin: 1rem;
   position: relative;
   width: 200px;
-  overflow: scroll;
   box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
 }
 
@@ -56,67 +55,4 @@
   margin-bottom: 30px;
   font: normal 30px/1 Impact, Charcoal, sans-serif;
 
-}
-
-
-
-
-
-
-
-.project-header {
-  text-align: center;
-}
-
-#project-profile {
-  padding: 10px;
-  margin-top: 45px;
-  padding-right: 40px;
-
-  .project-image{
-      display: inline-block;
-  }
-  .project-information{
-      display: inline-block;
-      margin-left: 5%;
-  }
-}
-
-.profile-projects{
-
-}
-
-#user-edit{
-    font-size: 15px;
-    top: 5px;
-    right: 20px;
-    border: 3px solid;
-    padding: 6px;
-    text-align: center;
-    border-color: #4CAF50;
-    border-radius: 15px 15px 15px 15px;
-    display: inline-block;
-}
-#user-edit a{
-  color:#4CAF50;
-}
-
-.table{
-      padding-right: 40px;
-}
-table.user-table {
-    border-collapse: collapse;
-    width: 100%;
-}
-
-th.user-table-header, td.user-table-data {
-    text-align: left;
-    padding: 8px;
-}
-
-tr.user-table-row:nth-child(even){background-color: #f2f2f2}
-
-th.user-table-header {
-    background-color: #4CAF50;
-    color: white;
 }

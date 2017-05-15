@@ -14,18 +14,17 @@ class ProjectsController < ApplicationController
 
   end
 
-  def new_comment
-    @comment = Comment.new
-
-  end
-
   def destroy
     @project.destroy
     flash[:success] = "Project deleted"
     redirect_to projects_url
   end
 
-  def show; end
+  def show
+    @comment = Comment.new
+    @investment = Investment.new
+    session[:project_id] = params[:id]
+  end
 
   def update
     respond_to do |format|

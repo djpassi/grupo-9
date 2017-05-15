@@ -1,12 +1,7 @@
 class CommentsController < ApplicationController
   include Secured
-  before_action :logged_in?, only: %i[new create edit update destroy]
+  before_action :logged_in?, only: %i[create edit update destroy]
   before_action :set_comment, only: [:show, :destroy, :edit, :update]
-
-
-  def new
-    @comment = Comment.new
-  end
 
   def index
     @comments = Comment.all
@@ -25,7 +20,7 @@ class CommentsController < ApplicationController
     respond_to do |format|
      if @comment.save
        format.html do
-         redirect_to '/comments/new', notice: 'Comment was successfully created.'
+         redirect_to project_path(@comment.project_id), notice: 'Comment was successfully created.'
        end
      else
        format.html { render :new, status: 422 }
@@ -57,7 +52,7 @@ class CommentsController < ApplicationController
   end
 
   def comment_params
-    params.require(:comment).permit(:project_id, :content).merge(user_id: current_user.id)
+    params.require(:comment).permit(:content).merge(user_id: current_user.id, project_id:session[:project_id])
   end
 
 
