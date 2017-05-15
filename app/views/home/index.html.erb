@@ -1,5 +1,9 @@
 <h1> Quickstarter </h1>
 
 
-<h1> Recently added projects <h1>
-<%= render :file =>'projects/index', object: @projects = Project.order(:created_at).limit(10) %>
+<h1> Recently added projects </h1>
+  <div class="projects-index">
+    <%= render :partial =>'projects/project',
+      :object =>{:projects => Project.order(:created_at).limit(10).each} %>
+
+</div>

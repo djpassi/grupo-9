@@ -1,0 +1,8 @@
+<% project[:projects].each do |project| %>
+<a href="/projects/<%=project.id%>" class="project-square">
+<img src="http://www.wpthemegenerator.com/wp-content/uploads/2012/06/Image.jpg">
+<h3 id="project-name"> <%= project.name %></h3>
+<p id="project-owner">Fundador: <%= User.find(project.user_id).first_name %></p>
+<p id="project-goal">Meta: <%= project.goal %></p>
+</a>
+<% end %>

@@ -1,18 +1,27 @@
 <% @user = User.find(@project.user_id) %>
-<h3> Project </h3>
+
+<div class="project-header">
+    <h1> <%=@project.name%> </h1>
+</div>
+<section id="project-profile">
+  <div class="project-image">
+    <%= image_tag("/images/placeholder-project.jpg", :size => "300x300") %>
+  </div>
+  <div class="project-information">
+    <p> Project name: <%= @project.name %> </p>
+    <p> Owner: <%= @user.first_name %> </p>
+    <p> Description: <%= @project.description %> </p>
+    <p> Goal: <%= @project.goal %> </p>
+
+  </div>
+</section>
+
 <h4> <%= link_to 'Edit project', edit_project_path(@project) if @project.user == current_user %> </h4>
 <h4> <%= link_to 'Delete project',@project, method: :delete, data: { confirm: "Are you sure?" } if @project.user == current_user%> </h4>
 
 <% if current_user %>
 <h4><%= link_to 'Comment project', comments_new_path %></h4>
 <% end %>
-
-<p> Project name: <%= @project.name %> </p>
-<p> Owner: <%=link_to @user.first_name+' '+@user.last_name , @user%></p>
-<p> Goal: <%= @project.goal %> </p>
-<p> Description: <%= @project.description %> </p>
-<p> Image: <%= @project.image %> </p>
-<p> Limit date: <%= @project.limit_date %> </p>
 
 
 
