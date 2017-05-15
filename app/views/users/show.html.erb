@@ -33,9 +33,7 @@
         <p> There are not projects <p>
       </div>
     <% else %>
-      <% @user.projects.each do |project| %>
-      <%= render :partial =>'projects/project', :object =>{:project => project} %>
-      <% end %>
+      <%= render :partial =>'projects/project', :object =>{:projects => @user.projects} %>
     <% end %>
 </section>
 
