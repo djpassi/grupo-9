@@ -11,8 +11,8 @@
   <body>
     <header>
         <ul id="navbar">
-        <li id="logo" class="<%= active_class('/') %>"><a href="/"><span class="quick">Quick<span class="starter">Starter</span> </span></a> </li>
-        <li class="<%= active_class(projects_path) %>"> <%= link_to "Projects", projects_path %></li>
+        <li class="<%= active_class('/') %>" id="logo" ><a href="/"><span class="quick">Quick<span class="starter">Starter</span> </span></a> </li>
+        <li class="<%= active_class('/projects') %>" id='project-nav'> <%= link_to "Projects", projects_path %></li>
         <% if current_user %>
         <li class="<%= active_class(projects_new_path) %>" id='project-new'> <%= link_to "New Project", projects_new_path %></li>
         <% end %>
