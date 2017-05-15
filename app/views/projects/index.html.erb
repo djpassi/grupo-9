@@ -1,21 +1,8 @@
-<h2> Projects</h2>
-<h3> <%= link_to 'Create project', projects_new_path %> </h3>
-
-
-
-<table >
-  <tr>
-    <th>Project name</th>
-    <th>Owner</th>
-    <th>Goal</th>
-
-  </tr>
-<% @projects.each do |project| %>
-  <% @user = User.find(project.user_id) %>
-  <td> <%= link_to project.name , project %></td>
-  <td> <%= link_to @user.first_name + ' ' + @user.last_name , @user %></td>
-  <td> <%= project.goal %></td>
-</tr>
-
+<h2 id="project-title"> Projects</h2>
+<% if current_user %>
+<a id="new-project" href="/projects/new"> Publicar proyecto</a>
 <% end %>
-</table>
+
+<div class="projects-index">
+  <%= render partial: 'project', :object =>{:projects => @projects} %>
+</div>

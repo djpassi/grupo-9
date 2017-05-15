@@ -1,3 +1,60 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.user-header {
+  text-align: center;
+}
+
+#profile {
+  padding: 10px;
+  margin-top: 45px;
+  padding-right: 40px;
+
+  .profile-image{
+      display: inline-block;
+  }
+  .profile-information{
+      display: inline-block;
+      margin-left: 5%;
+  }
+}
+
+.profile-projects{
+
+}
+
+#user-edit{
+    font-size: 15px;
+    top: 5px;
+    right: 20px;
+    border: 3px solid;
+    padding: 6px;
+    text-align: center;
+    border-color: #4CAF50;
+    border-radius: 15px 15px 15px 15px;
+    display: inline-block;
+}
+#user-edit a{
+  color:#4CAF50;
+}
+
+.table{
+      padding-right: 40px;
+}
+table.user-table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th.user-table-header, td.user-table-data {
+    text-align: left;
+    padding: 8px;
+}
+
+tr.user-table-row:nth-child(even){background-color: #f2f2f2}
+
+th.user-table-header {
+    background-color: #4CAF50;
+    color: white;
+}

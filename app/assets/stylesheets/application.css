@@ -40,11 +40,10 @@
  }
 
 
-
-
  .form_for {
-   display: inline-block;
-   text-align: center;
+   margin-left:auto;
+   margin-right:auto;
+   width:50%;
  }
 
  .input_form_for {

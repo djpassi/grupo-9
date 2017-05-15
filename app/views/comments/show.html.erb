@@ -1,6 +1,3 @@
-<% if flash[:notice] %>
-<%= flash[:notice] %>
-<% end %>
 <% @user = User.find(@comment.user_id) %>
 <% @project = Project.find(@comment.project_id) %>
 

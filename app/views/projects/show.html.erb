@@ -1,20 +1,57 @@
-<% if flash[:notice] %>
-<%= flash[:notice] %>
-<% end %>
 <% @user = User.find(@project.user_id) %>
-<h3> Project </h3>
-<p> Project name: <%= @project.name %> </p>
-<p> Owner: <%=link_to @user.first_name+' '+@user.last_name , @user%></p>
-<p> Goal: <%= @project.goal %> </p>
-<p> Description: <%= @project.description %> </p>
-<p> Image: <%= @project.image %> </p>
-<p> Limit date: <%= @project.limit_date %> </p>
+
+<div class="project-header">
+    <h1> <%=@project.name%> </h1>
+</div>
+<section id="project-profile">
+  <div class="project-image">
+    <%= image_tag("/images/placeholder-project.jpg", :size => "300x300") %>
+  </div>
+  <div class="project-information">
+    <p> Project name: <%= @project.name %> </p>
+    <p> Owner: <%= @user.first_name %> </p>
+    <p> Description: <%= @project.description %> </p>
+    <p> Goal: <%= @project.goal %> </p>
+
+  </div>
+</section>
+
+<h4> <%= link_to 'Edit project', edit_project_path(@project) if @project.user == current_user %> </h4>
+<h4> <%= link_to 'Delete project',@project, method: :delete, data: { confirm: "Are you sure?" } if @project.user == current_user%> </h4>
 
 
+<% if @project.comments.each %>
+<table>
+  <tr>
+    <th>User</th>
+    <th>Content</th>
+  </tr>
+  <% @project.comments.each do |x| %>
+  <tr>
+    <td>  <%= User.find(x.user_id).first_name %> </td>
+    <td>  <%= x.content %> </td>
+    <% end %>
+  </table>
+<% else %>
+<p> There are not comments <p>
 
-<h4> <%= link_to 'Edit project', edit_project_path(@project) %> </h4>
-<h4> <%= link_to 'Delete project',@project, method: :delete, data: { confirm: "Are you sure?" }%> </h4>
+<% end %>
 
+<% if current_user %>
+<%= form_for @comment, url: create_comment_path do |f| %>
+  <h2> Write a comment </h2>
+  <%= f.text_area(:content)%>
+  <br>
+  <%= f.submit "Comment"  %>
+<% end %>
 
+<%= form_for @investment, url: create_investment_path do |f| %>
+  <h2> Donate! </h2>
+  <%= f.number_field :amount, min: '1' %>
+  <br>
+  <%= f.submit "Donate"  %>
+<% end %>
+
+<% end %>
 
 <%= link_to 'Back', projects_path %>

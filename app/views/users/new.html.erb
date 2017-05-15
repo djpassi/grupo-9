@@ -1,12 +1,5 @@
-<% if flash[:notice] %>
-<%= flash[:notice] %>
-<% end %>
-
-
 <h1> Create user </h1>
-
 
 <%= render partial: 'form', object: @user %>
 
 <br>
-<%= link_to 'Back', users_path %>

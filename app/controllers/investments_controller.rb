@@ -4,9 +4,6 @@ class InvestmentsController < ApplicationController
     @investments = Investment.all
   end
 
-  def new
-    @investment = Investment.new
-  end
 
   def create
     @investment = Investment.new(investment_params)
@@ -14,7 +11,7 @@ class InvestmentsController < ApplicationController
     respond_to do |format|
      if @investment.save
        format.html do
-         redirect_to '/investments/new', notice: 'Investment was successfully created.'
+         redirect_to project_path(@investment.project_id), notice: 'Investment was successfully created.'
        end
      else
        format.html { render :new, status: 422 }
@@ -26,7 +23,7 @@ class InvestmentsController < ApplicationController
   private
 
   def investment_params
-    params.require(:investment).permit(:user_id,:project_id, :amount)
+    params.require(:investment).permit(:amount).merge(user_id: current_user.id, project_id: session[:project_id])
   end
 
 

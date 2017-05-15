@@ -1,5 +1,7 @@
 <h1> Investments </h1>
-
+<% if current_user %>
+<h2><%= link_to 'Make an investment', '/investments/new' %></h2>
+<% end %>
 <table>
   <tr>
     <th>User</th>
@@ -20,5 +22,4 @@
 </table>
 
 <br>
-<%= link_to 'Make an investment', '/investments/new' %>
 <br>

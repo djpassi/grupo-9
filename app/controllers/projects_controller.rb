@@ -14,18 +14,17 @@ class ProjectsController < ApplicationController
 
   end
 
-  def new_comment
-    @comment = Comment.new
-
-  end
-
   def destroy
     @project.destroy
     flash[:success] = "Project deleted"
     redirect_to projects_url
   end
 
-  def show; end
+  def show
+    @comment = Comment.new
+    @investment = Investment.new
+    session[:project_id] = params[:id]
+  end
 
   def update
     respond_to do |format|
@@ -57,6 +56,7 @@ class ProjectsController < ApplicationController
     end
   end
 
+
   private
 
   def set_project
@@ -64,8 +64,8 @@ class ProjectsController < ApplicationController
   end
 
   def project_params
-    params.require(:project).permit(:name, :user_id, :goal,
-     :description)
+    params.require(:project).permit(:name, :goal,
+     :description).merge(user_id: current_user.id)
   end
 
 end
