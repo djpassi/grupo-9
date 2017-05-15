@@ -87,14 +87,19 @@
   <h2 class = "donate-header"> Write a comment </h2>
   <%= f.text_area :content, :class => "donate-field", required: true %>
   <br>
-  <%= f.submit "Comment", class: "submit"  %>
+  <div class='submit-form'>
+  <%= f.submit "Comment", class:'submit_form_for'  %>
+  </div>
 <% end %>
 
 <%= form_for @investment, url: create_investment_path do |f| %>
   <h2 class = "donate-header" > Donate! </h2>
   <%= f.number_field :amount, min: '1', required: true, :class => "donate-field"  %>
   <br>
-  <%= f.submit "Donate", class: "submit"%>
+  <div class='submit-form'>
+    <%= f.submit "Donate", class: "submit_form_for"%>
+  </div>
+<% end %>
 <% end %>
 
 

@@ -58,8 +58,7 @@
 
 }
 
-.donate-field
-{
+.donate-field{
   margin-left:25%;
   margin-right:25%;
   width:50%;
@@ -68,16 +67,16 @@
 
 
 
-.donate-header
-{
+.donate-header{
   text-align: center;
 }
 
 
-.submit{
+.submit-form{
   margin-left:25%;
   margin-right:25%;
   width:50%;
+}
 
 .project-action{
     font-size: 15px;
@@ -128,7 +127,9 @@ th.project-table-header, td.project-table-data {
     padding: 8px;
 }
 
-tr.project-table-row:nth-child(even){background-color: #f2f2f2}
+tr.project-table-row:nth-child(even){
+  background-color: #f2f2f2
+}
 
 th.project-table-header {
     background-color: blue;
