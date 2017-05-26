@@ -19,7 +19,7 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
-gem 'paperclip', ">=3"
+gem "paperclip", "~> 5.0.0"
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

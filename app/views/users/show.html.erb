@@ -4,7 +4,11 @@
 </div>
 <section id="profile">
   <div class="profile-image">
-    <%= image_tag("/images/placeholder-user.png", :size => "300x300") %>
+    <%if @user.photo.blank? %>
+      <%= image_tag("/images/placeholder-user.png", :size => "300x300") %>
+    <% else %>
+      <%= image_tag @user.photo.url, :size => "300x300" %>
+    <% end %>
   </div>
   <div class="profile-information">
     <p> First name: <%= @user.first_name %> </p>
@@ -12,7 +16,6 @@
     <p> Email: <%= @user.email %> </p>
     <p> Sex: <%= @user.sex %> </p>
     <p> Birth date: <%= @user.birth_date %> </p>
-    <p> Image: <%= @user.image %> </p>
     <p> Description: <%= @user.description %> </p>
   </div>
 </section>
