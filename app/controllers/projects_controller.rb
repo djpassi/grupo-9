@@ -14,6 +14,7 @@ class ProjectsController < ApplicationController
 
   end
 
+
   def destroy
     @project.destroy
     flash[:success] = "Project deleted"

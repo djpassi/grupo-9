@@ -13,8 +13,10 @@
         <ul id="navbar">
         <li class="<%= active_class('/') %>" id="logo" ><a href="/"><span class="quick">Quick<span class="starter">Starter</span> </span></a> </li>
         <li class="<%= active_class('/projects') %>" id='project-nav'> <%= link_to "Projects", projects_path %></li>
-        <% if current_user %>
-        <li class="<%= active_class(projects_new_path) %>" id='project-new'> <%= link_to "New Project", projects_new_path %></li>
+        <% if is_admin %>
+          <li class="<%= active_class("/users") %>" id='users'> <%= link_to "Users", "/users"%></li>
+        <% elsif current_user%>
+          <li class="<%= active_class(projects_new_path) %>" id='project-new'> <%= link_to "New Project", projects_new_path %></li>
         <% end %>
         </ul>
 
@@ -27,6 +29,7 @@
           <% else %>
             <%= link_to 'Login', new_session_path %> or
             <%= link_to 'Sign Up', users_new_path	 %>
+            
           <% end %>
         </div>
     </header>
