@@ -11,7 +11,7 @@ class CommentsController < ApplicationController
   def destroy
     @comment.destroy
     flash[:success] = "Comment deleted"
-    redirect_to comments_url
+    redirect_to project_path(session[:project_id])
   end
 
   def create

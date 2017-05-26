@@ -7,4 +7,7 @@ module Secured
   def logged_in?
     redirect_to(root_path, notice: 'Unauthorized access!') unless current_user
   end
+
+
+
 end

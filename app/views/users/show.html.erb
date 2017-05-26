@@ -17,7 +17,11 @@
   </div>
 </section>
 
-<% if @user == current_user %>
+<% if is_admin %>
+<div class="user-action" id="user-delete">
+<h4> <%= link_to 'Delete user',@user, method: :delete, data: { confirm: "Are you sure?" } %> </h4>
+</div>
+<% elsif current_user == @user.id%>
 <div class="user-action" id="user-edit">
   <h4> <%= link_to 'Edit information', edit_user_path(@user) %> </h4>
 </div>

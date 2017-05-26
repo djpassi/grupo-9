@@ -1,12 +1,11 @@
 <h1> Investments </h1>
-<% if current_user %>
-<h2><%= link_to 'Make an investment', '/investments/new' %></h2>
-<% end %>
+
 <table>
   <tr>
     <th>User</th>
     <th>Project</th>
     <th>Amount</th>
+    <th>Delete</th>
   </tr>
   <% @investments.each do |x| %>
   <tr>
@@ -18,8 +17,8 @@
     <% end %>
     <td>  <%= Project.find(x.project_id).name %> </td>
     <td>  <%= x.amount %> </td>
-  <% end %>
+    <td>  <%= link_to 'Delete investment', delete_investment_path(x.id) ,method: :delete , data: {confirm:"are you sure?"} %> </td>
+    <% end %>
+  </tr>
 </table>
 
-<br>
-<br>

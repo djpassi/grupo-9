@@ -26,13 +26,14 @@ Rails.application.routes.draw do
   get '/comments/:id', to: 'comments#show', as: 'comment'
   get '/comments/:id/edit', to: 'comments#edit', as: 'edit_comment'
   patch '/comments/:id', to: 'comments#update'
-  delete '/comments/:id', to: 'comments#destroy'
+  delete '/comments/:id', to: 'comments#destroy', as: 'delete_comment'
   post '/comments', to: 'comments#create', as: 'create_comment'
 
 
   get '/investments', to: 'investments#index', as: 'investments'
   #get '/investments/new', to: 'investments#new'
   post '/investments', to: 'investments#create', as: 'create_investment'
+  delete '/investments/:id', to: 'investments#destroy', as:'delete_investment'
 
   resource :session, only: [:new, :create, :destroy]
 

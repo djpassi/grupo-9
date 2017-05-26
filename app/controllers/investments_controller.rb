@@ -20,6 +20,13 @@ class InvestmentsController < ApplicationController
    end
   end
 
+  def destroy
+    Investment.find_by(id: params[:id]).destroy
+    flash[:success] = "Investment deleted"
+    redirect_to project_path(session[:project_id])
+  end
+
+
   private
 
   def investment_params
