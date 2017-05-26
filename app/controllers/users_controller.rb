@@ -2,6 +2,8 @@ class UsersController < ApplicationController
 
   include Secured 
 
+  helper_method :valid_action
+
   before_action :set_user, only: [:show, :destroy, :edit, :update]
   before_action :logged_in?, only: [:destroy, :edit, :update]
   before_action only:[:destroy, :edit, :update] {valid_action(:id)} 
