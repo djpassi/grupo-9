@@ -59,9 +59,7 @@ class UsersController < ApplicationController
         format.html { render :edit }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
-
     end
-
  end
 
 
@@ -73,7 +71,7 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:first_name, :last_name, :email,
-     :password, :birth_date, :password_confirmation)
+     :password,:description,:sex, :birth_date, :password_confirmation,:photo)
   end
 
 
