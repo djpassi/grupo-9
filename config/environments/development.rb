@@ -37,7 +37,7 @@ Rails.application.configure do
     port: 587,
     domain:  'gmail.com',
     user_name: "davidgalemiri@gmail.com",
-    password: "hou,hou,wi"
+    password: "123123"
   }
   config.action_mailer.default_url_options = {
     host: 'localhost'
