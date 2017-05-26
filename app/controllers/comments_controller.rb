@@ -2,9 +2,16 @@ class CommentsController < ApplicationController
   include Secured
   before_action :logged_in?, only: %i[create edit update destroy]
   before_action :set_comment, only: [:show, :destroy, :edit, :update]
+  before_action only:[:destroy, :edit, :update] {valid_action(Project.find(Comment.find(params[:id]).project_id).user_id) ||
+  valid_action(:user_id)}
+
 
   def index
+    if is_admin
       @comments = Comment.all
+    else
+      redirect_to root_path, notice: "Action not allowed"
+    end
   end
 
 

@@ -11,8 +11,9 @@ class ApplicationController < ActionController::Base
   end
 
   def is_admin
-    return true unless current_user.try(:role) != 'Admin'
-    false
+  return true unless current_user.try(:role) != 'Admin'
+  false
+
   end
 
   def is_valid(id)

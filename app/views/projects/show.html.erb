@@ -50,6 +50,8 @@
 <% end %>
 <% end %>
 
+
+<% if is_valid(@project.user_id)%>
 <section>
   <div class="project-header">
     <h3> Investors in  <%= @project.name %>  </h3>
@@ -84,38 +86,26 @@
     <div>
 </section>
 
+<% end%>
+
 
 <section>
-  <div <div class="project-header">
-    <h3>Comments for <%= @project.name %>  </h3>
-  </div>
-  <% if @project.comments.count == 0 %>
-    <div class="project-header">
-      <p> There are no comments <p>
-    <div>
-  <% else %>
-  <div class="table">
-  <table class="project-table">
-    <tr class="project-table-row">
-      <th class="project-table-header">User</th>
-      <th class="project-table-header">Content</th>
-      <% if is_admin %>
-          <th class="project-table-header">Delete Comment</th>
-      <% end %>
-    </tr>
-    <% @project.comments.each do |x| %>
-    <% @user =  User.find(x.user_id) %>
-    <tr class="user-table-row">
-      <td class="project-table-data">  <%= link_to @user.first_name+' '+@user.last_name, @user %> </td>
-      <td class="user-table-data"> <%= x.content %> </td>
-      <% if is_admin %>
-        <td class="project-table-data">  <%= link_to 'Delete Comment', delete_comment_path(x.id) ,method: :delete , data: {confirm:"are you sure?"}  %> </td>
-      <% end %>
-      <% end %>
-    </table>
-    <% end %>
 
-  <div>
+
+    <div class="comments-container">
+      <h1>Comments </h1>
+        <ul id="comments-list" class="comments-list">
+
+                <% @project.comments.each do |x| %>
+                <li>
+                  <%= render partial: 'comment', :object =>{:comment => x} %>
+                </li>
+
+                <% end %>
+        </ul>
+    </div>
+
+
 
 </section>
 
