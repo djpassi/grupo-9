@@ -4,14 +4,16 @@ class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :destroy, :edit, :update]
 
   def index
-    @comments = Comment.all
+      @comments = Comment.all
   end
 
 
   def destroy
     @comment.destroy
     flash[:success] = "Comment deleted"
-    redirect_to project_path(session[:project_id])
+    #redirect_to project_path(session[:project_id])
+    #redirect_to :back
+    redirect_back(fallback_location: root_path)
   end
 
   def create

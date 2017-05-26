@@ -23,7 +23,9 @@ class InvestmentsController < ApplicationController
   def destroy
     Investment.find_by(id: params[:id]).destroy
     flash[:success] = "Investment deleted"
-    redirect_to project_path(session[:project_id])
+    #redirect_to project_path(session[:project_id])
+    #redirect_to :back
+    redirect_back(fallback_location: root_path)
   end
 
 

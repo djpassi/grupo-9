@@ -8,6 +8,8 @@ module Secured
     redirect_to(root_path, notice: 'Unauthorized access!') unless current_user
   end
 
-
+  def valid_action(id)
+    redirect_back(fallback_location: root_path, notice: 'Unauthorized access!')  unless (current_user.try(:id) == id || is_admin)
+  end
 
 end
