@@ -38,6 +38,8 @@ gem 'bcrypt', '~> 3.1.7'
 # Faker for seeding model
 gem 'faker'
 
+gem "figaro"
+
 group :development, :test do
   # Brakeman detects security vulnerabilities in Ruby on Rails
   # applications via static analysis.

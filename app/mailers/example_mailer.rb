@@ -1,5 +1,5 @@
 class ExampleMailer < ActionMailer::Base
-  default from: "davidgalemiri@gmail.com"
+  default from: "Quick Starter UC"
 
   def sample_email(user)
     @user = user
