@@ -3,7 +3,7 @@
   <% if @user.photo.blank?%>
   <div class="comment-avatar"><img src="/images/placeholder-user.png" alt=""></div>
   <%else%>
-  <div class="comment-avatar"><img src=<% @user.photo.url %> alt=""></div>
+  <div class="comment-avatar"><img src=<%= @user.photo.url %> alt=""></div>
 
   <%end%>
 	<div class="comment-box">
