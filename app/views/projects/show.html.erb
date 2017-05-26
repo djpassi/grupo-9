@@ -98,7 +98,7 @@
 
                 <% @project.comments.each do |x| %>
                 <li>
-                  <%= render partial: 'comment', :object =>{:comment => x} %>
+                  <%= render partial: 'comment', :object =>{:comment => x, :user_id => @project.user_id} %>
                 </li>
 
                 <% end %>
