@@ -32,8 +32,12 @@ Rails.application.routes.draw do
 
   get '/investments', to: 'investments#index', as: 'investments'
   #get '/investments/new', to: 'investments#new'
-  post '/investments', to: 'investments#create', as: 'create_investment'
+  get '/investments/:id/edit', to: 'investments#edit', as: 'edit_investment'
+  patch '/investments/:id', to: 'investments#update', as:'update_investment'
   delete '/investments/:id', to: 'investments#destroy', as:'delete_investment'
+  post '/investments', to: 'investments#create', as: 'create_investment'
+  
+
 
   resource :session, only: [:new, :create, :destroy]
 

@@ -1,4 +1,25 @@
 class InvestmentsController < ApplicationController
+  include Secured
+
+  before_action only: [:index, :create, :destroy, :update, :edit] {valid_action(Investment.find_by(id:params[:id]).try(:user_id))} 
+  before_action :set_investment, only: [ :destroy, :edit, :update]
+  
+   def update
+    respond_to do |format|
+      if @investment.update(investment_params)
+        format.html do
+           redirect_back(fallback_location:root_path, notice: 'Investment was successfully updated.')
+        end
+        format.json { render :show, status: :ok, location: @investment }
+      else
+        format.html { render :edit }
+        format.json { render json: @investment.errors, status: :unprocessable_entity }
+      end
+  end
+  end
+
+
+  def edit; end
 
   def index
     @investments = Investment.all
@@ -6,34 +27,36 @@ class InvestmentsController < ApplicationController
 
 
   def create
-    @investment = Investment.new(investment_params)
-
-    respond_to do |format|
-     if @investment.save
-       format.html do
-         redirect_to project_path(@investment.project_id), notice: 'Investment was successfully created.'
-       end
-     else
-       format.html { render :new, status: 422 }
-       format.json { render json: @investment.errors, status: :unprocessable_entity }
-     end
-   end
+      @investment = Investment.new(investment_params)
+      respond_to do |format|
+      if @investment.save
+        format.html do
+          redirect_to project_path(@investment.project_id), notice: 'Investment was successfully created.'
+        end
+      else
+        format.html { render :new, status: 422 }
+        format.json { render json: @investment.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def destroy
-    Investment.find_by(id: params[:id]).destroy
-    flash[:success] = "Investment deleted"
-    #redirect_to project_path(session[:project_id])
-    #redirect_to :back
-    redirect_back(fallback_location: root_path)
+      @investment.destroy
+      flash[:success] = "Investment deleted"
+      #redirect_to project_path(session[:project_id])
+      #redirect_to :back
+      redirect_back(fallback_location: root_path)
   end
 
 
   private
 
+ def set_investment
+   @investment = Investment.find(params[:id])
+  end
+
   def investment_params
     params.require(:investment).permit(:amount).merge(user_id: current_user.id, project_id: session[:project_id])
   end
-
 
 end
