@@ -9,8 +9,7 @@ module Secured
   end
 
   def valid_action(id)
-    redirect_back(fallback_location: root_path, notice: 'Unauthorized access!') unless (current_user.try(:id) == id || is_admin)
-    true
+    redirect_back(fallback_location: root_path, notice: 'Unauthorized access!!!!') unless ((current_user.try(:id) == id) || is_admin)
   end
 
   def valid_comment_action(id)

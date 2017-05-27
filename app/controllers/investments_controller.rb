@@ -1,7 +1,8 @@
 class InvestmentsController < ApplicationController
   include Secured
 
-  before_action only: [:index, :create, :destroy, :update, :edit] {valid_action(Investment.find_by(id:params[:id]).try(:user_id))} 
+  before_action :logged_in?
+  before_action only: [:index, :destroy, :update, :edit] {valid_action(Investment.find_by(id:params[:id]).try(:user_id))} 
   before_action :set_investment, only: [ :destroy, :edit, :update]
   
    def update
@@ -22,7 +23,7 @@ class InvestmentsController < ApplicationController
   def edit; end
 
   def index
-    @investments = Investment.all
+      @investments = Investment.all
   end
 
 
@@ -31,6 +32,7 @@ class InvestmentsController < ApplicationController
       respond_to do |format|
       if @investment.save
         format.html do
+          ExampleMailer.donation_email_investor(User.find(@investment.user_id),Project.find(@investment.project_id), @investment).deliver_later
           redirect_to project_path(@investment.project_id), notice: 'Investment was successfully created.'
         end
       else
