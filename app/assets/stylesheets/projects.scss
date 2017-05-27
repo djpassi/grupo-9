@@ -1,0 +1,256 @@
+// Place all the styles related to the projects controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.submit_form_for{
+	border-radius: 15px 15px 15px 15px;
+
+
+}
+
+body * {
+	font-family: 'Nunito', sans-serif;
+	box-sizing: border-box;
+}
+
+body {
+	background-color: #142F4C;
+}
+
+#countdown-wrap {
+  height: 30px;
+	width: 100%;
+  padding: 5px;
+  font-family: arial;
+  max-width: 650px;
+  margin: 30px auto 150px;
+	position: relative;
+}
+
+#goal {
+  font-size: 48px;
+  text-align: right;
+  color: #FFF;
+  @media only screen and (max-width : 640px) {
+    text-align: center;
+  }
+
+}
+
+#glass {
+  width: 100%;
+  height: 20px;
+  background: #c7c7c7;
+  border-radius: 10px;
+  float: left;
+  overflow: hidden;
+}
+
+#progress {
+  float: left;
+  height: 20px;
+  background: #FF5D50;
+  z-index: 333;
+  //border-radius: 5px;
+}
+
+.goal-stat {
+  width: 25%;
+  //height: 30px;
+  padding: 10px;
+  float: left;
+  margin: 0;
+  color: #FFF;
+
+  @media only screen and (max-width : 640px) {
+    width: 50%;
+    text-align: center;
+  }
+}
+
+.goal-number, .goal-label {
+  display: block;
+}
+
+.goal-number {
+  font-weight: bold;
+}
+
+.project-header {
+  text-align: center;
+	padding: 30px;
+}
+
+.project-profile {
+  padding: 10px;
+  margin-top: 45px;
+  padding-right: 40px;
+  position:relative;
+
+
+  .project-image{
+      display: inline-block;
+  }
+  .project-information{
+      display: inline-block;
+      margin-left: 1%;
+      width: 20%;
+      vertical-align: top;
+
+  }
+  .project-action-box{
+    display: inline-block;
+    width: 40%;
+    vertical-align: top;
+
+
+
+  }
+}
+
+.projects-index{
+  padding: 10px;
+  margin-top: 45px;
+}
+
+.project-square{
+  background: white;
+  text-align: center;
+  color: inherit;
+  text-decoration: none;
+  border-radius: 1%;
+  display: inline-block;
+  height: 200px;
+  margin: 1rem;
+  position: relative;
+  width: 200px;
+  overflow: scroll;
+  box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+}
+
+
+.project-square:hover {
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+.project-square img{
+  width: 100%;
+  height: 60%;
+}
+#project-name{
+  width: 90%;
+  padding: 0px;
+  margin: 0px;
+}
+#project-owner{
+  width: 100%;
+  padding: 0px;
+  margin: 0px;
+}
+#project-goal{
+  width: 100%;
+  padding: 0px;
+  margin: 0px;
+}
+
+
+#new-project{
+  color: inherit;
+  position: absolute;
+  right: 0px;
+  margin-right: 10px;
+  margin-bottom: 30px;
+  font: normal 30px/1 Impact, Charcoal, sans-serif;
+
+}
+
+.comment-field{
+  margin-left:10%;
+  margin-left:10%;
+
+  width:80%;
+  height: 50px;
+}
+.donate-field{
+  margin-left:25%;
+  margin-right:25%;
+  width:50%;  height: 30px;
+}
+
+
+
+.donate-header{
+  text-align: center;
+}
+
+
+.submit-form{
+  margin-left:25%;
+  margin-right:25%;
+  width:50%;
+  text-align: center;
+}
+
+.project-action{
+    font-size: 15px;
+    top: 5px;
+    right: 20px;
+    border: 3px solid;
+    padding: 6px;
+    text-align: center;
+    border-radius: 15px 15px 15px 15px;
+    display: inline-block;
+    border-color: #4CAF50;
+
+}
+.project-action a{
+  text-decoration: none;
+}
+
+#project-edit a{
+  color:#4CAF50;
+
+}
+#project-edit{
+  border-color: #4CAF50;
+}
+#project-delete a{
+  color:red;
+}
+#project-delete{
+  border-color: red;
+}
+#project-comment a{
+  color:blue;
+}
+#project-comment{
+  border-color: blue;
+}
+
+.table{
+	.center{
+		margin-left:auto;
+    margin-right:auto;
+	}
+
+}
+table.project-table {
+	width:65%;
+	margin-left:20%;
+	margin-right:15%;
+
+}
+
+th.project-table-header, td.project-table-data {
+    text-align: left;
+    padding: 8px;
+}
+
+tr.project-table-row:nth-child(even){
+  background-color: #f2f2f2
+}
+
+th.project-table-header {
+    background-color: #03658c;
+    color: white;
+}
