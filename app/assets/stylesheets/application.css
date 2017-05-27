@@ -23,6 +23,9 @@
    border: 1px solid #e7e7e7;
    background-color: #f3f3f3;
  }
+ ::-webkit-scrollbar {
+    display: none;
+}
 
  .NavbarElement {
    float: left;
