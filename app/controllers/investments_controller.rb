@@ -16,8 +16,8 @@ class InvestmentsController < ApplicationController
         format.html { render :edit }
         format.json { render json: @investment.errors, status: :unprocessable_entity }
       end
+      end
     end
-  end
 
 
   def edit; end
