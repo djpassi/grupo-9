@@ -17,6 +17,10 @@
     <p> <b>Description: </b><%= @project.description %> </p>
     <br />
     <p> <b>Goal:</b> <%= @project.goal %> </p>
+    <br />
+
+    <p> <b>Limit Date:</b> <%= @project.limit_date %> </p>
+
 
   </div>
 
@@ -46,10 +50,13 @@
 </section>
 
 <% if is_admin %>
+<div class="project-action" id="project-edit">
+  <h4> <%= link_to 'Edit project', edit_project_path(@project) %> </h4>
+</div>
 <div class="project-action" id="project-delete">
   <h4> <%= link_to 'Delete project',@project, method: :delete, data: { confirm: "Are you sure?" } %> </h4>
 </div>
-<% elsif @project.user == current_user %>
+<% elsif  is_valid(@project.user_id) %>
 <div class="project-action" id="project-edit">
   <h4> <%= link_to 'Edit project', edit_project_path(@project) %> </h4>
 </div>

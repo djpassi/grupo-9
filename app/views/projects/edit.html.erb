@@ -1,5 +1,32 @@
 <h1> Edit Project </h1>
 
-<%= render partial: 'form', object: @project %>
+<%= form_for @project, :html => { :class => "form_for", multipart: true } do |f| %>
 
-<%= link_to 'Back', @project %>
+<% if @project.errors.any? %>
+    <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
+
+    <ul>
+    <% @project.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+<% end %>
+
+
+<%= f.label :name %>
+<%= f.text_field :name, required: true, class: 'input_form_for' %>
+<br>
+<%= f.label :description %>
+<%= f.text_area :description, class: 'input_form_for' %>
+<br>
+<%= f.label :limit_date %>
+<br>
+<%= f.date_field :limit_date%>
+<br>
+<%= f.label :goal %>
+<br>
+<%= f.text_field :goal, required: true, class: 'input_form_for', type: 'number', min:'1' %>
+<br>
+
+<%= f.submit  class: 'submit_form_for' %>
+<% end %>

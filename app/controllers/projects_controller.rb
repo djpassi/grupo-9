@@ -4,7 +4,7 @@ class ProjectsController < ApplicationController
 
   before_action :set_project, only: [:show, :destroy, :edit, :update, :new_comment]
   before_action :logged_in?, only: [:destroy, :edit, :update, :create, :new]
-  before_action only: [:destroy, :update, :edit] {valid_action(Investment.find_by(id:params[:id]).try(:user_id))}
+  before_action only: [:destroy, :update, :edit] {valid_action(Project.find(params[:id])[:user_id])}
 
 
   def new
@@ -17,6 +17,7 @@ class ProjectsController < ApplicationController
     @projects = Project.all
 
   end
+
 
 
   def destroy
@@ -72,7 +73,7 @@ class ProjectsController < ApplicationController
 
   def project_params
     params.require(:project).permit(:name, :goal,
-     :description).merge(user_id: current_user.id)
+     :description, :limit_date,:photo).merge(user_id: current_user.id)
   end
 
 end

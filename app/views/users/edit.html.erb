@@ -12,6 +12,7 @@
     </ul>
 <% end %>
 
+
 <%= f.label :first_name %>
 <%= f.text_field :first_name, required: true, class: 'input_form_for' %>
 <br>
@@ -38,8 +39,10 @@
 <%= f.label :password_confirmation%>
 <%= f.password_field :password_confirmation, required: true, class: 'input_form_for', minlength: 6  %>
 <br>
+<%= f.label 'Photo:'%>
+<br>
+
 <%= f.file_field :photo %>
 <br>
 <%= f.submit  class: 'submit_form_for' %>
 <% end %>
-
