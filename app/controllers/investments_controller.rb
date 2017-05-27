@@ -2,9 +2,9 @@ class InvestmentsController < ApplicationController
   include Secured
 
   before_action :logged_in?
-  before_action only: [:index, :destroy, :update, :edit] {valid_action(Investment.find_by(id:params[:id]).try(:user_id))} 
+  before_action only: [:index, :destroy, :update, :edit] {valid_action(Investment.find_by(id:params[:id]).try(:user_id))}
   before_action :set_investment, only: [ :destroy, :edit, :update]
-  
+
    def update
     respond_to do |format|
       if @investment.update(investment_params)
@@ -16,7 +16,7 @@ class InvestmentsController < ApplicationController
         format.html { render :edit }
         format.json { render json: @investment.errors, status: :unprocessable_entity }
       end
-  end
+    end
   end
 
 
@@ -29,10 +29,14 @@ class InvestmentsController < ApplicationController
 
   def create
       @investment = Investment.new(investment_params)
+      project = Project.find(@investment.project_id)
+      project[:current] = project[:current] + @investment[:amount]
+      project.save
+
       respond_to do |format|
       if @investment.save
         format.html do
-          ExampleMailer.donation_email_investor(User.find(@investment.user_id),Project.find(@investment.project_id), @investment).deliver_later
+          ExampleMailer.donation_email_investor(User.find(@investment.user_id),project, @investment).deliver_later
           redirect_to project_path(@investment.project_id), notice: 'Investment was successfully created.'
         end
       else

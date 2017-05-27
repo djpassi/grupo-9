@@ -4,7 +4,7 @@ class ProjectsController < ApplicationController
 
   before_action :set_project, only: [:show, :destroy, :edit, :update, :new_comment]
   before_action :logged_in?, only: [:destroy, :edit, :update, :create, :new]
-  before_action only: [:destroy, :update, :edit] {valid_action(Investment.find_by(id:params[:id]).try(:user_id))} 
+  before_action only: [:destroy, :update, :edit] {valid_action(Investment.find_by(id:params[:id]).try(:user_id))}
 
 
   def new
@@ -50,6 +50,7 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.new(project_params)
+    @project[:current] = 0
     respond_to do |format|
       if @project.save
         format.html do
