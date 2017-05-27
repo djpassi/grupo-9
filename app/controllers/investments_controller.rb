@@ -29,14 +29,10 @@ class InvestmentsController < ApplicationController
 
   def create
       @investment = Investment.new(investment_params)
-      project = Project.find(@investment.project_id)
-      project[:current] = project[:current] + @investment[:amount]
-      project.save
-
       respond_to do |format|
       if @investment.save
         format.html do
-          ExampleMailer.donation_email_investor(User.find(@investment.user_id),project, @investment).deliver_later
+          ExampleMailer.donation_email_investor(User.find(@investment.user_id),Project.find(@investment.project_id), @investment).deliver_later
           redirect_to project_path(@investment.project_id), notice: 'Investment was successfully created.'
         end
       else

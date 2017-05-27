@@ -15,4 +15,6 @@
   Investment.create(user_id:Faker::Number.between(1, i), project_id:Faker::Number.between(1, i), amount: Faker::Number.between(1, 200))
 end
 
+
+
 User.create(first_name:"Admin", last_name:"Admin" ,email:"davidgalemiri@gmail.com",sex:'M',password:'123456',image:"",description:"",role:'Admin')
