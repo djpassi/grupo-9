@@ -62,15 +62,15 @@
 <div id=countdown-wrap>
   <div id="goal">$<%= @project.goal%></div>
   <div id="glass">
-    <div id="progress">
+    <div id="progress" style="width: <%=(@project.current.to_f/@project.goal.to_f).round(1)*100 %>%;">
     </div>
   </div>
   <div class="goal-stat">
-    <span class="goal-number">16%</span>
+    <span class="goal-number"><%=(@project.current.to_f/@project.goal.to_f).round(1)*100 %>%</span>
     <span class="goal-label">Funded</span>
   </div>
   <div class="goal-stat">
-    <span class="goal-number">$1,640</span>
+    <span class="goal-number">$<%= @project.current%></span>
     <span class="goal-label">Raised</span>
   </div>
   <div class="goal-stat">
@@ -78,10 +78,12 @@
     <span class="goal-label">Days to Go</span>
   </div>
   <div class="goal-stat">
-    <span class="goal-number">38</span>
+    <span class="goal-number"><%= Investment.where(:project_id =>@project.id).count%></span>
     <span class="goal-label">Sponsors</span>
   </div>
 </div>
+
+
 
 
 <% if is_valid(@project.user_id)%>

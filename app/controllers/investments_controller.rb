@@ -2,9 +2,9 @@ class InvestmentsController < ApplicationController
   include Secured
 
   before_action :logged_in?
-  before_action only: [:index, :destroy, :update, :edit] {valid_action(Investment.find_by(id:params[:id]).try(:user_id))} 
+  before_action only: [:index, :destroy, :update, :edit] {valid_action(Investment.find_by(id:params[:id]).try(:user_id))}
   before_action :set_investment, only: [ :destroy, :edit, :update]
-  
+
    def update
     respond_to do |format|
       if @investment.update(investment_params)
@@ -16,7 +16,7 @@ class InvestmentsController < ApplicationController
         format.html { render :edit }
         format.json { render json: @investment.errors, status: :unprocessable_entity }
       end
-  end
+    end
   end
 
 
