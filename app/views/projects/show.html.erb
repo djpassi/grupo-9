@@ -24,7 +24,7 @@
 
 
     <% if current_user %>
-    <%= form_for @comment, url: create_comment_path do |f| %>
+    <%= form_for @comment, url: create_comment_path do |f|  %>
       <h2 class = "donate-header"> Write a comment </h2>
       <%= f.text_area :content, :class => "comment-field", required: true %>
       <br>
@@ -89,7 +89,7 @@
 <% if is_valid(@project.user_id)%>
 <section>
   <div class="project-header">
-    <h3> Investors in  <%= @project.name %>  </h3>
+    <h1> Investors in  <%= @project.name %>  </h1>
   </div>
 
     <% if @project.investments.count == 0 %>
@@ -127,10 +127,16 @@
 
 
 <section>
+  <div class="project-header">
 
-
+  <h1>Comments </h1>
+ </div>
+  <% if @project.comments.count == 0 %>
+  <div class="project-header">
+      <p> There are no comments<p>
+  </div>
+  <% else %>
     <div class="comments-container">
-      <h1>Comments </h1>
         <ul id="comments-list" class="comments-list">
 
                 <% @project.comments.each do |x| %>
@@ -141,6 +147,7 @@
                 <% end %>
         </ul>
     </div>
+      <% end %>
 
 
 

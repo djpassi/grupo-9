@@ -84,31 +84,32 @@
     <div>
 </section>
 
+
+
+
 <section>
-  <div <div class="user-header">
-    <h3>Comments made by <%= @user.first_name %>  </h3>
-  </div>
+  <div class="user-header">
+
+  <h1>Comments </h1>
+ </div>
   <% if @user.comments.count == 0 %>
-    <div class="user-header">
-      <p> There are no comments <p>
-    <div>
+  <div class="user-header">
+      <p> There are no comments<p>
+  </div>
   <% else %>
-  <div class="table">
-  <table class="user-table">
-    <tr class="user-table-row">
-      <th class="user-table-header">Project</th>
-      <th class="user-table-header">Content</th>
-    </tr>
-    <% @user.comments.each do |x| %>
-    <tr class="user-table-row">
-      <td class="user-table-data">  <%= link_to Project.find(x.project_id).name, Project.find(x.project_id) %> </td>
-      <td class="user-table-data"> <%= x.content %> </td>
+    <div class="comments-container">
+        <ul id="comments-list" class="comments-list">
+
+                <% @user.comments.each do |x| %>
+                <li>
+                  <%= render partial: '/projects/comment', :object =>{:comment => x, :user_id => @user.id} %>
+                </li>
+
+                <% end %>
+        </ul>
+    </div>
       <% end %>
-    </table>
-  <div>
+
+
 
 </section>
-
-
-
-<% end %>
