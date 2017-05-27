@@ -1,6 +1,10 @@
 class ProjectsController < ApplicationController
 
+  include Secured
+
   before_action :set_project, only: [:show, :destroy, :edit, :update, :new_comment]
+  before_action :logged_in?, only: [:destroy, :edit, :update, :create, :new]
+  before_action only: [:destroy, :update, :edit] {valid_action(Project.find(params[:id])[:user_id])}
 
 
   def new
@@ -14,6 +18,8 @@ class ProjectsController < ApplicationController
 
   end
 
+
+
   def destroy
     @project.destroy
     flash[:success] = "Project deleted"
@@ -24,6 +30,7 @@ class ProjectsController < ApplicationController
     @comment = Comment.new
     @investment = Investment.new
     session[:project_id] = params[:id]
+    @back_url = session[:my_previous_url]
   end
 
   def update
@@ -44,6 +51,7 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.new(project_params)
+    @project[:current] = 0
     respond_to do |format|
       if @project.save
         format.html do
@@ -65,7 +73,7 @@ class ProjectsController < ApplicationController
 
   def project_params
     params.require(:project).permit(:name, :goal,
-     :description).merge(user_id: current_user.id)
+     :description, :limit_date,:photo).merge(user_id: current_user.id)
   end
 
 end

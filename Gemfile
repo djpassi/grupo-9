@@ -19,6 +19,7 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
+gem "paperclip", "~> 5.0.0"
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -37,6 +38,8 @@ gem 'bcrypt', '~> 3.1.7'
 
 # Faker for seeding model
 gem 'faker'
+
+gem "figaro"
 
 group :development, :test do
   # Brakeman detects security vulnerabilities in Ruby on Rails

@@ -1,6 +1,12 @@
 class UsersController < ApplicationController
 
+  include Secured 
+
+  helper_method :valid_action
+
   before_action :set_user, only: [:show, :destroy, :edit, :update]
+  before_action :logged_in?, only: [:destroy, :edit, :update]
+  before_action only:[:destroy, :edit, :update] {valid_action(params[:id].to_i)} 
 
   def new
     @user = User.new
@@ -9,7 +15,11 @@ class UsersController < ApplicationController
   def edit; end
 
   def index
-    @users = User.all
+      if is_admin
+        @users = User.all
+      else
+        redirect_to root_path, notice: "Action not allowed"
+      end
   end
 
   def show; end
@@ -17,7 +27,8 @@ class UsersController < ApplicationController
   def destroy
     @user.destroy
     flash[:success] = "User deleted"
-    redirect_to users_url
+    reset_session
+    redirect_to root_path
   end
 
   def create
@@ -27,6 +38,7 @@ class UsersController < ApplicationController
     respond_to do |format|
      if @user.save
        format.html do
+         ExampleMailer.register_email(@user).deliver_later
          redirect_to '/users/new', notice: 'User was successfully created.'
        end
        #format.json { render :show, status: :created, location: @user }
@@ -49,9 +61,7 @@ class UsersController < ApplicationController
         format.html { render :edit }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
-
     end
-
  end
 
 
@@ -63,9 +73,8 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:first_name, :last_name, :email,
-     :password, :birth_date, :password_confirmation)
+     :password,:description,:sex, :birth_date, :password_confirmation,:photo)
   end
-
 
 
 end

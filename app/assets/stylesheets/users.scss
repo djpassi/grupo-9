@@ -4,8 +4,12 @@
 
 .user-header {
   text-align: center;
+  padding: 30px;
 }
 
+.profile-projects{
+  text-align: center;
+}
 #profile {
   padding: 10px;
   margin-top: 45px;
@@ -18,10 +22,6 @@
       display: inline-block;
       margin-left: 5%;
   }
-}
-
-.profile-projects{
-
 }
 
 .user-action{
@@ -53,11 +53,17 @@
 }
 
 .table{
-      padding-right: 40px;
+	.center{
+		margin-left:auto;
+    margin-right:auto;
+	}
+
 }
 table.user-table {
-    border-collapse: collapse;
-    width: 100%;
+	width:65%;
+	margin-left:20%;
+	margin-right:15%;
+
 }
 
 th.user-table-header, td.user-table-data {
@@ -68,6 +74,6 @@ th.user-table-header, td.user-table-data {
 tr.user-table-row:nth-child(even){background-color: #f2f2f2}
 
 th.user-table-header {
-    background-color: #4CAF50;
+    background-color: #03658c;
     color: white;
 }

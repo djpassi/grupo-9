@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  root 'home#index'
+  root 'home#index', as:'root'
 
   get '/users/new', to:'users#new'
   post '/users', to:'users#create'
@@ -22,17 +22,22 @@ Rails.application.routes.draw do
 
 
   #get '/comments/new', to: 'comments#new'
-  get '/comments', to: 'comments#index'
+  #get '/comments', to: 'comments#index'
   get '/comments/:id', to: 'comments#show', as: 'comment'
   get '/comments/:id/edit', to: 'comments#edit', as: 'edit_comment'
   patch '/comments/:id', to: 'comments#update'
-  delete '/comments/:id', to: 'comments#destroy'
+  delete '/comments/:id', to: 'comments#destroy', as: 'delete_comment'
   post '/comments', to: 'comments#create', as: 'create_comment'
 
 
-  get '/investments', to: 'investments#index', as: 'investments'
+  #get '/investments', to: 'investments#index', as: 'investments'
   #get '/investments/new', to: 'investments#new'
+  get '/investments/:id/edit', to: 'investments#edit', as: 'edit_investment'
+  patch '/investments/:id', to: 'investments#update', as:'update_investment'
+  delete '/investments/:id', to: 'investments#destroy', as:'delete_investment'
   post '/investments', to: 'investments#create', as: 'create_investment'
+  
+
 
   resource :session, only: [:new, :create, :destroy]
 

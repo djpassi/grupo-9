@@ -3,51 +3,100 @@
 <div class="project-header">
     <h1> <%=@project.name%> </h1>
 </div>
-<section id="project-profile">
+<section class="project-profile">
+
   <div class="project-image">
     <%= image_tag("/images/placeholder-project.jpg", :size => "300x300") %>
   </div>
   <div class="project-information">
-    <p> Project name: <%= @project.name %> </p>
-    <p> Owner: <%= @user.first_name %> </p>
-    <p> Description: <%= @project.description %> </p>
-    <p> Goal: <%= @project.goal %> </p>
+    <br />
+    <p> <b> Project name:</b> <%= @project.name %> </p>
+    <br />
+    <p> <b>Owner:</b> <%= link_to @user.first_name, @user %> </p>
+    <br />
+    <p> <b>Description: </b><%= @project.description %> </p>
+    <br />
+    <p> <b>Goal:</b> <%= @project.goal %> </p>
+    <br />
 
+    <p> <b>Limit Date:</b> <%= @project.limit_date %> </p>
+
+
+  </div>
+
+  <div class="project-action-box">
+
+
+    <% if current_user %>
+    <%= form_for @comment, url: create_comment_path do |f|  %>
+      <h2 class = "donate-header"> Write a comment </h2>
+      <%= f.text_area :content, :class => "comment-field", required: true %>
+      <br>
+      <div class='submit-form'>
+      <%= f.submit "Comment", class:'submit_form_for'  %>
+      </div>
+    <% end %>
+
+    <%= form_for @investment, url: create_investment_path do |f| %>
+      <h2 class = "donate-header" > Donate! </h2>
+      <%= f.number_field :amount, min: '1', required: true, :class => "donate-field"  %>
+      <br>
+      <div class='submit-form'>
+        <%= f.submit "Donate", class: "submit_form_for"%>
+      </div>
+    <% end %>
+    <% end %>
   </div>
 </section>
 
-<% if @project.user == current_user %>
+<% if is_admin %>
 <div class="project-action" id="project-edit">
   <h4> <%= link_to 'Edit project', edit_project_path(@project) %> </h4>
 </div>
 <div class="project-action" id="project-delete">
-  <h4> <%= link_to 'Delete project',@project, method: :delete, data: { confirm: "Are you sure?" } if @project.user == current_user%> </h4>
+  <h4> <%= link_to 'Delete project',@project, method: :delete, data: { confirm: "Are you sure?" } %> </h4>
+</div>
+<% elsif  is_valid(@project.user_id) %>
+<div class="project-action" id="project-edit">
+  <h4> <%= link_to 'Edit project', edit_project_path(@project) %> </h4>
+</div>
+<div class="project-action" id="project-delete">
+  <h4> <%= link_to 'Delete project',@project, method: :delete, data: { confirm: "Are you sure?" }%> </h4>
 </div>
 <% end %>
 
-<% if current_user %>
-<%= form_for @comment, url: create_comment_path do |f| %>
-  <h2 class = "donate-header"> Write a comment </h2>
-  <%= f.text_area :content, :class => "donate-field", required: true %>
-  <br>
-  <div class='submit-form'>
-  <%= f.submit "Comment", class:'submit_form_for'  %>
-  </div>
-<% end %>
 
-<%= form_for @investment, url: create_investment_path do |f| %>
-  <h2 class = "donate-header" > Donate! </h2>
-  <%= f.number_field :amount, min: '1', required: true, :class => "donate-field"  %>
-  <br>
-  <div class='submit-form'>
-    <%= f.submit "Donate", class: "submit_form_for"%>
+<div id=countdown-wrap>
+  <div id="goal">$<%= @project.goal%></div>
+  <div id="glass">
+    <div id="progress" style="width: <%=(@project.current.to_f/@project.goal.to_f).round(1)*100 %>%;">
+    </div>
   </div>
-<% end %>
-<% end %>
+  <div class="goal-stat">
+    <span class="goal-number"><%=(@project.current.to_f/@project.goal.to_f).round(1)*100 %>%</span>
+    <span class="goal-label">Funded</span>
+  </div>
+  <div class="goal-stat">
+    <span class="goal-number">$<%= @project.current%></span>
+    <span class="goal-label">Raised</span>
+  </div>
+  <div class="goal-stat">
+    <span class="goal-number"><div id="countdown"></div></span>
+    <span class="goal-label">Days to Go</span>
+  </div>
+  <div class="goal-stat">
+    <span class="goal-number"><%= Investment.where(:project_id =>@project.id).count%></span>
+    <span class="goal-label">Sponsors</span>
+  </div>
+</div>
 
+
+
+
+<% if is_valid(@project.user_id)%>
 <section>
   <div class="project-header">
-    <h3> Investors in  <%= @project.name %>  </h3>
+    <h1> Investors in  <%= @project.name %>  </h1>
   </div>
 
     <% if @project.investments.count == 0 %>
@@ -60,12 +109,20 @@
       <tr class="project-table-row">
         <th class="project-table-header">User</th>
         <th class="project-table-header">Amount</th>
+        <% if is_admin %>
+          <th class="project-table-header">Edit</th>
+          <th class="project-table-header">Delete </th>
+        <% end %>
       </tr>
         <% @project.investments.each do |x| %>
         <tr class="project-table-row">
           <% @user =  User.find(x.user_id) %>
           <td class="project-table-data">  <%= link_to @user.first_name+' '+@user.last_name, @user %> </td>
           <td class="project-table-data">  <%= x.amount %> </td>
+          <% if is_admin %>
+            <td class="project-table-data"> <%= link_to 'Edit',edit_investment_path(x.id) %> </td>
+            <td class="project-table-data">  <%= link_to 'Delete', delete_investment_path(x.id) ,method: :delete , data: {confirm:"are you sure?"}  %> </td>
+          <% end %>
         </tr>
         <% end %>
       </table>
@@ -73,36 +130,35 @@
     <div>
 </section>
 
+<% end%>
+
 
 <section>
-  <div <div class="project-header">
-    <h3>Comments for <%= @project.name %>  </h3>
-  </div>
-  <% if @project.investments.count == 0 %>
-    <div class="project-header">
-      <p> There are no comments <p>
-    <div>
-  <% else %>
-  <div class="table">
-  <table class="project-table">
-    <tr class="project-table-row">
-      <th class="project-table-header">User</th>
-      <th class="project-table-header">Content</th>
-    </tr>
-    <% @project.comments.each do |x| %>
-    <% @user =  User.find(x.user_id) %>
-    <tr class="user-table-row">
-      <td class="project-table-data">  <%= link_to @user.first_name+' '+@user.last_name, @user %> </td>
-      <td class="user-table-data"> <%= x.content %> </td>
-      <% end %>
-    </table>
-    <% end %>
+  <div class="project-header">
 
-  <div>
+  <h1>Comments </h1>
+ </div>
+  <% if @project.comments.count == 0 %>
+  <div class="project-header">
+      <p> There are no comments<p>
+  </div>
+  <% else %>
+    <div class="comments-container">
+        <ul id="comments-list" class="comments-list">
+
+                <% @project.comments.each do |x| %>
+                <li>
+                  <%= render partial: 'comment', :object =>{:comment => x, :user_id => @project.user_id} %>
+                </li>
+
+                <% end %>
+        </ul>
+    </div>
+      <% end %>
+
+
 
 </section>
-
-
 
 
 <%= link_to 'Back', projects_path %>

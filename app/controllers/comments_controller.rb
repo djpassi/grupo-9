@@ -2,16 +2,24 @@ class CommentsController < ApplicationController
   include Secured
   before_action :logged_in?, only: %i[create edit update destroy]
   before_action :set_comment, only: [:show, :destroy, :edit, :update]
+  before_action only:[:destroy, :edit, :update] {valid_comment_action(params[:id])}
+
 
   def index
-    @comments = Comment.all
+    if is_admin
+      @comments = Comment.all
+    else
+      redirect_to root_path, notice: "Action not allowed"
+    end
   end
 
 
   def destroy
     @comment.destroy
     flash[:success] = "Comment deleted"
-    redirect_to comments_url
+    #redirect_to project_path(session[:project_id])
+    #redirect_to :back
+    redirect_back(fallback_location: root_path)
   end
 
   def create

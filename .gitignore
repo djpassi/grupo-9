@@ -32,3 +32,5 @@ public/assets
 
 node_modules
 npm-debug.log
+
+/public/system

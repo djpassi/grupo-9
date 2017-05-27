@@ -1,6 +1,7 @@
 class HomeController < ApplicationController
 
-  def index
-  end
+  include Secured
+
+  def index;end
 
 end
