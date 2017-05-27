@@ -5,4 +5,12 @@ class ExampleMailerPreview < ActionMailer::Preview
     ExampleMailer.sample_email(User.first)
   end
 
+  def register_email_preview
+    ExampleMailer.register_email(User.last)
+  end
+
+  def donation_email_investor_preview
+    ExampleMailer.donation_email_investor(User.last,Project.last,Investment.last)
+  end
+
 end

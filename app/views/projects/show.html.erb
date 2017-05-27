@@ -68,7 +68,8 @@
         <th class="project-table-header">User</th>
         <th class="project-table-header">Amount</th>
         <% if is_admin %>
-          <th class="project-table-header">Delete investment</th>
+          <th class="project-table-header">Edit</th>
+          <th class="project-table-header">Delete </th>
         <% end %>
       </tr>
         <% @project.investments.each do |x| %>
@@ -77,7 +78,8 @@
           <td class="project-table-data">  <%= link_to @user.first_name+' '+@user.last_name, @user %> </td>
           <td class="project-table-data">  <%= x.amount %> </td>
           <% if is_admin %>
-            <td class="project-table-data">  <%= link_to 'Delete investment', delete_investment_path(x.id) ,method: :delete , data: {confirm:"are you sure?"}  %> </td>
+            <td class="project-table-data"> <%= link_to 'Edit',edit_investment_path(x.id) %> </td>
+            <td class="project-table-data">  <%= link_to 'Delete', delete_investment_path(x.id) ,method: :delete , data: {confirm:"are you sure?"}  %> </td>
           <% end %>
         </tr>
         <% end %>

@@ -6,7 +6,7 @@ class UsersController < ApplicationController
 
   before_action :set_user, only: [:show, :destroy, :edit, :update]
   before_action :logged_in?, only: [:destroy, :edit, :update]
-  before_action only:[:destroy, :edit, :update] {valid_action(:id)} 
+  before_action only:[:destroy, :edit, :update] {valid_action(params[:id].to_i)} 
 
   def new
     @user = User.new
@@ -27,7 +27,8 @@ class UsersController < ApplicationController
   def destroy
     @user.destroy
     flash[:success] = "User deleted"
-    redirect_to users_url
+    reset_session
+    redirect_to root_path
   end
 
   def create
@@ -37,6 +38,7 @@ class UsersController < ApplicationController
     respond_to do |format|
      if @user.save
        format.html do
+         ExampleMailer.register_email(@user).deliver_later
          redirect_to '/users/new', notice: 'User was successfully created.'
        end
        #format.json { render :show, status: :created, location: @user }

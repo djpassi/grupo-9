@@ -1,6 +1,10 @@
 class ProjectsController < ApplicationController
 
+  include Secured
+
   before_action :set_project, only: [:show, :destroy, :edit, :update, :new_comment]
+  before_action :logged_in?, only: [:destroy, :edit, :update, :create, :new]
+  before_action only: [:destroy, :update, :edit] {valid_action(Investment.find_by(id:params[:id]).try(:user_id))} 
 
 
   def new
@@ -25,6 +29,7 @@ class ProjectsController < ApplicationController
     @comment = Comment.new
     @investment = Investment.new
     session[:project_id] = params[:id]
+    @back_url = session[:my_previous_url]
   end
 
   def update

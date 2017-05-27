@@ -22,7 +22,7 @@
 
 <% if is_valid(@user.id) %>
 <div class="user-action" id="user-edit">
-  <h4> <%= link_to 'Edit information', edit_user_path(@user) %> </h4>
+  <h4> <%= link_to 'Edit information', edit_user_path(@user.id) %> </h4>
 </div>
 <div class="user-action" id="user-delete">
   <h4> <%= link_to 'Delete user',@user, method: :delete, data: { confirm: "Are you sure?" } %> </h4>
