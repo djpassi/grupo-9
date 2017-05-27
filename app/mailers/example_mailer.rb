@@ -17,4 +17,10 @@ class ExampleMailer < ActionMailer::Base
      mail(subject: 'Thanks for donating in '+@project.name,to: @investor.email)
    end
 
+   def donation_email_owner(owner, project, investment)
+     @owner = owner
+     @project = project
+     @investment = investment
+     mail(subject: 'Hey! You have a new donation for '+@project.name,to: @owner.email)
+   end
 end

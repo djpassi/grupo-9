@@ -32,7 +32,11 @@ class InvestmentsController < ApplicationController
       respond_to do |format|
       if @investment.save
         format.html do
-          ExampleMailer.donation_email_investor(User.find(@investment.user_id),Project.find(@investment.project_id), @investment).deliver_later
+          project = Project.find(@investment.project_id)
+          owner = User.find(project.user_id)
+          investor = User.find(@investment.user_id)
+          ExampleMailer.donation_email_owner(owner,project, @investment).deliver_later
+          ExampleMailer.donation_email_investor(investor,project, @investment).deliver_later
           redirect_to project_path(@investment.project_id), notice: 'Investment was successfully created.'
         end
       else
