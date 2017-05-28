@@ -80,10 +80,7 @@
     <span class="goal-number">$<%= @project.current%></span>
     <span class="goal-label">Raised</span>
   </div>
-  <div class="goal-stat">
-    <span class="goal-number"><div id="countdown"></div></span>
-    <span class="goal-label">Days to Go</span>
-  </div>
+
   <div class="goal-stat">
     <span class="goal-number"><%= Investment.where(:project_id =>@project.id).count%></span>
     <span class="goal-label">Sponsors</span>
@@ -159,6 +156,3 @@
 
 
 </section>
-
-
-<%= link_to 'Back', projects_path %>

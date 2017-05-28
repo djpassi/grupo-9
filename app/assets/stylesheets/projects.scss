@@ -30,7 +30,7 @@ body {
 #goal {
   font-size: 48px;
   text-align: right;
-  color: #FFF;
+  color: black;
   @media only screen and (max-width : 640px) {
     text-align: center;
   }
@@ -60,7 +60,7 @@ body {
   padding: 10px;
   float: left;
   margin: 0;
-  color: #FFF;
+  color: black;
 
   @media only screen and (max-width : 640px) {
     width: 50%;
