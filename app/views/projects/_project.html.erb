@@ -1,6 +1,10 @@
 <% project[:projects].each do |project| %>
 <a href="/projects/<%=project.id%>" class="project-square">
-<img src="/images/placeholder-project.jpg">
+  <%if project.photo.blank? %>
+     <img src="/images/placeholder-project.jpg" >
+  <% else %>
+    <img src="<%= project.photo.url %>" >
+  <% end %>
 <h3 id="project-name"> <%= project.name %></h3>
 <p id="project-owner">Owner: <%= User.find(project.user_id).first_name %></p>
 <p id="project-goal">Goal: <%= project.goal %></p>
