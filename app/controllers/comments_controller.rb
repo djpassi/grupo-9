@@ -13,6 +13,10 @@ class CommentsController < ApplicationController
     end
   end
 
+  def edit
+    @project_id = session[:project_id]
+  end
+
 
   def destroy
     @comment.destroy
@@ -42,7 +46,7 @@ class CommentsController < ApplicationController
     respond_to do |format|
        if @comment.update(comment_params)
          format.html do
-           redirect_to @comment, notice: 'Comment was successfully updated.'
+           redirect_to project_path(session[:project_id]), notice: 'Comment was successfully created.'
          end
          format.json { render :show, status: :ok, location: @comment }
        else

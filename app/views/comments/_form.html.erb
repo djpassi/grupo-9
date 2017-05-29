@@ -12,8 +12,6 @@
       </ul>
     </div>
   <% end %>
-<%= x.label :project_id %>
-<%= select(:comment, :project_id, Project.all.collect {|p| [ p.name, p.id ] }, {include_blank: true}, {:class => "input_form_for"}) %>
 
 <br>
 <%= x.label :content %>

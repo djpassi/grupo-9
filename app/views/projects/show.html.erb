@@ -6,8 +6,13 @@
 <section class="project-profile">
 
   <div class="project-image">
-    <%= image_tag("/images/placeholder-project.jpg", :size => "300x300") %>
+    <%if @project.photo.blank? %>
+      <%= image_tag("/images/placeholder-project.jpg", :size => "300x300") %>
+    <% else %>
+      <%= image_tag @project.photo.url, :size => "300x300" %>
+    <% end %>
   </div>
+
   <div class="project-information">
     <br />
     <p> <b> Project name:</b> <%= @project.name %> </p>
@@ -16,9 +21,6 @@
     <br />
     <p> <b>Description: </b><%= @project.description %> </p>
     <br />
-    <p> <b>Goal:</b> <%= @project.goal %> </p>
-    <br />
-
     <p> <b>Limit Date:</b> <%= @project.limit_date %> </p>
 
 
@@ -39,7 +41,7 @@
 
     <%= form_for @investment, url: create_investment_path do |f| %>
       <h2 class = "donate-header" > Donate! </h2>
-      <%= f.number_field :amount, min: '1', required: true, :class => "donate-field"  %>
+      <%= f.number_field :amount, min: '1', required: true, :class => "donate-field",max:'1000000'  %>
       <br>
       <div class='submit-form'>
         <%= f.submit "Donate", class: "submit_form_for"%>

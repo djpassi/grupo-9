@@ -17,7 +17,7 @@
 <%= f.text_field :last_name, required: true, class: 'input_form_for' %>
 <br>
 <%= f.label :email %>
-<%= f.text_field :email, required: true, class: 'input_form_for', type: 'email' %>
+<%= f.text_field :email, required: true, class: 'input_form_for', type: 'email',:pattern => '[^@]+@[^@]+\.[a-zA-Z]{2,6}' %>
 <br>
 <%= f.label :password%>
 <%= f.password_field :password, required: true, class: 'input_form_for', minlength: 6 %>

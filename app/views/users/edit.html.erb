@@ -20,7 +20,7 @@
 <%= f.text_field :last_name, required: true, class: 'input_form_for' %>
 <br>
 <%= f.label :email %>
-<%= f.text_field :email, required: true, class: 'input_form_for', type: 'email' %>
+<%= f.text_field :email, required: true, class: 'input_form_for', type: 'email',:pattern => '[^@]+@[^@]+\.[a-zA-Z]{2,6}' %>
 <br>
 <%= f.label :description %>
 <%= f.text_area :description, class: 'input_form_for' %>
@@ -41,7 +41,6 @@
 <br>
 <%= f.label 'Photo:'%>
 <br>
-
 <%= f.file_field :photo %>
 <br>
 <%= f.submit  class: 'submit_form_for' %>

@@ -5,6 +5,9 @@ class Project < ApplicationRecord
   validates :goal, presence: true, allow_blank: false, numericality: { :greater_than => 0 }
   validates :description, presence: true, allow_blank: true
 
+  has_attached_file :photo, styles: { small: "64x64", med: "100x100", large: "300x300" }
+  validates_attachment :photo, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png"] }
+
 
   belongs_to :user
 
