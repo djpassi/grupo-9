@@ -17,6 +17,9 @@ class Project < ApplicationRecord
   has_many :investments, dependent: :delete_all
   has_many :users, through: :investments, dependent: :delete_all
 
+  has_many :associates, dependent: :delete_all
+  has_many :categories, through: :associates
+
   before_destroy :destroy_associations
 
 

@@ -1,47 +1,92 @@
-<h1> Edit User </h1>
 
-<%= form_for @user, :html => { :class => "form_for", multipart: true } do |f| %>
+<h1 id='edit-user-header'> Edit User </h1>
 
-<% if @user.errors.any? %>
-    <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+<div class='edit-user'>
 
-    <ul>
-    <% @user.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
+  <div class="tab">
+    <button class="tablinks" id='edit-info-button' data-tab="edit-info">Personal info</button>
+    <button class="tablinks defaultOpen" id='edit-categories-button' data-tab="edit-categories">Categories</button>
+  </div>
+
+
+  <div class="edit-info tabcontent">
+    <%= form_for @user, :html => { :class => "form_for", multipart: true } do |f| %>
+
+    <% if @user.errors.any? %>
+        <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+        <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
     <% end %>
-    </ul>
-<% end %>
+  <%= f.label :first_name %>
+  <%= f.text_field :first_name, required: true, class: 'input_form_for' %>
+  <br>
+  <%= f.label :last_name %>
+  <%= f.text_field :last_name, required: true, class: 'input_form_for' %>
+  <br>
+  <%= f.label :email %>
+  <%= f.text_field :email, required: true, class: 'input_form_for', type: 'email',:pattern => '[^@]+@[^@]+\.[a-zA-Z]{2,6}' %>
+  <br>
+  <%= f.label :description %>
+  <%= f.text_area :description, class: 'input_form_for' %>
+  <br>
+  <%= f.label :sex %>
+  <br>
+  <%= f.select(:sex,[['Male', 'M'], ['Female', 'F']]) %>
+  <br>
+  <%= f.label :birth_date %>
+  <br>
+  <%= f.date_field :birth_date%>
+  <br>
+  <%= f.label :password%>
+  <%= f.password_field :password, required: true, class: 'input_form_for', minlength: 6 %>
+  <br>
+  <%= f.label :password_confirmation%>
+  <%= f.password_field :password_confirmation, required: true, class: 'input_form_for', minlength: 6  %>
+  <br>
+  <%= f.label 'Photo:'%>
+  <br>
+  <%= f.file_field :photo %>
+  <br>
+  <%= f.submit  class: 'submit_form_for' %>
+  <% end %>
+
+  </div>
+
+  <div class="edit-categories tabcontent">
+    <form action="/categories" method="post">
+
+    <table>
+      <thead>
+        <tr>
+          <th>Category</th>
+          <th>Choose</th>
+          <th></th>
+        </tr>
+      </thead>
+      <%user_cat = @user.categories%>
+      <% @categories.each do |category| %>
+
+        <tr>
+        <td><%= category.name%></td>
+        <td><input type="checkbox" name="categories_selected[]" value="<%= category.id%>" <%= 'checked' if user_cat.exists?(id: category.id)%>> <br></td>
 
 
-<%= f.label :first_name %>
-<%= f.text_field :first_name, required: true, class: 'input_form_for' %>
-<br>
-<%= f.label :last_name %>
-<%= f.text_field :last_name, required: true, class: 'input_form_for' %>
-<br>
-<%= f.label :email %>
-<%= f.text_field :email, required: true, class: 'input_form_for', type: 'email',:pattern => '[^@]+@[^@]+\.[a-zA-Z]{2,6}' %>
-<br>
-<%= f.label :description %>
-<%= f.text_area :description, class: 'input_form_for' %>
-<br>
-<%= f.label :sex %>
-<br>
-<%= f.select(:sex,[['Male', 'M'], ['Female', 'F']]) %>
-<br>
-<%= f.label :birth_date %>
-<br>
-<%= f.date_field :birth_date%>
-<br>
-<%= f.label :password%>
-<%= f.password_field :password, required: true, class: 'input_form_for', minlength: 6 %>
-<br>
-<%= f.label :password_confirmation%>
-<%= f.password_field :password_confirmation, required: true, class: 'input_form_for', minlength: 6  %>
-<br>
-<%= f.label 'Photo:'%>
-<br>
-<%= f.file_field :photo %>
-<br>
-<%= f.submit  class: 'submit_form_for' %>
-<% end %>
+      </tr>
+
+
+      <%end%>
+    </table>
+    <input type="submit" value="Submit">
+    </form>
+
+
+
+
+
+
+  </div>
+</div>

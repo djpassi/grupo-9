@@ -1,18 +1,20 @@
 class UsersController < ApplicationController
 
-  include Secured 
+  include Secured
 
   helper_method :valid_action
 
   before_action :set_user, only: [:show, :destroy, :edit, :update]
   before_action :logged_in?, only: [:destroy, :edit, :update]
-  before_action only:[:destroy, :edit, :update] {valid_action(params[:id].to_i)} 
+  before_action only:[:destroy, :edit, :update] {valid_action(params[:id].to_i)}
 
   def new
     @user = User.new
   end
 
-  def edit; end
+  def edit;
+    @categories = Category.all
+  end
 
   def index
       if is_admin
@@ -22,13 +24,16 @@ class UsersController < ApplicationController
       end
   end
 
+  def edit_categories
+  end
+
   def show; end
 
   def destroy
     if is_admin
       @user.destroy
       redirect_to '/users'
-    else 
+    else
       @user.destroy
       flash[:success] = "User deleted"
       reset_session
@@ -78,7 +83,8 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:first_name, :last_name, :email,
-     :password,:description,:sex, :birth_date, :password_confirmation,:photo)
+     :password,:description,:sex, :birth_date, :password_confirmation,:photo,
+     :categories)
   end
 
 
