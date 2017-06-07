@@ -1,5 +1,5 @@
 class Investment < ApplicationRecord
-  validates :amount, presence: true, allow_blank: false, :numericality => { :greater_than => 0}
+  validates :amount, presence: true, allow_blank: false, :numericality => { greater_than: 0, less_than: 1000000}
   validates :user_id, presence: true
   validates :project_id, presence: true
 

@@ -27,6 +27,7 @@
 <br>
 <%= f.text_field :goal, required: true, class: 'input_form_for', type: 'number', min:'1' %>
 <br>
-
+<%= f.file_field :photo %>
+<br>
 <%= f.submit  class: 'submit_form_for' %>
 <% end %>
