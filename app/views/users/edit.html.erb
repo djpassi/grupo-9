@@ -56,9 +56,19 @@
 
   </div>
 
-  <div class="edit-categories tabcontent">
-    <form action="/categories" method="post">
 
+
+
+
+
+
+
+
+
+
+  <div class="edit-categories tabcontent">
+
+  
     <table>
       <thead>
         <tr>
@@ -67,26 +77,18 @@
           <th></th>
         </tr>
       </thead>
-      <%user_cat = @user.categories%>
-      <% @categories.each do |category| %>
-
+      <tbody>
+      <%= form_for @user, url: {action: "edit_categories", method:'patch'} do |f|%>
+       <% @categories.each do |category| %>
         <tr>
-        <td><%= category.name%></td>
-        <td><input type="checkbox" name="categories_selected[]" value="<%= category.id%>" <%= 'checked' if user_cat.exists?(id: category.id)%>> <br></td>
-
-
-      </tr>
-
-
+        <td> <%= category.name %> <%= check_box_tag "categories[]", category.name, is_checked?(category)%>  </td>
+        </tr>
       <%end%>
+      
+      </tbody>
     </table>
-    <input type="submit" value="Submit">
-    </form>
-
-
-
-
-
+    <%= f.button :submit%>
+    <% end %>
 
   </div>
 </div>
