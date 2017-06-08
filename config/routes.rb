@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   delete '/users/:id', to: 'users#destroy'
   get '/users/:id/edit', to: 'users#edit', as: 'edit_user'
   patch '/users/:id', to: 'users#update'
-  post 'users/:id/edit_categories', to: 'users#edit_categories'
+  patch 'users/:id/edit_categories', to: 'users#edit_categories'
 
 
   get '/projects/new', to: 'projects#new'

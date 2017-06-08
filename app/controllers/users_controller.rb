@@ -1,10 +1,11 @@
 class UsersController < ApplicationController
 
   include Secured
+  include CheckCategories
 
-  helper_method :valid_action
+  helper_method :valid_action, :is_checked?
 
-  before_action :set_user, only: [:show, :destroy, :edit, :update]
+  before_action :set_user, only: [:show, :destroy, :edit, :update, :edit_categories]
   before_action :logged_in?, only: [:destroy, :edit, :update]
   before_action only:[:destroy, :edit, :update] {valid_action(params[:id].to_i)}
 
@@ -14,6 +15,7 @@ class UsersController < ApplicationController
 
   def edit;
     @categories = Category.all
+    @user_cat = @user.categories
   end
 
   def index
@@ -25,6 +27,10 @@ class UsersController < ApplicationController
   end
 
   def edit_categories
+    @user.categories.clear
+    @user.categories << Category.where(name:params["categories"])
+    redirect_to edit_user_path(@user.id)
+
   end
 
   def show; end
