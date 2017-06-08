@@ -30,7 +30,7 @@
 
 
     <% if current_user %>
-    <%= form_for @comment, url: create_comment_path do |f|  %>
+    <%= form_for @comment,remote: true, html:{id:"comment_for"},url: create_comment_path do |f|  %>
       <h2 class = "donate-header"> Write a comment </h2>
       <%= f.text_area :content, :class => "comment-field", required: true %>
       <br>
@@ -132,13 +132,12 @@
 <% end%>
 
 
-<section>
+<section id="section-comments">
   <div class="project-header">
-
   <h1>Comments </h1>
  </div>
   <% if @project.comments.count == 0 %>
-  <div class="project-header">
+  <div class="project-header" id="no-comments">
       <p> There are no comments<p>
   </div>
   <% else %>
@@ -154,7 +153,4 @@
         </ul>
     </div>
       <% end %>
-
-
-
 </section>
