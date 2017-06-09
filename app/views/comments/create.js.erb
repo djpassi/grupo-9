@@ -7,10 +7,6 @@ if ($container.length === 0){
     $("#section-comments").append("<div class='comments-container'></div>");
     $(".comments-container").append("<ul id='comments-list' class='comments-list'></ul>")
     $container = $("#comments-list");
-    $container.append( "<li> <%= escape_javascript(render partial:'projects/comment', :object =>{:comment => @comment, :user_id =>2})%> </li> " );
 
 }
-else{
-  $container.append( "<li> <%= escape_javascript(render partial:'projects/comment', :object =>{:comment => @comment, :user_id =>2})%> </li> " );
-
-}
+$container.append( "<li> <%= escape_javascript(render partial:'projects/comment', :object =>{:comment => @comment, :user_id =>2})%> </li> " );
