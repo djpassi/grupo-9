@@ -19,11 +19,21 @@ class CommentsController < ApplicationController
 
 
   def destroy
+    comment_id = @comment.id
     @comment.destroy
     flash[:success] = "Comment deleted"
+    # redirect_back(fallback_location: root_path)
     #redirect_to project_path(session[:project_id])
     #redirect_to :back
-    redirect_back(fallback_location: root_path)
+
+    respond_to do |format|
+       format.html { redirect_back(fallback_location: root_path) }
+       format.json do
+         render json: {
+             comment_id: comment_id
+           }
+       end
+     end
   end
 
   def create
@@ -33,8 +43,8 @@ class CommentsController < ApplicationController
      if @comment.save
        format.html do
          redirect_to project_path(@comment.project_id), notice: 'Comment was successfully created.'
-       end 
-       format.js 
+       end
+       format.js
      else
        format.html { render :new, status: 422 }
        format.json { render json: @comment.errors, status: :unprocessable_entity }

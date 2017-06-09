@@ -14,10 +14,10 @@
       <%if is_valid(comment[:user_id]) || is_valid(@user.id)%>
 
       <span style="margin-left:5px"><%= link_to 'Edit', edit_comment_path(comment[:comment]) %> </span>
-      <span style="margin-left:5px"><%= link_to 'Delete', delete_comment_path(comment[:comment]) ,method: :delete , data: {confirm:"are you sure?"}  %> </span>
+      <span style="margin-left:5px"><%= link_to 'Delete', delete_comment_path(comment[:comment]) ,method: :delete ,  remote: true, data: { type: 'json', comment_id:1}  %> </span>
       <%end%>
 		</div>
-		<div class="comment-content" data-comment-id=<%=comment[:comment].id%> ><%= comment[:comment].content %> 
+		<div class="comment-content" data-comment-id=<%=comment[:comment].id%> ><%= comment[:comment].content %>
 
 </div>
 	</div>
