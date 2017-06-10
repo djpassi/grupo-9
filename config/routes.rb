@@ -39,6 +39,13 @@ Rails.application.routes.draw do
   delete '/investments/:id', to: 'investments#destroy', as:'delete_investment'
   post '/investments', to: 'investments#create', as: 'create_investment'
 
+  get '/categories', to:'categories#index'
+  get '/categories/:id/edit', to: 'categories#edit', as: 'edit_category'
+  patch '/categories/:id', to:'categories#update', as: 'update_category'
+  delete '/categories/:id', to:'categories#destroy', as: 'delete_cat'
+  post '/categories/create', to: 'categories#create'
+
+ 
 
 
   resource :session, only: [:new, :create, :destroy]

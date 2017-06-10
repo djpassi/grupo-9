@@ -13,7 +13,13 @@
         <ul id="navbar">
         <li class="<%= active_class('/') %>" id="logo" ><a href="/"><span class="quick">Quick<span class="starter">Starter</span> </span></a> </li>
         <li class="<%= active_class('/projects') %>" id='project-nav'> <%= link_to "Projects", projects_path %></li>
-        <li>
+        <% if is_admin %>
+          <li class="<%= active_class("/users") %>" id='users'> <%= link_to "Users", "/users"%></li>
+          <li class="<%= active_class("/categories") %>" id='categories'> <%= link_to "Categories", "/categories"%></li>
+        <% elsif current_user %>
+          <li class="<%= active_class(projects_new_path) %>" id='project-new'> <%= link_to "New Project", projects_new_path %></li>
+        <% end %>
+         <li>
           <%= form_tag '/projects/search', :method => 'get' do %>
            <p>
                <%= text_field_tag :search, nil,placeholder:'Busca ql' %>
@@ -21,11 +27,6 @@
            <p>
           <% end %>
         </li>
-        <% if is_admin %>
-          <li class="<%= active_class("/users") %>" id='users'> <%= link_to "Users", "/users"%></li>
-        <% elsif current_user %>
-          <li class="<%= active_class(projects_new_path) %>" id='project-new'> <%= link_to "New Project", projects_new_path %></li>
-        <% end %>
         </ul>
 
 
