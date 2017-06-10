@@ -13,6 +13,14 @@
         <ul id="navbar">
         <li class="<%= active_class('/') %>" id="logo" ><a href="/"><span class="quick">Quick<span class="starter">Starter</span> </span></a> </li>
         <li class="<%= active_class('/projects') %>" id='project-nav'> <%= link_to "Projects", projects_path %></li>
+        <li>
+          <%= form_tag '/projects/search', :method => 'get' do %>
+           <p>
+               <%= text_field_tag :search %>
+               <%= submit_tag "Buscar" %>
+           <p>
+          <% end %>
+        </li>
         <% if is_admin %>
           <li class="<%= active_class("/users") %>" id='users'> <%= link_to "Users", "/users"%></li>
         <% elsif current_user %>
@@ -37,7 +45,10 @@
           <% if (flash_message = flash[flash_type]).present? %>
               <div class="<%= flash_type %>"><%= flash_message %></div>
           <% end %>
+
         <% end %>
+
+
         <%= yield %>
     </main>
 
