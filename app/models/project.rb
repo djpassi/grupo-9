@@ -32,7 +32,6 @@ class Project < ApplicationRecord
 
      def self.search(search)
       if search
-        p Project.where('name LIKE ?', "%#{search}%")
         return Project.where('name LIKE ?', "%#{search}%")
       else
         return Project.all

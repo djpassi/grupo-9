@@ -1,6 +1,24 @@
 <h1> Quickstarter </h1>
 
+<div class="container">
+    <div id="sidebar">
+        <ul>
+          <% @categories.each do |x| %>
+            <li><a href="/projects/categories/<%= x %>"><%= x %></a></li>
 
+
+          <% end %>
+
+        </ul>
+    </div>
+    <div class="main-content">
+        <div class="swipe-area"></div>
+        <a data-toggle=".main-content" id="sidebar-toggle">
+            <span >Explore Categories</span>
+        </a>
+
+    </div>
+</div>
 <h1> Recently added projects </h1>
   <div class="projects-index">
     <%= render :partial =>'projects/project',
