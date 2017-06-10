@@ -13,6 +13,11 @@ class ProjectsController < ApplicationController
 
   def edit; end
 
+  def search
+      @projects = Project.search(params[:search])
+      redirect_to root_path
+  end
+
   def index
     @projects = Project.all
   end

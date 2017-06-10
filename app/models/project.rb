@@ -30,4 +30,13 @@ class Project < ApplicationRecord
        Comment.where(project_id: id).destroy_all
      end
 
+     def self.search(search)
+      if search
+        p Project.where('name LIKE ?', "%#{search}%")
+        return Project.where('name LIKE ?', "%#{search}%")
+      else
+        return Project.all
+      end
+     end
+
 end
