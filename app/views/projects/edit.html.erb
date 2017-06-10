@@ -1,5 +1,12 @@
 <h1> Edit Project </h1>
 
+<div class="tab">
+  <button class="tablinks defaultOpen" id='edit-info-button' data-tab="edit-info">Personal info</button>
+  <button class="tablinks" id='edit-categories-button' data-tab="edit-categories">Categories</button>
+</div>
+
+
+<div class="edit-info tabcontent">
 <%= form_for @project, :html => { :class => "form_for", multipart: true } do |f| %>
 
 <% if @project.errors.any? %>
@@ -30,4 +37,31 @@
 <%= f.file_field :photo %>
 <br>
 <%= f.submit  class: 'submit_form_for' %>
+<% end %>
+
+
+
+</div>
+
+
+<div class="edit-categories tabcontent">
+<table>
+  <thead>
+    <tr>
+      <th>Category</th>
+      <th>Choose</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+  <%= form_for @project, url: {action: "edit_categories", method:'patch'} do |f|%>
+   <% @categories.each do |category| %>
+    <tr>
+    <td> <%= category.name %> <%= check_box_tag "categories[]", category.name, is_checked_project?(category) %>  </td>
+    </tr>
+  <%end%>
+
+  </tbody>
+</table>
+<%= f.button :submit%>
 <% end %>

@@ -1,8 +1,11 @@
 class ProjectsController < ApplicationController
-
+  include CheckCategories
   include Secured
 
-  before_action :set_project, only: [:show, :destroy, :edit, :update, :new_comment]
+  helper_method :valid_action, :is_checked_project?
+
+
+  before_action :set_project, only: [:show, :destroy, :edit, :update, :new_comment, :edit_categories]
   before_action :logged_in?, only: [:destroy, :edit, :update, :create, :new]
   before_action only: [:destroy, :update, :edit] {valid_action(Project.find(params[:id])[:user_id])}
 
@@ -11,7 +14,17 @@ class ProjectsController < ApplicationController
     @project = Project.new
   end
 
-  def edit; end
+  def edit
+    @categories = Category.all
+    @project_cat = @project.categories
+  end
+
+  def edit_categories
+    @project.categories.clear
+    @project.categories << Category.where(name:params["categories"])
+    redirect_to edit_project_path(@project.id)
+
+  end
 
   def search
       @projects = Project.search(params[:search])
@@ -74,7 +87,7 @@ class ProjectsController < ApplicationController
 
   def project_params
     params.require(:project).permit(:name, :goal,
-     :description, :limit_date,:photo).merge(user_id: current_user.id)
+     :description, :limit_date,:photo,:categories).merge(user_id: current_user.id)
   end
 
 end

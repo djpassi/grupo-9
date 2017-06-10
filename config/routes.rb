@@ -20,7 +20,8 @@ Rails.application.routes.draw do
   get '/projects/:id/edit', to: 'projects#edit', as: 'edit_project'
   patch '/projects/:id', to: 'projects#update'
   delete '/projects/:id', to: 'projects#destroy'
- 
+  patch 'projects/:id/edit_categories', to: 'projects#edit_categories'
+
 
 
   #get '/comments/new', to: 'comments#new'

@@ -4,8 +4,8 @@
 <div class='edit-user'>
 
   <div class="tab">
-    <button class="tablinks" id='edit-info-button' data-tab="edit-info">Personal info</button>
-    <button class="tablinks defaultOpen" id='edit-categories-button' data-tab="edit-categories">Categories</button>
+    <button class="tablinks defaultOpen" id='edit-info-button' data-tab="edit-info">Personal info</button>
+    <button class="tablinks" id='edit-categories-button' data-tab="edit-categories">Categories</button>
   </div>
 
 
@@ -57,18 +57,9 @@
   </div>
 
 
-
-
-
-
-
-
-
-
-
   <div class="edit-categories tabcontent">
 
-  
+
     <table>
       <thead>
         <tr>
@@ -84,7 +75,7 @@
         <td> <%= category.name %> <%= check_box_tag "categories[]", category.name, is_checked?(category)%>  </td>
         </tr>
       <%end%>
-      
+
       </tbody>
     </table>
     <%= f.button :submit%>
