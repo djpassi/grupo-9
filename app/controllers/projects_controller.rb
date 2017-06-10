@@ -30,6 +30,13 @@ class ProjectsController < ApplicationController
       @projects = Project.search(params[:search])
   end
 
+  def show_categories
+      @projects = Category.find_by(name:params[:name]).projects
+      @name = params[:name]
+
+  end
+
+
   def index
     @projects = Project.all
   end

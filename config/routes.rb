@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   patch 'users/:id/edit_categories', to: 'users#edit_categories'
 
   get 'projects/search', to: 'projects#search'
+  get 'projects/categories/:name', to: 'projects#show_categories'
   get '/projects/new', to: 'projects#new'
   post '/projects', to:'projects#create'
   get '/projects', to: 'projects#index'
@@ -21,6 +22,7 @@ Rails.application.routes.draw do
   patch '/projects/:id', to: 'projects#update'
   delete '/projects/:id', to: 'projects#destroy'
   patch 'projects/:id/edit_categories', to: 'projects#edit_categories'
+
 
 
 
