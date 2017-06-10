@@ -15,7 +15,6 @@ class ProjectsController < ApplicationController
 
   def search
       @projects = Project.search(params[:search])
-      redirect_to root_path
   end
 
   def index
