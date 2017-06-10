@@ -39,7 +39,7 @@
       </div>
     <% end %>
 
-    <%= form_for @investment, url: create_investment_path do |f| %>
+    <%= form_for @investment,remote: true, html:{id:"investment_for"}, url: create_investment_path do |f| %>
       <h2 class = "donate-header" > Donate! </h2>
       <%= f.number_field :amount, min: '1', required: true, :class => "donate-field",max:'1000000'  %>
       <br>
@@ -79,7 +79,7 @@
     <span class="goal-label">Funded</span>
   </div>
   <div class="goal-stat">
-    <span class="goal-number">$<%= @project.current%></span>
+    <span class="goal-number" id='current'><%= @project.current%></span>
     <span class="goal-label">Raised</span>
   </div>
 

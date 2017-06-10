@@ -39,6 +39,7 @@ class InvestmentsController < ApplicationController
           ExampleMailer.donation_email_investor(investor,project, @investment).deliver_later
           redirect_to project_path(@investment.project_id), notice: 'Investment was successfully created.'
         end
+        format.js
       else
         format.html { render :new, status: 422 }
         format.json { render json: @investment.errors, status: :unprocessable_entity }
