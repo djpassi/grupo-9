@@ -10,8 +10,10 @@ Rails.application.routes.draw do
   delete '/users/:id', to: 'users#destroy'
   get '/users/:id/edit', to: 'users#edit', as: 'edit_user'
   patch '/users/:id', to: 'users#update'
+  patch 'users/:id/edit_categories', to: 'users#edit_categories'
 
-
+  get 'projects/search', to: 'projects#search'
+  get 'projects/categories/:name', to: 'projects#show_categories'
   get '/projects/new', to: 'projects#new'
   post '/projects', to:'projects#create'
   get '/projects', to: 'projects#index'
@@ -19,6 +21,9 @@ Rails.application.routes.draw do
   get '/projects/:id/edit', to: 'projects#edit', as: 'edit_project'
   patch '/projects/:id', to: 'projects#update'
   delete '/projects/:id', to: 'projects#destroy'
+  patch 'projects/:id/edit_categories', to: 'projects#edit_categories'
+
+
 
 
   #get '/comments/new', to: 'comments#new'
@@ -36,7 +41,7 @@ Rails.application.routes.draw do
   patch '/investments/:id', to: 'investments#update', as:'update_investment'
   delete '/investments/:id', to: 'investments#destroy', as:'delete_investment'
   post '/investments', to: 'investments#create', as: 'create_investment'
-  
+
 
 
   resource :session, only: [:new, :create, :destroy]

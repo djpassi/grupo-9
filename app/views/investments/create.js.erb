@@ -1,0 +1,7 @@
+var current = $('#current').text();
+var amount = <%= @investment.amount %>;
+var actual = +(current)+(+(amount));
+//var goal = parseFloat();
+console.log('hola');
+$('#current').text(actual);
+console.log(+(actual)/+($('#goal')));

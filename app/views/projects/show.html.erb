@@ -30,7 +30,7 @@
 
 
     <% if current_user %>
-    <%= form_for @comment, url: create_comment_path do |f|  %>
+    <%= form_for @comment,remote: true, html:{id:"comment_for"},url: create_comment_path do |f|  %>
       <h2 class = "donate-header"> Write a comment </h2>
       <%= f.text_area :content, :class => "comment-field", required: true %>
       <br>
@@ -39,7 +39,7 @@
       </div>
     <% end %>
 
-    <%= form_for @investment, url: create_investment_path do |f| %>
+    <%= form_for @investment,remote: true, html:{id:"investment_for"}, url: create_investment_path do |f| %>
       <h2 class = "donate-header" > Donate! </h2>
       <%= f.number_field :amount, min: '1', required: true, :class => "donate-field",max:'1000000'  %>
       <br>
@@ -79,7 +79,7 @@
     <span class="goal-label">Funded</span>
   </div>
   <div class="goal-stat">
-    <span class="goal-number">$<%= @project.current%></span>
+    <span class="goal-number" id='current'><%= @project.current%></span>
     <span class="goal-label">Raised</span>
   </div>
 
@@ -132,13 +132,12 @@
 <% end%>
 
 
-<section>
+<section id="section-comments">
   <div class="project-header">
-
   <h1>Comments </h1>
  </div>
   <% if @project.comments.count == 0 %>
-  <div class="project-header">
+  <div class="project-header" id="no-comments">
       <p> There are no comments<p>
   </div>
   <% else %>
@@ -154,7 +153,4 @@
         </ul>
     </div>
       <% end %>
-
-
-
 </section>
