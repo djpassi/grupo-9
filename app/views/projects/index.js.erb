@@ -1,0 +1,3 @@
+$('.projects-index').empty();
+$('.projects-index').append( "<%= escape_javascript(render partial:'projects/project', :object =>{ :projects => @projects})%>");
+
