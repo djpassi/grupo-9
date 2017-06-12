@@ -19,6 +19,7 @@ class HomeController < ApplicationController
         @projects = nil
       end
     end
+
   end
 
 end
