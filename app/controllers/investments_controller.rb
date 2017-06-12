@@ -29,7 +29,7 @@ class InvestmentsController < ApplicationController
 
   def create
       project = Project.find(investment_params[:project_id])
-      if project.goal > project.current && project.goal < project.current.to_i + investment_params[:amount].to_i
+      if project.goal < project.current + investment_params[:amount].to_i
         owner = project.user_id
         ExampleMailer.goal_reach_investor(owner,project).deliver_later
         project.investments.pluck(:user_id).uniq.each do |user_id|
