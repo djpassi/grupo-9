@@ -46,6 +46,9 @@
       <div class='submit-form'>
         <%= f.submit "Donate", class: "submit_form_for"%>
       </div>
+      <div class='donation-thanks'>
+        <p>Thanks for donating!</p>
+      </div>
     <% end %>
     <% end %>
   </div>
@@ -71,11 +74,11 @@
 <div id=countdown-wrap>
   <div id="goal">$<%= @project.goal%></div>
   <div id="glass">
-    <div id="progress" style="width: <%=(@project.current.to_f/@project.goal.to_f).round(1)*100 %>%;">
+    <div id="progress" style="width: <%=((@project.current.to_f/@project.goal.to_f).round(2)*100).to_i %>%;">
     </div>
   </div>
   <div class="goal-stat">
-    <span class="goal-number"><%=(@project.current.to_f/@project.goal.to_f).round(1)*100 %>%</span>
+    <span class="goal-number" id='current-percent'><%=((@project.current.to_f/@project.goal.to_f).round(2)*100).to_i %>%</span>
     <span class="goal-label">Funded</span>
   </div>
   <div class="goal-stat">
@@ -84,7 +87,7 @@
   </div>
 
   <div class="goal-stat">
-    <span class="goal-number"><%= Investment.where(:project_id =>@project.id).count%></span>
+    <span class="goal-number" id='current-sponsors'><%= Investment.where(:project_id =>@project.id).count%></span>
     <span class="goal-label">Sponsors</span>
   </div>
 </div>
