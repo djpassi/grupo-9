@@ -35,7 +35,7 @@
   <div class="modal-content">
     <span class="close">&times;</span>
 
-    <h1>Please Login</h1>
+    <h1 class="modal-header">Please Login</h1>
   <%= form_for :session,:html => { :class => "form_for"}, url: session_path do |f| %>
 
       <%= f.label :email %>
@@ -48,7 +48,7 @@
 
 <% end %>
 
-<h1> Or create an account <%= link_to "Here", '/users/new' %> </h1>
+<h1 class="modal-header"> Or create an account <%= link_to "Here", '/users/new' %> </h1>
 
   </div>
 

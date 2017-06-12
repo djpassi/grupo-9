@@ -1,5 +1,9 @@
-<h1> Recently added projects </h1>
-  <div class="projects-index">
+
+
+  <h1 class="home-header"> Recently added projects </h1>
+
+
+<div class="projects-index">
     <%= render :partial =>'projects/project',
       :object =>{:projects => Project.order(:created_at).last(10).reverse.each} %>
 
