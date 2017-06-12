@@ -2,9 +2,24 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
+.edit-categories{
+  text-align: center;
+
+}
+.cat-table{
+  margin-left: auto;
+  margin-right: auto;
+  td{
+    text-align: left;
+  }
+}
+#cat-submit{
+  width: 200px;
+}
+
 .submit_form_for{
 	border-radius: 15px 15px 15px 15px;
-
 
 }
 
@@ -183,6 +198,11 @@ body {
   text-align: center;
 }
 
+.donation-thanks{
+  text-align: center;
+  visibility: hidden;
+}
+
 
 .submit-form{
   margin-left:25%;
@@ -261,6 +281,7 @@ th.project-table-header {
   padding: 0px;
   margin: 0px;
 }
+
 
 .modal {
     display: none; 
@@ -348,3 +369,4 @@ th.project-table-header {
     height: 1%; }
   *:first-child + html .digg_pagination {
     overflow: hidden; }
+

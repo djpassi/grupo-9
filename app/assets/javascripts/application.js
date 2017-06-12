@@ -15,5 +15,11 @@
 //= require turbolinks
 //= require_tree .
 
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+}
 
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+}
 

@@ -1,8 +1,17 @@
 var current = $('#current').text();
 var amount = <%= @investment.amount %>;
 var actual = +(current)+(+(amount));
-//var goal = parseFloat();
-console.log('hola');
+var goal = +($('#goal').text().replace('$',''));
+var current_sponsors = $('#current-sponsors').text();
 $('#current').text(actual);
+
 console.log(+(actual)/+($('#goal')));
+
+var percent = (+(actual)/goal)*100;
+$('#current-percent').text(parseInt(percent)+'%')
+$('#progress').css("width", parseInt(percent)+"%");
+$('#current-sponsors').text(+current_sponsors+1);
+$('.donate-field').val('');
+$('.donation-thanks').css('visibility','visible');
 $("#investment_amount").val("");
+

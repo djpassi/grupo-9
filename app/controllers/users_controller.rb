@@ -29,8 +29,8 @@ class UsersController < ApplicationController
   def edit_categories
     @user.categories.clear
     @user.categories << Category.where(name:params["categories"])
+    flash[:success] = "Categories updated"
     redirect_to edit_user_path(@user.id)
-
   end
 
   def show; end
