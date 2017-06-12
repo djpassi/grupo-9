@@ -14,6 +14,14 @@
  *= require_self
  */
 
+ #home-title{
+   margin-top: 10px;
+
+ }
+ 
+ img{
+   box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19) !important;
+ }
 
  #Navbar {
    list-style-type: none;
@@ -165,13 +173,13 @@
  }
 
 
+
  .comments-list .comment-avatar {
  	width: 65px;
  	height: 65px;
  	position: relative;
  	z-index: 99;
  	float: left;
- 	border: 3px solid #FFF;
  	-webkit-border-radius: 4px;
  	-moz-border-radius: 4px;
  	border-radius: 4px;

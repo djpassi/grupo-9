@@ -37,19 +37,25 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @comment = Comment.new(comment_params)
 
-    respond_to do |format|
-     if @comment.save
-       format.html do
-         redirect_to project_path(@comment.project_id), notice: 'Comment was successfully created.'
-       end
-       format.js
-     else
-       format.html { render :new, status: 422 }
-       format.json { render json: @comment.errors, status: :unprocessable_entity }
+    if current_user
+      @comment = Comment.new(comment_params)
+
+      respond_to do |format|
+       if @comment.save
+         format.html do
+          redirect_to project_path(@comment.project_id), notice: 'Comment was successfully created.'
+        end
+        format.js
+      else
+         format.html { render :new, status: 422 }
+        format.json { render json: @comment.errors, status: :unprocessable_entity }
      end
    end
+  else
+    
+  end
+  
   end
 
 

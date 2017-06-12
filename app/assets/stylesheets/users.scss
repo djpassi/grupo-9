@@ -2,6 +2,25 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
+
+
+.edit-categories{
+  text-align: center;
+
+}
+.cat-table{
+  margin-left: auto;
+  margin-right: auto;
+  td{
+    text-align: left;
+  }
+}
+#cat-submit{
+  width: 200px;
+}
+
+
 #edit-user-header{
   margin-left: 45%;
 
@@ -122,4 +141,9 @@ div.tab button.active {
     padding: 6px 12px;
     border: 1px solid #ccc;
     border-top: none;
+}
+
+
+.new-user-header{
+    text-align:center;
 }

@@ -6,6 +6,8 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+
   </head>
 
   <body>
@@ -53,6 +55,9 @@
 
         <div id="mySidenav" class="sidenav">
           <ul>
+            <li><div class='sidenav-tittle'>Categories</div></li>
+
+
             <% Category.all.pluck(:name).each do |x| %>
               <li><a href="/projects/categories/<%= x %>"><%= x %></a></li>
 

@@ -1,7 +1,7 @@
 <% project[:projects].each do |project| %>
 <a href="/projects/<%=project.id%>" class="project-square">
   <%if project.photo.blank? %>
-     <img src="/images/placeholder-project.jpg" >
+     <img class='project-image' src="/images/placeholder-project.jpg" >
   <% else %>
     <img src="<%= project.photo.url %>" >
   <% end %>

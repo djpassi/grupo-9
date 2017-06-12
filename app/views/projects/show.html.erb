@@ -25,17 +25,46 @@
 
 
   </div>
+  
+
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+
+    <h1 class="modal-header">Please Login</h1>
+  <%= form_for :session,:html => { :class => "form_for"}, url: session_path do |f| %>
+
+      <%= f.label :email %>
+      <%= f.text_field :email, class: 'input_form_for', required: true, :pattern => '[^@]+@[^@]+\.[a-zA-Z]{2,6}' %>
+      <br>
+      <%= f.label :password %>
+      <%= f.password_field :password, class: 'input_form_for', required: true,minlength: 6 %>
+      <br>
+      <%= f.submit 'Login',  class: 'submit_form_for'%> 
+
+<% end %>
+
+<h1 class="modal-header"> Or create an account <%= link_to "Here", '/users/new' %> </h1>
+
+  </div>
+
+</div>
+
+
+
 
   <div class="project-action-box">
 
-
-    <% if current_user %>
     <%= form_for @comment,remote: true, html:{id:"comment_for"},url: create_comment_path do |f|  %>
       <h2 class = "donate-header"> Write a comment </h2>
       <%= f.text_area :content, :class => "comment-field", required: true %>
       <br>
       <div class='submit-form'>
-      <%= f.submit "Comment", class:'submit_form_for'  %>
+      <%= f.submit "Comment", class:['submit_form_for'], id:"aux"%>
       </div>
     <% end %>
 
@@ -44,12 +73,17 @@
       <%= f.number_field :amount, min: '1', required: true, :class => "donate-field",max:'1000000'  %>
       <br>
       <div class='submit-form'>
-        <%= f.submit "Donate", class: "submit_form_for"%>
+        <%= f.submit "Donate", class: ["submit_form_for"], id:"aux1" %>
       </div>
-    <% end %>
+      <div class='donation-thanks'>
+        <p>Thanks for donating!</p>
+      </div>
     <% end %>
   </div>
 </section>
+
+
+
 
 <% if is_admin %>
 <div class="project-action" id="project-edit">
@@ -71,11 +105,11 @@
 <div id=countdown-wrap>
   <div id="goal">$<%= @project.goal%></div>
   <div id="glass">
-    <div id="progress" style="width: <%=(@project.current.to_f/@project.goal.to_f).round(1)*100 %>%;">
+    <div id="progress" style="width: <%=((@project.current.to_f/@project.goal.to_f).round(2)*100).to_i %>%;">
     </div>
   </div>
   <div class="goal-stat">
-    <span class="goal-number"><%=(@project.current.to_f/@project.goal.to_f).round(1)*100 %>%</span>
+    <span class="goal-number" id='current-percent'><%=((@project.current.to_f/@project.goal.to_f).round(2)*100).to_i %>%</span>
     <span class="goal-label">Funded</span>
   </div>
   <div class="goal-stat">
@@ -84,7 +118,7 @@
   </div>
 
   <div class="goal-stat">
-    <span class="goal-number"><%= Investment.where(:project_id =>@project.id).count%></span>
+    <span class="goal-number" id='current-sponsors'><%= Investment.where(:project_id =>@project.id).count%></span>
     <span class="goal-label">Sponsors</span>
   </div>
 </div>
@@ -154,3 +188,32 @@
     </div>
       <% end %>
 </section>
+
+<script>
+
+<% if !current_user%>
+
+  var modal = document.getElementById("myModal");
+  var btn = document.getElementById("aux");
+  var btn1 = document.getElementById("aux1");
+  var span = document.getElementsByClassName("close")[0];
+  btn.onclick = function() {
+    modal.style.display = "block";
+  }
+
+  btn1.onclick = function() {
+    modal.style.display = "block";
+  }
+
+  span.onclick = function() {
+    modal.style.display = "none";
+  }
+
+  window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+<%end%>
+
+</script>
