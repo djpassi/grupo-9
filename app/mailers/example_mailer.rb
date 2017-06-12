@@ -23,4 +23,19 @@ class ExampleMailer < ActionMailer::Base
      @investment = investment
      mail(subject: 'Hey! You have a new donation for '+@project.name,to: @owner.email)
    end
+
+   def goal_reach_investor(investor, project)
+     @project = project
+     @investor = investor
+     mail(subject: 'Hey! '+@project.name + ' had reached the goal!',to: @investor.email)
+   end
+
+   def goal_reach_owner(owner, project)
+     @project = project
+     @owner = owner
+     mail(subject: 'Hey! Your project '+@project.name + ' had reached the goal!',to: @owner.email)
+   end
+
+
+
 end

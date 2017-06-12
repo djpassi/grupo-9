@@ -28,15 +28,26 @@ class InvestmentsController < ApplicationController
 
 
   def create
+      project = Project.find(investment_params[:project_id])
+      if project.goal > project.current && project.goal < project.current.to_i + investment_params[:amount].to_i
+        owner = project.user_id
+        ExampleMailer.goal_reach_investor(owner,project).deliver_later
+        project.investments.pluck(:user_id).uniq.each do |user_id|
+          investor = User.find(user_id)
+          ExampleMailer.goal_reach_investor(investor,project).deliver_later
+        end
+      end
+
       @investment = Investment.new(investment_params)
+
       respond_to do |format|
       if @investment.save
+        project = Project.find(@investment.project_id)
+        owner = User.find(project.user_id)
+        investor = User.find(@investment.user_id)
+        ExampleMailer.donation_email_owner(owner,project, @investment).deliver_later
+        ExampleMailer.donation_email_investor(investor,project, @investment).deliver_later
         format.html do
-          project = Project.find(@investment.project_id)
-          owner = User.find(project.user_id)
-          investor = User.find(@investment.user_id)
-          ExampleMailer.donation_email_owner(owner,project, @investment).deliver_later
-          ExampleMailer.donation_email_investor(investor,project, @investment).deliver_later
           redirect_to project_path(@investment.project_id), notice: 'Investment was successfully created.'
         end
         format.js
@@ -58,7 +69,7 @@ class InvestmentsController < ApplicationController
 
   private
 
- def set_investment
+  def set_investment
    @investment = Investment.find(params[:id])
   end
 
