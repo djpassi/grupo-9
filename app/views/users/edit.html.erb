@@ -60,25 +60,24 @@
   <div class="edit-categories tabcontent">
 
 
-    <table>
+    <table class='cat-table'>
       <thead>
         <tr>
           <th>Category</th>
-          <th>Choose</th>
-          <th></th>
         </tr>
       </thead>
       <tbody>
       <%= form_for @user, url: {action: "edit_categories", method:'patch'} do |f|%>
        <% @categories.each do |category| %>
         <tr>
-        <td> <%= category.name %> <%= check_box_tag "categories[]", category.name, is_checked?(category)%>  </td>
+        <td> <%= category.name %> </td>
+          <td><%= check_box_tag "categories[]", category.name, is_checked?(category)%>  </td>
         </tr>
       <%end%>
 
       </tbody>
     </table>
-    <%= f.button :submit%>
+    <%= f.button 'Update', class:'submit_form_for', id:'cat-submit'%>
     <% end %>
 
   </div>

@@ -45,12 +45,10 @@
 
 
 <div class="edit-categories tabcontent">
-<table>
+<table class='cat-table'>
   <thead>
     <tr>
       <th>Category</th>
-      <th>Choose</th>
-      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -63,5 +61,7 @@
 
   </tbody>
 </table>
-<%= f.button :submit%>
+<%= f.button 'Update', class:'submit_form_for', id:'cat-submit'%>
 <% end %>
+
+</div>

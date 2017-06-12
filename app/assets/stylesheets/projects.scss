@@ -2,9 +2,24 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
+.edit-categories{
+  text-align: center;
+
+}
+.cat-table{
+  margin-left: auto;
+  margin-right: auto;
+  td{
+    text-align: left;
+  }
+}
+#cat-submit{
+  width: 200px;
+}
+
 .submit_form_for{
 	border-radius: 15px 15px 15px 15px;
-
 
 }
 
