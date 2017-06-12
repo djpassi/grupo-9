@@ -15,6 +15,9 @@ class ProjectsController < ApplicationController
   end
 
   def edit
+
+    @owner = @project.user_id
+
     @categories = Category.all
     @project_cat = @project.categories
   end
@@ -23,6 +26,7 @@ class ProjectsController < ApplicationController
     @project.categories.clear
     @project.categories << Category.where(name:params["categories"])
     redirect_to edit_project_path(@project.id)
+
 
   end
 
@@ -38,7 +42,15 @@ class ProjectsController < ApplicationController
 
 
   def index
-    @projects = Project.all
+    #@projects = Projects.paginate(:per_page => 10, :page => params[:page])
+    @projects = Project.paginate(:page => params[:page], :per_page => 10)
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
+
+
   end
 
   def destroy
@@ -56,6 +68,7 @@ class ProjectsController < ApplicationController
 
   def update
     respond_to do |format|
+      @method = "update"
        if @project.update(project_params)
          format.html do
            redirect_to @project, notice: 'Project was successfully updated.'
@@ -93,8 +106,14 @@ class ProjectsController < ApplicationController
   end
 
   def project_params
-    params.require(:project).permit(:name, :goal,
-     :description, :limit_date,:photo,:categories).merge(user_id: current_user.id)
+
+      if is_admin && @method == "update"
+        params.require(:project).permit(:name, :goal,
+     :description, :limit_date,:photo)
+      else
+        params.require(:project).permit(:name, :goal,
+     :description, :limit_date,:photo).merge(user_id: current_user.id)
+      end 
   end
 
 end

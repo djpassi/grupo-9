@@ -3,3 +3,9 @@
 <div class="projects-index">
   <%= render partial: 'project', :object =>{:projects => @projects} %>
 </div>
+
+
+<div class="digg_pagination">
+    <%= paginate  @projects %>
+</div>
+
