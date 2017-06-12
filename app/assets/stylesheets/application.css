@@ -14,6 +14,11 @@
  *= require_self
  */
 
+ #home-title{
+   margin-top: 10px;
+
+ }
+ 
  img{
    box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19) !important;
  }
@@ -166,6 +171,7 @@
  	height: 0;
  	width: 0;
  }
+
 
 
  .comments-list .comment-avatar {
