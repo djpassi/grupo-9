@@ -5,7 +5,7 @@
 <section id="profile">
   <div class="profile-image">
     <%if @user.photo.blank? %>
-      <%= image_tag("/images/placeholder-user.png", :size => "300x300") %>
+      <%= image_tag("/images/placeholder-user.png", :size => "300x300", :class=>'user-image') %>
     <% else %>
       <%= image_tag @user.photo.url, :size => "300x300" %>
     <% end %>

@@ -37,9 +37,7 @@ class InvestmentsController < ApplicationController
           ExampleMailer.goal_reach_investor(investor,project).deliver_later
         end
       end
-
       @investment = Investment.new(investment_params)
-
       respond_to do |format|
       if @investment.save
         project = Project.find(@investment.project_id)
