@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
+#Seed
 Category.create(name:'Sports', description:Faker::Lorem.sentence(3))
 Category.create(name:'Education', description:Faker::Lorem.sentence(3))
 Category.create(name:'Tecnology', description:Faker::Lorem.sentence(3))
