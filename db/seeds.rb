@@ -13,6 +13,8 @@ Category.create(name:'Tecnology', description:Faker::Lorem.sentence(3))
 Category.create(name:'Social', description:Faker::Lorem.sentence(3))
 
 
+
+
 (1..50).each do |i|
   user = User.create(first_name:Faker::Name.first_name, last_name: Faker::Name.last_name ,email:Faker::Internet.unique.email ,sex:'M',password:Faker::Internet.password(8),image:Faker::Internet.url,description:Faker::Lorem.sentence(3),role:'User')
   project = Project.create(name:Faker::Company.name, description:Faker::Lorem.sentence(3), image:Faker::Internet.url, goal:Faker::Number.between(1000, 1000000), user_id:Faker::Number.between(1, i), current:0, limit_date: Faker::Date.forward(30))
