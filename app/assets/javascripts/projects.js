@@ -11,8 +11,8 @@ function GetCurrency()
     value = quotes[Object.keys(quotes)[0]];
     var current = +($('#current-usd').text());
     var goal = +($('#goal-usd').text());
-    // $('#current').text('$'+Math.round(value*current));
-    // $('#goal').text('$'+Math.round(value*goal));
+    $('#current').text('$'+Math.round(value*current));
+    $('#goal').text('$'+Math.round(value*goal));
 
     return xmlHttp.responseText;
 }
