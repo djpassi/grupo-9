@@ -37,4 +37,20 @@ module Secured
       }
     end 
   end
+
+  def valid_action_token(id)
+    if  (@current_user.try(:id) == id)
+      return true
+    else
+      render json: {
+        project:{
+          state: 'Could not be deleted.',
+          id: id
+        }
+      }
+    end
+
+  end
+
+
 end
