@@ -53,12 +53,12 @@ Rails.application.routes.draw do
 
   resource :session, only: [:new, :create, :destroy]
 
-
   namespace :api do
    namespace :v1 do
+     resources :comments, only: [:show, :create,:destroy]
+     resources :investments, only: [:create]
      resources :projects, only: [:index, :show, :create, :destroy]
      resources :users, only: [:show]
-
    end
  end
 

@@ -19,6 +19,25 @@ module Secured
     true
   end
 
+  def valid_comment_token_action(id)
+    comment = Comment.find(id)
+    user_current = @current_user.try(:id)
+    p user_current 
+    p comment.user_id
+    p Project.find(comment.project_id).user_id 
+    p (user_current == Project.find(comment.project_id).user_id || comment.user_id == user_current)
+    if (user_current == Project.find(comment.project_id).user_id || comment.user_id == user_current)
+      return true
+    else
+      render json: {
+              comment: {
+                id: comment.id,
+                state: "Could not be deleted"
+              }
+      }
+    end 
+  end
+
   def valid_action_token(id)
     if  (@current_user.try(:id) == id)
       return true
