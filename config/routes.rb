@@ -48,13 +48,15 @@ Rails.application.routes.draw do
   delete '/categories/:id', to:'categories#destroy', as: 'delete_cat'
   post '/categories/create', to: 'categories#create'
 
-
-
-
   resource :session, only: [:new, :create, :destroy]
 
   namespace :api do
    namespace :v1 do
+     get '/users/comments', to: 'users#comments', as: 'user_comments'
+     get '/users/investments', to: 'users#investments', as: 'user_investments'
+
+     get '/projects/:id/comments', to: 'projects#comments'
+
      resources :comments, only: [:show, :create,:destroy]
      resources :investments, only: [:create]
      resources :projects, only: [:index, :show, :create, :destroy]
