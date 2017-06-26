@@ -3,14 +3,11 @@ module Api::V1
     include Secured
 
     before_action :authenticate
-    before_action :set_project, only: [:show, :destroy]
-
+    before_action :set_project, only: [:show, :destroy, :comments]
     before_action only: [:destroy] {valid_action_token(Project.find(params[:id])[:user_id])}
 
+    def new; end
 
-    def new
-
-    end
     def index
       @projects = Project.all
     end
@@ -29,18 +26,19 @@ module Api::V1
           render json: { errors: @project.errors }, status: :unprocessable_entity
     end
 
+    def comments
+      @comments = @project.comments
+    end
 
     private
-
+    
     def set_project
       @project = Project.find(params[:id])
     end
 
     def project_params
         params.require(:project).permit(:name, :goal,:description, :limit_date,:photo).merge(user_id: @current_user.id)
-
     end
-
 
   end
 end

@@ -1,7 +1,7 @@
 class InvestmentsController < ApplicationController
   include Secured
 
-  before_action :logged_in?
+  before_action :logged_in?, except: [:create]
   before_action only: [:index, :destroy, :update, :edit] {valid_action(Investment.find_by(id:params[:id]).try(:user_id))}
   before_action :set_investment, only: [ :destroy, :edit, :update]
 
@@ -28,6 +28,8 @@ class InvestmentsController < ApplicationController
 
 
   def create
+     
+    if current_user
       project = Project.find(investment_params[:project_id])
       if project.goal < project.current + investment_params[:amount].to_i
         owner = project.user_id
@@ -53,6 +55,7 @@ class InvestmentsController < ApplicationController
         format.html { render :new, status: 422 }
         format.json { render json: @investment.errors, status: :unprocessable_entity }
       end
+    end
     end
   end
 
