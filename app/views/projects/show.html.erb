@@ -1,7 +1,26 @@
+
+
+
+
+
+<p id="output"></p>
+
 <% @user = User.find(@project.user_id) %>
 
 <div class="project-header">
     <h1> <%=@project.name%> </h1>
+
+    <select id="currency" onchange="GetCurrency()">
+
+      <option value="USD" selected>USD</option>
+
+
+      <% @currencies.each do |x| %>
+      <option value= <%= x %> > <%= x %></option>
+     <%end%>
+
+    </select>
+
 </div>
 <section class="project-profile">
 
@@ -25,7 +44,7 @@
 
 
   </div>
-  
+
 
 
 <!-- The Modal -->
@@ -44,7 +63,7 @@
       <%= f.label :password %>
       <%= f.password_field :password, class: 'input_form_for', required: true,minlength: 6 %>
       <br>
-      <%= f.submit 'Login',  class: 'submit_form_for'%> 
+      <%= f.submit 'Login',  class: 'submit_form_for'%>
 
 <% end %>
 
@@ -104,16 +123,23 @@
 
 <div id=countdown-wrap>
   <div id="goal">$<%= @project.goal%></div>
+  <div id="goal-usd", style="visibility: hidden"><%= @project.goal%></div>
+
   <div id="glass">
     <div id="progress" style="width: <%=((@project.current.to_f/@project.goal.to_f).round(2)*100).to_i %>%;">
     </div>
   </div>
   <div class="goal-stat">
     <span class="goal-number" id='current-percent'><%=((@project.current.to_f/@project.goal.to_f).round(2)*100).to_i %>%</span>
+
     <span class="goal-label">Funded</span>
   </div>
   <div class="goal-stat">
-    <span class="goal-number" id='current'><%= @project.current%></span>
+    <span class="goal-number" id='current'>$<%= @project.current%></span>
+    <span class="goal-number" id='current-usd', style="visibility: hidden"><%= @project.current%></span>
+
+
+
     <span class="goal-label">Raised</span>
   </div>
 
