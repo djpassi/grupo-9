@@ -6,8 +6,6 @@ json.project do
   json.limit_date @project.limit_date
   json.current @project.current
   json.user do
-    json.href api_v1_user_url(@project.user)
-
     json.email @project.user.email
     json.first_name @project.user.first_name
     json.last_name @project.user.last_name
