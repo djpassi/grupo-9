@@ -1,8 +1,10 @@
-var current = $('#current').text();
+var current = $('#current').text().replace('$','');
 var amount = <%= @investment.amount %>;
 var actual = +(current)+(+(amount));
 var goal = +($('#goal').text().replace('$',''));
 var current_sponsors = $('#current-sponsors').text();
+
+
 $('#current').text(actual);
 
 console.log(+(actual)/+($('#goal')));
@@ -14,4 +16,3 @@ $('#current-sponsors').text(+current_sponsors+1);
 $('.donate-field').val('');
 $('.donation-thanks').css('visibility','visible');
 $("#investment_amount").val("");
-
