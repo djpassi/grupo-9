@@ -4,10 +4,10 @@ module Api::V1
 
     before_action :authenticate
     before_action :set_project, only: [:show, :destroy, :comments]
-
     before_action only: [:destroy] {valid_action_token(Project.find(params[:id])[:user_id])}
 
     def new; end
+
     def index
       @projects = Project.all
     end
@@ -31,7 +31,7 @@ module Api::V1
     end
 
     private
-
+    
     def set_project
       @project = Project.find(params[:id])
     end
