@@ -27,6 +27,7 @@
 <div class="user-action" id="user-delete">
   <h4> <%= link_to 'Delete user',@user, method: :delete, data: { confirm: "Are you sure?" } %> </h4>
 </div>
+
 <% end %>
 
 
@@ -115,3 +116,7 @@
 
 
 </section>
+
+<% if is_valid(@user.id) %>
+<p id='token'> Api token: <%= @user.token %> </p>
+<% end %>
