@@ -54,7 +54,6 @@ Rails.application.routes.draw do
    namespace :v1 do
      get '/users/comments', to: 'users#comments', as: 'user_comments'
      get '/users/investments', to: 'users#investments', as: 'user_investments'
-
      get '/projects/:id/comments', to: 'projects#comments'
 
      resources :comments, only: [:show, :create,:destroy]
