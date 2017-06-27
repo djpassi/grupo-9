@@ -13,6 +13,7 @@ function GetCurrency()
     var goal = +($('#goal-usd').text());
     $('#current').text('$'+Math.round(value*current));
     $('#goal').text('$'+Math.round(value*goal));
+    $('.actual-currency').val(value);
 
     return xmlHttp.responseText;
 }
