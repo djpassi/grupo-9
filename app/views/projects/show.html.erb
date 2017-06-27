@@ -86,9 +86,10 @@
       </div>
     <% end %>
 
-    <%= form_for @investment,remote: true, html:{id:"investment_for"}, url: create_investment_path do |f| %>
+    <%= form_for @investment, remote: true, html:{id:"investment_for"}, url: create_investment_path do |f| %>
       <h2 class = "donate-header" > Donate! </h2>
       <%= f.number_field :amount, min: '1', required: true, :class => "donate-field",max:'1000000'  %>
+      <%= f.hidden_field :currency, :value => 1, :class => "actual-currency" %>⁠⁠⁠⁠
       <br>
       <div class='submit-form'>
         <%= f.submit "Donate", class: ["submit_form_for"], id:"aux1" %>
@@ -136,7 +137,6 @@
   <div class="goal-stat">
     <span class="goal-number" id='current'>$<%= @project.current%></span>
     <span class="goal-number" id='current-usd', style="visibility: hidden"><%= @project.current%></span>
-
 
 
     <span class="goal-label">Raised</span>
