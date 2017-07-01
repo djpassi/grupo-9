@@ -25,8 +25,14 @@ class User < ApplicationRecord
 
   before_destroy :destroy_associations
 
-   private
+  def generate_token_and_save
+    loop do
+      self.token = SecureRandom.hex(64)
+      break if save
+    end
+  end
 
+  
    private
      def destroy_associations
        Project.where(user_id: id).destroy_all

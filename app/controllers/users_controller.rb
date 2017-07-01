@@ -49,6 +49,8 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    @user.generate_token_and_save
+
     @user.role = "User"
 
     respond_to do |format|

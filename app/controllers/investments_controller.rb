@@ -1,7 +1,7 @@
 class InvestmentsController < ApplicationController
   include Secured
 
-  before_action :logged_in?
+  before_action :logged_in?, except: [:create]
   before_action only: [:index, :destroy, :update, :edit] {valid_action(Investment.find_by(id:params[:id]).try(:user_id))}
   before_action :set_investment, only: [ :destroy, :edit, :update]
 
@@ -28,8 +28,12 @@ class InvestmentsController < ApplicationController
 
 
   def create
-      project = Project.find(investment_params[:project_id])
-      if project.goal < project.current + investment_params[:amount].to_i
+    @original_amount = investment_params[:amount].to_i
+    aux_var = investment_params
+    aux_var[:amount] = investment_params[:amount].to_i/params[:investment][:currency].to_i
+    if current_user
+      project = Project.find(aux_var[:project_id])
+      if project.goal < project.current + aux_var[:amount].to_i
         owner = project.user_id
         ExampleMailer.goal_reach_investor(owner,project).deliver_later
         project.investments.pluck(:user_id).uniq.each do |user_id|
@@ -37,7 +41,7 @@ class InvestmentsController < ApplicationController
           ExampleMailer.goal_reach_investor(investor,project).deliver_later
         end
       end
-      @investment = Investment.new(investment_params)
+      @investment = Investment.new(aux_var)
       respond_to do |format|
       if @investment.save
         project = Project.find(@investment.project_id)
@@ -53,6 +57,7 @@ class InvestmentsController < ApplicationController
         format.html { render :new, status: 422 }
         format.json { render json: @investment.errors, status: :unprocessable_entity }
       end
+    end
     end
   end
 

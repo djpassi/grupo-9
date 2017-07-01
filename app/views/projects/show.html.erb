@@ -1,7 +1,26 @@
+
+
+
+
+
+<p id="output"></p>
+
 <% @user = User.find(@project.user_id) %>
 
 <div class="project-header">
     <h1> <%=@project.name%> </h1>
+
+    <select id="currency" onchange="GetCurrency()">
+
+      <option value="USD" selected>USD</option>
+
+
+      <% @currencies.each do |x| %>
+      <option value= <%= x %> > <%= x %></option>
+     <%end%>
+
+    </select>
+
 </div>
 <section class="project-profile">
 
@@ -25,7 +44,6 @@
 
 
   </div>
-  
 
 
 <!-- The Modal -->
@@ -44,7 +62,7 @@
       <%= f.label :password %>
       <%= f.password_field :password, class: 'input_form_for', required: true,minlength: 6 %>
       <br>
-      <%= f.submit 'Login',  class: 'submit_form_for'%> 
+      <%= f.submit 'Login',  class: 'submit_form_for'%>
 
 <% end %>
 
@@ -68,9 +86,10 @@
       </div>
     <% end %>
 
-    <%= form_for @investment,remote: true, html:{id:"investment_for"}, url: create_investment_path do |f| %>
+    <%= form_for @investment, remote: true, html:{id:"investment_for"}, url: create_investment_path do |f| %>
       <h2 class = "donate-header" > Donate! </h2>
       <%= f.number_field :amount, min: '1', required: true, :class => "donate-field",max:'1000000'  %>
+      <%= f.hidden_field :currency, :value => 1, :class => "actual-currency" %>⁠⁠⁠⁠
       <br>
       <div class='submit-form'>
         <%= f.submit "Donate", class: ["submit_form_for"], id:"aux1" %>
@@ -104,16 +123,22 @@
 
 <div id=countdown-wrap>
   <div id="goal">$<%= @project.goal%></div>
+  <div id="goal-usd", style="visibility: hidden"><%= @project.goal%></div>
+
   <div id="glass">
     <div id="progress" style="width: <%=((@project.current.to_f/@project.goal.to_f).round(2)*100).to_i %>%;">
     </div>
   </div>
   <div class="goal-stat">
     <span class="goal-number" id='current-percent'><%=((@project.current.to_f/@project.goal.to_f).round(2)*100).to_i %>%</span>
+
     <span class="goal-label">Funded</span>
   </div>
   <div class="goal-stat">
-    <span class="goal-number" id='current'><%= @project.current%></span>
+    <span class="goal-number" id='current'>$<%= @project.current%></span>
+    <span class="goal-number" id='current-usd', style="visibility: hidden"><%= @project.current%></span>
+
+
     <span class="goal-label">Raised</span>
   </div>
 
@@ -192,6 +217,9 @@
 <script>
 
 <% if !current_user%>
+
+  $input = $("#comment_content");
+  console.log($input.val());
 
   var modal = document.getElementById("myModal");
   var btn = document.getElementById("aux");
