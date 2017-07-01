@@ -79,7 +79,7 @@
 
     <%= form_for @comment,remote: true, html:{id:"comment_for"},url: create_comment_path do |f|  %>
       <h2 class = "donate-header"> Write a comment </h2>
-      <%= f.text_area :content, :class => "comment-field", required: true %>
+      <%= f.text_area :content, :class => "comment-field", required: true , :placeholder =>"Type your message..."%>
       <br>
       <div class='submit-form'>
       <%= f.submit "Comment", class:['submit_form_for'], id:"aux"%>
@@ -88,7 +88,7 @@
 
     <%= form_for @investment, remote: true, html:{id:"investment_for"}, url: create_investment_path do |f| %>
       <h2 class = "donate-header" > Donate! </h2>
-      <%= f.number_field :amount, min: '1', required: true, :class => "donate-field",max:'1000000'  %>
+      <%= f.number_field :amount, min: '1', required: true, :class => "donate-field",max:'1000000',:placeholder =>"1,000,000"  %>
       <%= f.hidden_field :currency, :value => 1, :class => "actual-currency" %>⁠⁠⁠⁠
       <br>
       <div class='submit-form'>
