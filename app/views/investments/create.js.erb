@@ -11,9 +11,13 @@ function GetCurrency()
     return value;
 }
 
-var current = $('#current').text().replace('$','');
+
+
+
+
+var current = $('#current').text().replace('$','').replace(',','');
 var amount = <%= @original_amount %>;
-var goal = +($('#goal').text().replace('$',''));
+var goal = +($('#goal').text().replace('$','').replace(',',''));
 var current_sponsors = $('#current-sponsors').text();
 var currency = $( "#currency" ).val();
 var current_value = GetCurrency(currency);
@@ -21,7 +25,7 @@ var actual = +(current)+(+(amount));
 
 
 
-$('#current').text(actual);
+$('#current').text('$'+actual.toLocaleString().replace('.',','));
 
 console.log(+(actual)/+($('#goal')));
 

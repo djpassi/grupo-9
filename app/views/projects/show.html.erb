@@ -122,8 +122,9 @@
 
 
 <div id=countdown-wrap>
-  <div id="goal">$<%= @project.goal%></div>
-  <div id="goal-usd", style="visibility: hidden"><%= @project.goal%></div>
+
+  <div id="goal">$<%= number_with_delimiter(@project.goal, :delimiter => ',')%></div>
+  <div id="goal-usd", style="visibility: hidden"><%= number_with_delimiter(@project.goal, :delimiter => ',')%></div>
 
   <div id="glass">
     <div id="progress" style="width: <%=((@project.current.to_f/@project.goal.to_f).round(2)*100).to_i %>%;">
@@ -135,8 +136,8 @@
     <span class="goal-label">Funded</span>
   </div>
   <div class="goal-stat">
-    <span class="goal-number" id='current'>$<%= @project.current%></span>
-    <span class="goal-number" id='current-usd', style="visibility: hidden"><%= @project.current%></span>
+    <span class="goal-number" id='current'>$<%= number_with_delimiter(@project.current, :delimiter => ',')%></span>
+    <span class="goal-number" id='current-usd', style="visibility: hidden"><%= number_with_delimiter(@project.current, :delimiter => ',')%></span>
 
 
     <span class="goal-label">Raised</span>
