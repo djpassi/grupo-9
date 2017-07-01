@@ -17,3 +17,11 @@ function GetCurrency()
 
     return xmlHttp.responseText;
 }
+
+$(document).on('turbolinks:load',function(){
+    $aux = $('#aux');
+    $aux.on('click',function(){
+        $('html,body').animate({scrollTop: document.body.scrollHeight},"slow");
+    });
+});
+

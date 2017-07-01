@@ -1,8 +1,4 @@
 
-
-
-
-
 <p id="output"></p>
 
 <% @user = User.find(@project.user_id) %>
@@ -76,15 +72,6 @@
 
 
   <div class="project-action-box">
-
-    <%= form_for @comment,remote: true, html:{id:"comment_for"},url: create_comment_path do |f|  %>
-      <h2 class = "donate-header"> Write a comment </h2>
-      <%= f.text_area :content, :class => "comment-field", required: true %>
-      <br>
-      <div class='submit-form'>
-      <%= f.submit "Comment", class:['submit_form_for'], id:"aux"%>
-      </div>
-    <% end %>
 
     <%= form_for @investment, remote: true, html:{id:"investment_for"}, url: create_investment_path do |f| %>
       <h2 class = "donate-header" > Donate! </h2>
@@ -195,6 +182,14 @@
   <div class="project-header">
   <h1>Comments </h1>
  </div>
+ <%= form_for @comment,remote: true, html:{id:"comment_for"},url: create_comment_path do |f|  %>
+      <%= f.text_area :content, :class => "comment-field", required: true,placeholder: "Comment here" %>
+      <br>
+      <div class='submit-form'>
+      <%= f.submit "Comment", class:['submit_form_for'], id:"aux"%>
+      </div>
+  <% end %>
+
   <% if @project.comments.count == 0 %>
   <div class="project-header" id="no-comments">
       <p> There are no comments<p>
