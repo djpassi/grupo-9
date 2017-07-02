@@ -9,11 +9,12 @@ function GetCurrency()
     obj = JSON.parse(xmlHttp.responseText);
     quotes = obj.quotes;
     value = quotes[Object.keys(quotes)[0]];
-    var current = +($('#current-usd').text());
-    var goal = +($('#goal-usd').text());
-    $('#current').text('$'+Math.round(value*current));
-    $('#goal').text('$'+Math.round(value*goal));
+    var current = +($('#current-usd').text().replace('$','').replace(',',''));
+    var goal = +($('#goal-usd').text().replace('$','').replace(',',''));
+    $('#current').text('$'+Math.round(value*current).toLocaleString());
+    $('#goal').text('$'+Math.round(value*goal).toLocaleString());
     $('.actual-currency').val(value);
+
 
     return xmlHttp.responseText;
 }
@@ -21,7 +22,7 @@ function GetCurrency()
 $(document).on('turbolinks:load',function(){
     // $aux = $('#aux');
     // $aux.on('click',function(){
-       
+
     // });
 
     $("textarea").keyup(function(event){
@@ -29,8 +30,9 @@ $(document).on('turbolinks:load',function(){
             $("#comment_for").submit();
         }
     });
+
     var aux = false;
-    
+
     $("#comment_for").on('submit', function(e){
         e.preventDefault();
         aux = true;
@@ -42,7 +44,7 @@ $(document).on('turbolinks:load',function(){
 
             // data: { comment:{content:"Hola" }},
             // success: function(data) {
-                    
+
             // }
             // setInterval(function(){ alert("Hello"); }, 3000);
 
@@ -50,13 +52,13 @@ $(document).on('turbolinks:load',function(){
 
 
             // }
-            
-            
+
+
             // setInterval(function() {
             //             $('html,body').animate({scrollTop: document.body.scrollHeight},"slow");
             //           }, 250
             //     })
-            
+
         });
         setInterval(function() {
                if (aux){
@@ -67,4 +69,3 @@ $(document).on('turbolinks:load',function(){
        // $('html,body').animate({scrollTop: document.body.scrollHeight},"slow");
     });
 });
-

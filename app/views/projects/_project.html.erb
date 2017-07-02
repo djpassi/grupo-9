@@ -4,7 +4,7 @@
     <% if project.categories.any? %>
     <%= image_tag("/images/placeholder-"+project.categories[0].name+".png", :size => "300x300") %>
     <%else%>
-    <%= image_tag("/images/placeholder-project.jpg", :size => "300x300") %>
+    <%= image_tag("/images/placeholder-project.png", :size => "300x300") %>
     <% end%>
   <% else %>
     <img src="<%= project.photo.url %>" >
