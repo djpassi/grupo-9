@@ -35,9 +35,13 @@ $(document).on('turbolinks:load',function(){
         $.ajax({
             type: "POST",
             url: "/comments",
-            data: { content:"Hola" }
+            data: { comment:{content:"Hola" }},
+            success: function(data) {
+                    $('html,body').animate({scrollTop: document.body.scrollHeight},"slow");
+
+            }
         });
-         $('html,body').animate({scrollTop: document.body.scrollHeight},"slow");
+         
     });
 });
 
