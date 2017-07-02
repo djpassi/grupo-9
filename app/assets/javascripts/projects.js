@@ -35,13 +35,26 @@ $(document).on('turbolinks:load',function(){
         $.ajax({
             type: "POST",
             url: "/comments",
-            data: { comment:{content:"Hola" }},
-            success: function(data) {
-                    $('html,body').animate({scrollTop: document.body.scrollHeight},"slow");
 
-            }
+            // data: { comment:{content:"Hola" }},
+            // success: function(data) {
+                    
+            // }
+            // setInterval(function(){ alert("Hello"); }, 3000);
+
+            // error: function(){
+
+
+            // }
+            
+            
+            // setInterval(function() {
+            //             $('html,body').animate({scrollTop: document.body.scrollHeight},"slow");
+            //           }, 250
+            //     })
+            
         });
-         
+        $('html,body').animate({scrollTop: document.body.scrollHeight},"slow");
     });
 });
 

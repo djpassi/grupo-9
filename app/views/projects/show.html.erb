@@ -78,16 +78,6 @@
 
   <div class="project-action-box">
 
-    <%= form_for @comment,remote: true, html:{id:"comment_for"},url: create_comment_path do |f|  %>
-      <h2 class = "donate-header"> Write a comment </h2>
-      <%= f.text_area :content, :class => "comment-field", required: true , :placeholder =>"Type your message..."%>
-      <br>
-      <div class='submit-form'>
-      <%= f.submit "Comment", class:'submit_form_for_comment', id:"aux"%>
-      </div>
-    <% end %>
-
-
     <%= form_for @investment, remote: true, html:{id:"investment_for"}, url: create_investment_path do |f| %>
       <h2 class = "donate-header" > Donate! </h2>
       <%= f.number_field :amount, min: '1', required: true, :class => "donate-field",max:'1000000',:placeholder =>"1,000,000"  %>
@@ -194,13 +184,6 @@
  </div>
 <div class="comment-section">
 
-  <div>
-    <% if @user.photo.blank?%>
-      <div class="comment-user"><img src="/images/placeholder-user.png" alt=""></div>
-    <%else%>
-      <div class="comment-user"><img src=<%= @user.photo.url %> alt=""></div>
-    <%end%>
-  <div>
 
 <%= form_for @comment,remote: true, html:{id:"comment_for"},url: create_comment_path do |f|  %>
       <%= f.text_area :content, :class => "comment-field", required: true,placeholder: "Comment here" %>
