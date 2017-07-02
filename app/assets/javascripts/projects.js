@@ -17,3 +17,31 @@ function GetCurrency()
 
     return xmlHttp.responseText;
 }
+
+$(document).on('turbolinks:load',function(){
+    // $aux = $('#aux');
+    // $aux.on('click',function(){
+       
+    // });
+
+    $("textarea").keyup(function(event){
+        if(event.keyCode == 13){
+            $("#comment_for").submit();
+        }
+    });
+    
+    $("#comment_for").on('submit', function(e){
+        e.preventDefault();
+        $.ajax({
+            type: "POST",
+            url: "/comments",
+            data: { comment:{content:"Hola" }},
+            success: function(data) {
+                    $('html,body').animate({scrollTop: document.body.scrollHeight},"slow");
+
+            }
+        });
+         
+    });
+});
+
