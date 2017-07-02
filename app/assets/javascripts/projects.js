@@ -31,11 +31,16 @@ $(document).on('turbolinks:load',function(){
         }
     });
 
+    var aux = false;
+
     $("#comment_for").on('submit', function(e){
         e.preventDefault();
+        aux = true;
         $.ajax({
             type: "POST",
             url: "/comments",
+            
+
 
             // data: { comment:{content:"Hola" }},
             // success: function(data) {
@@ -55,6 +60,12 @@ $(document).on('turbolinks:load',function(){
             //     })
 
         });
-        $('html,body').animate({scrollTop: document.body.scrollHeight},"slow");
+        setInterval(function() {
+               if (aux){
+                    $('html,body').animate({scrollTop: document.body.scrollHeight},"slow");
+                      }
+                aux = false;
+            }, 500);
+       // $('html,body').animate({scrollTop: document.body.scrollHeight},"slow");
     });
 });
