@@ -72,10 +72,9 @@
 
 
   <div class="project-action-box">
-
     <%= form_for @investment, remote: true, html:{id:"investment_for"}, url: create_investment_path do |f| %>
       <h2 class = "donate-header" > Donate! </h2>
-      <%= f.number_field :amount, min: '1', required: true, :class => "donate-field",max:'1000000'  %>
+      <%= f.number_field :amount, min: '1', required: true, :class => "donate-field",max:'1000000',:placeholder =>"1,000,000"  %>
       <%= f.hidden_field :currency, :value => 1, :class => "actual-currency" %>⁠⁠⁠⁠
       <br>
       <div class='submit-form'>
@@ -87,8 +86,6 @@
     <% end %>
   </div>
 </section>
-
-
 
 
 <% if is_admin %>
@@ -109,8 +106,9 @@
 
 
 <div id=countdown-wrap>
-  <div id="goal">$<%= @project.goal%></div>
-  <div id="goal-usd", style="visibility: hidden"><%= @project.goal%></div>
+
+  <div id="goal">$<%= number_with_delimiter(@project.goal, :delimiter => ',')%></div>
+  <div id="goal-usd", style="visibility: hidden"><%= number_with_delimiter(@project.goal, :delimiter => ',')%></div>
 
   <div id="glass">
     <div id="progress" style="width: <%=((@project.current.to_f/@project.goal.to_f).round(2)*100).to_i %>%;">
@@ -122,8 +120,8 @@
     <span class="goal-label">Funded</span>
   </div>
   <div class="goal-stat">
-    <span class="goal-number" id='current'>$<%= @project.current%></span>
-    <span class="goal-number" id='current-usd', style="visibility: hidden"><%= @project.current%></span>
+    <span class="goal-number" id='current'>$<%= number_with_delimiter(@project.current, :delimiter => ',')%></span>
+    <span class="goal-number" id='current-usd', style="visibility: hidden"><%= number_with_delimiter(@project.current, :delimiter => ',')%></span>
 
 
     <span class="goal-label">Raised</span>
@@ -134,9 +132,6 @@
     <span class="goal-label">Sponsors</span>
   </div>
 </div>
-
-
-
 
 <% if is_valid(@project.user_id)%>
 <section>
@@ -177,18 +172,28 @@
 
 <% end%>
 
-
 <section id="section-comments">
   <div class="project-header">
   <h1>Comments </h1>
  </div>
- <%= form_for @comment,remote: true, html:{id:"comment_for"},url: create_comment_path do |f|  %>
+<div class="comment-section">
+
+  <div>
+    <% if @user.photo.blank?%>
+      <div class="comment-user"><img src="/images/placeholder-user.png" alt=""></div>
+    <%else%>
+      <div class="comment-user"><img src=<%= @user.photo.url %> alt=""></div>
+    <%end%>
+  <div>
+
+<%= form_for @comment,remote: true, html:{id:"comment_for"},url: create_comment_path do |f|  %>
       <%= f.text_area :content, :class => "comment-field", required: true,placeholder: "Comment here" %>
       <br>
       <div class='submit-form'>
-      <%= f.submit "Comment", class:['submit_form_for'], id:"aux"%>
+      <!--<%= f.submit "Comment", class:['submit_form_for'], id:"aux"%>-->
       </div>
   <% end %>
+</div>
 
   <% if @project.comments.count == 0 %>
   <div class="project-header" id="no-comments">

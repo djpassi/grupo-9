@@ -19,9 +19,25 @@ function GetCurrency()
 }
 
 $(document).on('turbolinks:load',function(){
-    $aux = $('#aux');
-    $aux.on('click',function(){
-        $('html,body').animate({scrollTop: document.body.scrollHeight},"slow");
+    // $aux = $('#aux');
+    // $aux.on('click',function(){
+       
+    // });
+
+    $("textarea").keyup(function(event){
+        if(event.keyCode == 13){
+            $("#comment_for").submit();
+        }
+    });
+    
+    $("#comment_for").on('submit', function(e){
+        e.preventDefault();
+        $.ajax({
+            type: "POST",
+            url: "/comments",
+            data: { content:"Hola" }
+        });
+         $('html,body').animate({scrollTop: document.body.scrollHeight},"slow");
     });
 });
 

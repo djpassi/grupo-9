@@ -38,6 +38,9 @@ class CommentsController < ApplicationController
 
   def create
 
+    p "JAJAJA"
+    p params
+
     if current_user
       @comment = Comment.new(comment_params)
 

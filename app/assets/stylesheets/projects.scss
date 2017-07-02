@@ -112,6 +112,7 @@ body {
 
   .project-image{
       display: inline-block;
+      border-radius: 15px 15px 15px 15px
   }
   .project-information{
       display: inline-block;
@@ -187,16 +188,36 @@ body {
 }
 
 .comment-field{
-  margin-left:10%;
-  margin-left:10%;
+  // width:680px;
+  // height: 70px;
+  // border-radius: 4px;
+  // border-color: #D3D3D3;
+  // padding: 10px 8px 10px 8px;
+  // position:relative;
 
-  width:80%;
-  height: 50px;
+  width: 680px;
+    height: 70px;
+    border-radius: 4px;
+    border-color: #D3D3D3;
+    padding: 10px 8px 10px 8px;
+    position: relative;
+    margin-left: 25%;
+    margin-right: 23%;
+    /* width: 50%; */
+    text-align: left;
+  //margin-left:21%;
+  //float:right;
+
+
+  // margin-left:10%;
+  // margin-left:10%;
 }
 .donate-field{
   margin-left:25%;
   margin-right:25%;
   width:50%;  height: 30px;
+  border-radius: 10px;
+  padding: 10px 8px 10px 8px;
 }
 
 
@@ -282,13 +303,11 @@ th.project-table-header {
     color: white;
 }
 
-
 #project-current{
   width: 100%;
   padding: 0px;
   margin: 0px;
 }
-
 
 .modal {
     display: none;
@@ -383,4 +402,24 @@ th.project-table-header {
 .project-header {
   text-align: center;
   padding: 30px;
+}
+
+.comment-section{
+
+
+}
+
+.comment-user{
+    width: 65px;
+    height: 65px;
+    position: relative;
+    z-index: 99;
+    float: left;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+    -moz-box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+    overflow: hidden;
 }

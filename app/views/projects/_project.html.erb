@@ -5,9 +5,9 @@
   <% else %>
     <img src="<%= project.photo.url %>" >
   <% end %>
-<h3 id="project-name"> <%= project.name %></h3>
+<h5 id="project-name"> <%= project.name %></h5>
 <p id="project-owner">Owner: <%= User.find(project.user_id).first_name %></p>
-<p id="project-goal">Goal: <%= project.goal %></p>
-<p id="project-current">Current: <%= project.current %></p>
+<p id="project-goal">Goal: $<%= number_with_delimiter(project.goal, :delimiter => ',') %></p>
+<p id="project-current">Current: $<%= number_with_delimiter(project.current, :delimiter => ',') %></p>
 </a>
 <% end %>
