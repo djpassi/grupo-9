@@ -21,7 +21,8 @@
  }
 
  img{
-   box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19) !important;
+   box-shadow: 0 1px 1px 0 rgba(0,0,0,0.2),0 5px 13px 0 rgba(0,0,0,0.19) !important;
+   background: white;
  }
 
  #Navbar {
@@ -78,6 +79,34 @@
      cursor: pointer;
  }
 
+ .submit_form_for_comment {
+   width: 100%;
+     background-color: #CBE32D;
+     border: none;
+     color: #FFF;
+     padding: 16px 32px;
+     text-decoration: none;
+     margin: 4px 2px;
+     cursor: pointer;
+     border-radius: 8px;
+     font-size: 20px;
+     padding: 10px;
+ }
+
+ .submit_form_for_donate {
+   width: 100%;
+     background-color: #0087e2;
+     border: none;
+     color: #FFF;
+     padding: 16px 32px;
+     text-decoration: none;
+     margin: 4px 2px;
+     cursor: pointer;
+     border-radius: 8px;
+     font-size: 20px;
+     padding: 10px;
+ }
+
 
 
 
@@ -107,7 +136,7 @@
 
  body {
  	font-family: 'Roboto', Arial, Helvetica, Sans-serif, Verdana;
- 	background: #dee1e3;
+ 	background: floralwhite;
  }
 
  /** ====================
