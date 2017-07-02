@@ -14,6 +14,8 @@ Category.create(name:'Tecnology', description:Faker::Lorem.sentence(3))
 Category.create(name:'Social', description:Faker::Lorem.sentence(3))
 
 
+
+
 (1..50).each do |i|
   user = User.create(first_name:Faker::Name.first_name, last_name: Faker::Name.last_name ,email:Faker::Internet.unique.email ,sex:'M',password:Faker::Internet.password(8),image:Faker::Internet.url,description:Faker::Lorem.sentence(3),role:'User')
   user.generate_token_and_save
