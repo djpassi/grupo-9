@@ -37,10 +37,6 @@ class CommentsController < ApplicationController
   end
 
   def create
-
-    p "JAJAJA"
-    p params
-
     if current_user
       @comment = Comment.new(comment_params)
 
@@ -56,9 +52,9 @@ class CommentsController < ApplicationController
      end
    end
   else
-    
+
   end
-  
+
   end
 
 
