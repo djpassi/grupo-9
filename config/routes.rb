@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get '/users/:id/edit', to: 'users#edit', as: 'edit_user'
   patch '/users/:id', to: 'users#update'
   patch 'users/:id/edit_categories', to: 'users#edit_categories'
+  get '/users/:id/projects', to: 'users#show_projects', as: 'user_projects'
 
   get 'projects/search', to: 'projects#search'
   get 'projects/categories/:name', to: 'projects#show_categories'
