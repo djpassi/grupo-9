@@ -216,16 +216,47 @@
 
 <% if !current_user%>
 
+    $("#comment_content").keyup(function(event){
+        if(event.keyCode == 13){
+            $input = $("#comment_content");
+
+            console.log($input.val());
+
+            var modal = document.getElementById("myModal");
+            //var btn = document.getElementById("aux");
+            var span = document.getElementsByClassName("close")[0];
+            modal.style.display = "block"
+            modal.style.zIndex = "1";
+
+            //btn.onclick = function() {
+              //modal.style.display = "block";
+            //}
+            span.onclick = function() {
+              modal.style.display = "none";
+              
+            }
+
+            window.onclick = function(event) {
+              if (event.target == modal) {
+                  modal.style.display = "none";
+              }
+            }
+            
+        }
+    });
+
   $input = $("#comment_content");
   console.log($input.val());
 
   var modal = document.getElementById("myModal");
-  var btn = document.getElementById("aux");
+  //var btn = document.getElementById("aux");
   var btn1 = document.getElementById("aux1");
   var span = document.getElementsByClassName("close")[0];
-  btn.onclick = function() {
-    modal.style.display = "block";
-  }
+
+
+  //btn.onclick = function() {
+    //modal.style.display = "block";
+  //}
 
   btn1.onclick = function() {
     modal.style.display = "block";
