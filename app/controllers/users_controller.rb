@@ -5,8 +5,8 @@ class UsersController < ApplicationController
 
   helper_method :valid_action, :is_checked?
 
-  before_action :set_user, only: [:show, :destroy, :edit, :update, :edit_categories]
-  before_action :logged_in?, only: [:destroy, :edit, :update]
+  before_action :set_user, only: [:show, :destroy, :edit, :update, :edit_categories, :show_projects]
+  before_action :logged_in?, only: [:destroy, :edit, :update, :show_projects]
   before_action only:[:destroy, :edit, :update] {valid_action(params[:id].to_i)}
 
   def new
@@ -80,6 +80,15 @@ class UsersController < ApplicationController
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
+ end
+
+ def show_projects
+   if current_user.id == @user.id
+     @projects = Project.where(user_id:@user.id)
+     p @projects   else
+     redirect_to root_path, notice: "Action not allowed"
+   end
+
  end
 
 

@@ -9,52 +9,57 @@ function GetCurrency()
     obj = JSON.parse(xmlHttp.responseText);
     quotes = obj.quotes;
     value = quotes[Object.keys(quotes)[0]];
-    var current = +($('#current-usd').text());
-    var goal = +($('#goal-usd').text());
-    $('#current').text('$'+Math.round(value*current));
-    $('#goal').text('$'+Math.round(value*goal));
+    var current = +($('#current-usd').text().replace('$','').replace(',',''));
+    var goal = +($('#goal-usd').text().replace('$','').replace(',',''));
+    $('#current').text('$'+Math.round(value*current).toLocaleString());
+    $('#goal').text('$'+Math.round(value*goal).toLocaleString());
     $('.actual-currency').val(value);
+
 
     return xmlHttp.responseText;
 }
 
 $(document).on('turbolinks:load',function(){
-    // $aux = $('#aux');
-    // $aux.on('click',function(){
-       
-    // });
-
     $("textarea").keyup(function(event){
         if(event.keyCode == 13){
             $("#comment_for").submit();
         }
     });
-    
+
+    var aux = false;
+
     $("#comment_for").on('submit', function(e){
         e.preventDefault();
+        aux = true;
         $.ajax({
             type: "POST",
             url: "/comments",
-
-            // data: { comment:{content:"Hola" }},
-            // success: function(data) {
-                    
-            // }
-            // setInterval(function(){ alert("Hello"); }, 3000);
-
-            // error: function(){
-
-
-            // }
-            
-            
-            // setInterval(function() {
-            //             $('html,body').animate({scrollTop: document.body.scrollHeight},"slow");
-            //           }, 250
-            //     })
-            
-        });
-        $('html,body').animate({scrollTop: document.body.scrollHeight},"slow");
+            });
+        setInterval(function() {
+               if (aux){
+                    $('html,body').animate({scrollTop: document.body.scrollHeight},"slow");
+                      }
+                aux = false;
+            }, 500);
     });
 });
 
+
+$(document).on('turbolinks:load', function () {
+  $('.tablinks').on('click', function() {
+    var link = $(this);
+    var tab = $('.' + link.data('tab'));
+
+    $('.tabcontent').each(function() {
+      $(this).hide();
+    });
+
+    $('.tablinks').each(function() {
+      $(this).removeClass('active');
+    });
+
+    tab.show();
+    link.addClass('active');
+  });
+  $('.defaultOpen').click();
+});

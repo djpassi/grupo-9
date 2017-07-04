@@ -133,7 +133,6 @@ body {
   }
 }
 
-
 .projects-index{
   padding: 10px;
 }
@@ -240,33 +239,48 @@ body {
 }
 
 .project-action{
-    font-size: 15px;
-    top: 5px;
-    right: 20px;
-    border: 3px solid;
-    padding: 6px;
-    text-align: center;
-    border-radius: 15px 15px 15px 15px;
     display: inline-block;
-    border-color: #4CAF50;
+    border: none;
+    color: #FFF;
+    padding: 16px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 8px;
+    font-size: 20px;
+    padding: 10px;
+    background-color: green;
+}
 
+.project-action-delete{
+    display: inline-block;
+    border: none;
+    color: #FFF;
+    padding: 16px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 8px;
+    font-size: 20px;
+    padding: 10px;
+    background-color: red;
 }
 .project-action a{
   text-decoration: none;
 }
 
-#project-edit a{
-  color:#4CAF50;
 
+#project-edit a{
+  color:white;
 }
 #project-edit{
-  border-color: #4CAF50;
+  margin-left: 25px;
 }
 #project-delete a{
-  color:red;
+  color:white;
+
 }
 #project-delete{
-  border-color: red;
 }
 #project-comment a{
   color:blue;

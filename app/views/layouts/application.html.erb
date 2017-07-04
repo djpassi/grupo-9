@@ -22,6 +22,7 @@
           <li class="<%= active_class("/categories") %>" id='categories'> <%= link_to "Categories", "/categories"%></li>
         <% elsif current_user %>
           <li class="<%= active_class(projects_new_path) %>" id='project-new'> <%= link_to "New Project", projects_new_path %></li>
+          <li class="<%= active_class(user_projects_path(current_user.id)) %>" id='my-projects' style="position: absolute;margin-left:825px;"> <%= link_to "My Projects", user_projects_path(current_user.id) %></li>
         <% end %>
          <li>
           <%= form_tag '/projects/search', :method => 'get' do %>
