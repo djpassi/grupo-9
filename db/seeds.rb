@@ -29,4 +29,12 @@ end
 
 
 
-User.create(first_name:"Admin", last_name:"Admin" ,email:"davidgalemiri@gmail.com",sex:'M',password:'123456',image:"",description:"",role:'Admin')
+User.create(first_name:"Admin", last_name:"Admin" ,email:"admin@uc.com",sex:'M',password:'123123',image:"",description:"",role:'Admin')
+
+User.create(first_name:"Diego", last_name:"Passi" ,email:"djpassi@uc.cl",sex:'M',password:'123123',image:"/public/images/diego.jpg",description:"",role:'User')
+User.create(first_name:"David", last_name:"Galemiri" ,email:"dagalemiri@uc.cl",sex:'M',password:'123123',image:"/public/images/david.jpg",description:"",role:'User')
+User.create(first_name:"Jaime", last_name:"Navon" ,email:"jaimitonavon@uc.cl",sex:'M',password:'123123',image:"/public/images/navon.jpg",description:"",role:'User')
+User.create(first_name:"Marc", last_name:"Suckerberg" ,email:"mark@uc.cl",sex:'M',password:'123123',image:"/public/images/mark.jpg",description:"",role:'User')
+User.create(first_name:"Mar", last_name:"Perez" ,email:"mar@uc.cl",sex:'M',password:'123123',image:"/public/images/mar.jpeg",description:"",role:'User')
+User.create(first_name:"Alersi", last_name:"Sanchez" ,email:"alexis@uc.cl",sex:'M',password:'123123',image:"/public/images/alexis.jpg",description:"",role:'User')
+User.create(first_name:"Steve", last_name:"Jobs" ,email:"steve@uc.cl",sex:'M',password:'123123',image:"/public/images/steve.jpg",description:"",role:'User')
