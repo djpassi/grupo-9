@@ -41,4 +41,5 @@ $(document).on('turbolinks:load', function () {
      link.addClass('active');
    });
    $('.defaultOpen').click();
+
  });
