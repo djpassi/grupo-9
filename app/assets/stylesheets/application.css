@@ -208,7 +208,7 @@
  	width: 65px;
  	height: 65px;
  	position: relative;
- 	z-index: 99;
+ 	z-index: 0;
  	float: left;
  	-webkit-border-radius: 4px;
  	-moz-border-radius: 4px;
