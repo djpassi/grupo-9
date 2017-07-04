@@ -52,19 +52,23 @@
 }
 #profile {
   padding: 10px;
-  margin-top: 45px;
   padding-right: 40px;
+  display: inline-flex;
+  width: 100%;
 
   .profile-image{
       display: inline-block;
   }
   .profile-information{
       display: inline;
-      margin-left: 5%;
+      margin-left: 50px;
+      margin-top: 12px;
   }
 }
 
 .user-action{
+    margin-top: 10px;
+    margin-left: 20px;
     font-size: 15px;
     top: 5px;
     right: 20px;
@@ -75,22 +79,48 @@
     border-radius: 15px 15px 15px 15px;
     display: inline-block;
 }
-.user-action a{
+
+
+.user-action-edit{
+    display: inline-block;
+    border: none;
+    color: #FFF !important;
+    padding: 16px 32px;
+    text-decoration: none;
+    margin: 4px 17px;
+    cursor: pointer;
+    border-radius: 8px;
+    font-size: 15px;
+    padding: 10px;
+    background-color: green;
+}
+.user-action-delete{
+    display: inline-block;
+    border: none;
+    color: #FFF !important;
+    padding: 16px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 8px;
+    font-size: 15px;
+    padding: 10px;
+    background-color: red;
+
+}
+.user-action-delete a{
   text-decoration: none;
+  color: #FFF !important;
+
+
 }
-#user-edit{
-  border-color: #4CAF50;
-}
-#user-edit a{
-  color:#4CAF50;
+.user-action-edit a{
+  text-decoration: none;
+  color: #FFF !important;
+
+
 }
 
-#user-delete{
-  border-color: red;
-}
-#user-delete a{
-  color:red;
-}
 
 .table{
 	.center{
@@ -129,11 +159,13 @@ div.tab {
 
 .tablinks{
   width: 33.3%;
+    color: white;
+    font-size: 100%;
 
 }
 
 div.tab button {
-    
+
     background-color: inherit;
     float: left;
     border: none;
