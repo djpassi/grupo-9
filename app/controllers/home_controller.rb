@@ -11,7 +11,7 @@ class HomeController < ApplicationController
         @projects_id = []
         categories.each do |cat|
           @projects_id+=cat.projects.pluck(:id)
-          @projects = Project.find(@projects_id).shuffle.last(5)
+          @projects = Project.find(@projects_id).shuffle.last(4)
 
         end
 

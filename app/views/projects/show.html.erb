@@ -40,8 +40,6 @@
     <p> <b>Owner:</b> <%= link_to @user.first_name, @user %> </p>
     <br />
     <p> <b>Description: </b><%= @project.description %> </p>
-    <br />
-    <p> <b>Limit Date:</b> <%= @project.limit_date %> </p>
 
 
   </div>
@@ -233,7 +231,7 @@
             //}
             span.onclick = function() {
               modal.style.display = "none";
-              
+
             }
 
             window.onclick = function(event) {
@@ -241,7 +239,7 @@
                   modal.style.display = "none";
               }
             }
-            
+
         }
     });
 

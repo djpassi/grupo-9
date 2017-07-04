@@ -12,24 +12,28 @@ function GetCurrency()
 }
 
 
+console.log('Hola');
 
 
 
-var current = $('#current').text().replace('$','').replace(',','');
+var current = $('#current').text().replace('$','').replace(',','').replace('.','');
 var amount = <%= @original_amount %>;
 var goal = +($('#goal').text().replace('$','').replace(',',''));
 var current_sponsors = $('#current-sponsors').text();
 var currency = $( "#currency" ).val();
 var current_value = GetCurrency(currency);
-var actual = +(current)+(+(amount));
 
+var current_usd = +($('#current-usd').text().replace(',','').replace('.',''));
+var goal_usd = +($('#goal-usd').text().replace(',','').replace('.',''));
 
+var current_currency = current_usd * current_value;
+var goal_currency = goal_usd * current_value;
+var actual = +(current_currency)+(+(amount));
 
 $('#current').text('$'+actual.toLocaleString().replace('.',','));
 
-console.log(+(actual)/+($('#goal')));
 
-var percent = (+(actual)/goal)*100;
+var percent = (+(actual)/+goal_currency)*100;
 $('#current-percent').text(parseInt(percent)+'%')
 $('#progress').css("width", parseInt(percent)+"%");
 $('#current-sponsors').text(+current_sponsors+1);
