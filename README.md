@@ -1,17 +1,16 @@
 # Grupo 9: QuickStarter 
 
-#### <i class="icon-hdd"></i> Deploy de la aplicación
+#### <i class="icon-hdd"></i> Application webpage deploy
 
 http://quickstarter-uc.herokuapp.com/
 
 
-* Proyecto a trabajar: Crowdfunding
-* Ayudante: Matias Jünemann
+* Project topic: Crowdfunding
+* TA: Matias Jünemann
 
-## Integrantes:
-Asegúrense de llenar lo siguiente:
+## Members:
 
-| Nº Alumno    | Nombre              | Email UC      |
-|:-------------|:--------------------|:--------------|
-| 13633317   | David Galemiri Ares       | dagalemiri@uc.cl  |
-| 13637967  | Diego Passi Riumalló       | djpassi@uc.cl  |
+|  Name              | Email       |
+|:--------------------|:--------------|
+| David Galemiri Ares       | dagalemiri@uc.cl  |
+| Diego Passi Riumalló       | djpassi@uc.cl  |
